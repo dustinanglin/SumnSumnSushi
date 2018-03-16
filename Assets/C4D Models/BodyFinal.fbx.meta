@@ -1,0 +1,412 @@
+fileFormatVersion: 2
+guid: cd7ea17554a459a4eb7da2ad33a6a0ab
+timeCreated: 1493765720
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Barrel
+    100002: //RootNode
+    100004: Front_Sight
+    100006: Gun
+    100008: Gun_Body
+    100010: Hammer
+    100012: Head
+    100014: Left_ankle
+    100016: Left_Elbow
+    100018: Left_Foot
+    100020: Left_Hand
+    100022: Left_Hip
+    100024: Left_Knee
+    100026: Left_Middle_1
+    100028: Left_Middle_2
+    100030: Left_Middle_knuckle
+    100032: Left_MIddle_tip
+    100034: Left_Pinky_1
+    100036: Left_PInky_2
+    100038: Left_Pinky_knuckle
+    100040: Left_Pinky_tip
+    100042: Left_Pointer_1
+    100044: Left_Pointer_2
+    100046: Left_Pointer_knuckle
+    100048: Left_Pointer_tip
+    100050: Left_Ring_1
+    100052: Left_Ring_2
+    100054: Left_Ring_knuckle
+    100056: Left_Ring_tip
+    100058: Left_Shoulder
+    100060: Left_Thumb_1
+    100062: Left_Thumb_2
+    100064: Left_Thumb_tip
+    100066: Left_Wrist
+    100068: Lower_Chest
+    100070: Neck
+    100072: Pelvis
+    100074: Rear_Sight_1
+    100076: Rear_Sight_2
+    100078: Right_Ankle
+    100080: Right_Elbow
+    100082: Right_Foot
+    100084: Right_Hand
+    100086: Right_Hip
+    100088: Right_Knee
+    100090: Right_Middle_1
+    100092: Right_Middle_2
+    100094: Right_Middle_knuckle
+    100096: Right_MIddle_tip
+    100098: Right_Pinky_1
+    100100: Right_Pinky_2
+    100102: Right_Pinky_knuckle
+    100104: Right_Pinky_tip
+    100106: Right_Pointer_1
+    100108: Right_Pointer_2
+    100110: Right_Pointer_knuckle
+    100112: Right_Pointer_tip
+    100114: Right_Ring_1
+    100116: Right_Ring_2
+    100118: Right_Ring_knuckle
+    100120: Right_Ring_tip
+    100122: Right_Shoulder
+    100124: Right_Thumb_1
+    100126: Right_Thumb_2
+    100128: Right_Thumb_tip
+    100130: Right_Wrist
+    100132: Slide
+    100134: Stomach
+    100136: Trigger
+    100138: Upper_Chest
+    400000: Barrel
+    400002: //RootNode
+    400004: Front_Sight
+    400006: Gun
+    400008: Gun_Body
+    400010: Hammer
+    400012: Head
+    400014: Left_ankle
+    400016: Left_Elbow
+    400018: Left_Foot
+    400020: Left_Hand
+    400022: Left_Hip
+    400024: Left_Knee
+    400026: Left_Middle_1
+    400028: Left_Middle_2
+    400030: Left_Middle_knuckle
+    400032: Left_MIddle_tip
+    400034: Left_Pinky_1
+    400036: Left_PInky_2
+    400038: Left_Pinky_knuckle
+    400040: Left_Pinky_tip
+    400042: Left_Pointer_1
+    400044: Left_Pointer_2
+    400046: Left_Pointer_knuckle
+    400048: Left_Pointer_tip
+    400050: Left_Ring_1
+    400052: Left_Ring_2
+    400054: Left_Ring_knuckle
+    400056: Left_Ring_tip
+    400058: Left_Shoulder
+    400060: Left_Thumb_1
+    400062: Left_Thumb_2
+    400064: Left_Thumb_tip
+    400066: Left_Wrist
+    400068: Lower_Chest
+    400070: Neck
+    400072: Pelvis
+    400074: Rear_Sight_1
+    400076: Rear_Sight_2
+    400078: Right_Ankle
+    400080: Right_Elbow
+    400082: Right_Foot
+    400084: Right_Hand
+    400086: Right_Hip
+    400088: Right_Knee
+    400090: Right_Middle_1
+    400092: Right_Middle_2
+    400094: Right_Middle_knuckle
+    400096: Right_MIddle_tip
+    400098: Right_Pinky_1
+    400100: Right_Pinky_2
+    400102: Right_Pinky_knuckle
+    400104: Right_Pinky_tip
+    400106: Right_Pointer_1
+    400108: Right_Pointer_2
+    400110: Right_Pointer_knuckle
+    400112: Right_Pointer_tip
+    400114: Right_Ring_1
+    400116: Right_Ring_2
+    400118: Right_Ring_knuckle
+    400120: Right_Ring_tip
+    400122: Right_Shoulder
+    400124: Right_Thumb_1
+    400126: Right_Thumb_2
+    400128: Right_Thumb_tip
+    400130: Right_Wrist
+    400132: Slide
+    400134: Stomach
+    400136: Trigger
+    400138: Upper_Chest
+    2300000: Barrel
+    2300002: Front_Sight
+    2300004: Gun_Body
+    2300006: Hammer
+    2300008: Rear_Sight_1
+    2300010: Rear_Sight_2
+    2300012: Slide
+    2300014: Trigger
+    3300000: Barrel
+    3300002: Front_Sight
+    3300004: Gun_Body
+    3300006: Hammer
+    3300008: Rear_Sight_1
+    3300010: Rear_Sight_2
+    3300012: Slide
+    3300014: Trigger
+    4300000: Body_Final
+    4300002: Slide
+    4300004: Front_Sight
+    4300006: Rear_Sight_1
+    4300008: Rear_Sight_2
+    4300010: Hammer
+    4300012: Trigger
+    4300014: Gun_Body
+    4300016: Barrel
+    7400000: StandAndShoot
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: StandAndShoot
+      takeName: CINEMA_4D_Main
+      firstFrame: 0
+      lastFrame: 145
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: Pelvis/Left_Hip
+        weight: 1
+      - path: Pelvis/Left_Hip/Left_Knee
+        weight: 1
+      - path: Pelvis/Left_Hip/Left_Knee/Left_ankle
+        weight: 1
+      - path: Pelvis/Left_Hip/Left_Knee/Left_ankle/Left_Foot
+        weight: 1
+      - path: Pelvis/Right_Hip
+        weight: 1
+      - path: Pelvis/Right_Hip/Right_Knee
+        weight: 1
+      - path: Pelvis/Right_Hip/Right_Knee/Right_Ankle
+        weight: 1
+      - path: Pelvis/Right_Hip/Right_Knee/Right_Ankle/Right_Foot
+        weight: 1
+      - path: Pelvis/Stomach
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Middle_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Middle_knuckle/Left_Middle_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Middle_knuckle/Left_Middle_1/Left_Middle_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Middle_knuckle/Left_Middle_1/Left_Middle_2/Left_MIddle_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pinky_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pinky_knuckle/Left_Pinky_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pinky_knuckle/Left_Pinky_1/Left_PInky_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pinky_knuckle/Left_Pinky_1/Left_PInky_2/Left_Pinky_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pointer_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pointer_knuckle/Left_Pointer_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pointer_knuckle/Left_Pointer_1/Left_Pointer_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Pointer_knuckle/Left_Pointer_1/Left_Pointer_2/Left_Pointer_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Ring_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Ring_knuckle/Left_Ring_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Ring_knuckle/Left_Ring_1/Left_Ring_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Ring_knuckle/Left_Ring_1/Left_Ring_2/Left_Ring_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Thumb_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Thumb_1/Left_Thumb_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Hand/Left_Thumb_1/Left_Thumb_2/Left_Thumb_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Neck
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Neck/Head
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Barrel
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Gun_Body
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Hammer
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Slide
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Slide/Front_Sight
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Slide/Rear_Sight_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Slide/Rear_Sight_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Gun/Trigger
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Middle_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Middle_knuckle/Right_Middle_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Middle_knuckle/Right_Middle_1/Right_Middle_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Middle_knuckle/Right_Middle_1/Right_Middle_2/Right_MIddle_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pinky_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pinky_knuckle/Right_Pinky_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pinky_knuckle/Right_Pinky_1/Right_Pinky_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pinky_knuckle/Right_Pinky_1/Right_Pinky_2/Right_Pinky_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pointer_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pointer_knuckle/Right_Pointer_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pointer_knuckle/Right_Pointer_1/Right_Pointer_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Pointer_knuckle/Right_Pointer_1/Right_Pointer_2/Right_Pointer_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Ring_knuckle
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Ring_knuckle/Right_Ring_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Ring_knuckle/Right_Ring_1/Right_Ring_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Ring_knuckle/Right_Ring_1/Right_Ring_2/Right_Ring_tip
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Thumb_1
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Thumb_1/Right_Thumb_2
+        weight: 1
+      - path: Pelvis/Stomach/Lower_Chest/Upper_Chest/Right_Shoulder/Right_Elbow/Right_Wrist/Right_Hand/Right_Thumb_1/Right_Thumb_2/Right_Thumb_tip
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

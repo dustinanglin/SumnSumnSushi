@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 27ae87a89a2e61e408c6f547d20dcdba
+timeCreated: 1493675749
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Barrel
+    100002: Front_Sight
+    100004: //RootNode
+    100006: Hammer
+    100008: Rear_Sight_1
+    100010: Rear_Sight_2
+    100012: Slide
+    100014: Stock
+    100016: Trigger
+    400000: Barrel
+    400002: Front_Sight
+    400004: //RootNode
+    400006: Hammer
+    400008: Rear_Sight_1
+    400010: Rear_Sight_2
+    400012: Slide
+    400014: Stock
+    400016: Trigger
+    2300000: Barrel
+    2300002: Front_Sight
+    2300004: Hammer
+    2300006: Rear_Sight_1
+    2300008: Rear_Sight_2
+    2300010: Slide
+    2300012: Stock
+    2300014: Trigger
+    3300000: Barrel
+    3300002: Front_Sight
+    3300004: Hammer
+    3300006: Rear_Sight_1
+    3300008: Rear_Sight_2
+    3300010: Slide
+    3300012: Stock
+    3300014: Trigger
+    4300000: Slide
+    4300002: Front_Sight
+    4300004: Rear_Sight_1
+    4300006: Rear_Sight_2
+    4300008: Hammer
+    4300010: Trigger
+    4300012: Stock
+    4300014: Barrel
+    7400000: Gunfire
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Gunfire
+      takeName: CINEMA_4D_Main
+      firstFrame: 0
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Barrel
+        weight: 1
+      - path: Hammer
+        weight: 1
+      - path: Slide
+        weight: 1
+      - path: Slide/Front_Sight
+        weight: 1
+      - path: Slide/Rear_Sight_1
+        weight: 1
+      - path: Slide/Rear_Sight_2
+        weight: 1
+      - path: Stock
+        weight: 1
+      - path: Trigger
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,781 @@
+fileFormatVersion: 2
+guid: fb984905c042f1c488e426c6dd17b64e
+timeCreated: 1501890228
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Alien
+    100002: Alien_bottom
+    100004: Body
+    100006: Body_Joints
+    100008: Cane
+    100010: Chest
+    100012: Chest2
+    100014: Cylinder
+    100016: Cylinder_1
+    100018: Cylinder_1_2
+    100020: Cylinder_2
+    100022: Cylinder_2_2
+    100024: Cylinder_2_3
+    100026: Eyebrow_Animator
+    100028: Hat
+    100030: Hat_2
+    100032: Head
+    100034: HeadInside
+    100036: HeadStuff
+    100038: Joint_10
+    100040: Joint_11
+    100042: Joint_12
+    100044: Joint_13
+    100046: Joint_14
+    100048: Joint_15
+    100050: Joint_16
+    100052: Joint_17
+    100054: Joint_18
+    100056: Joint_19
+    100058: Joint_20
+    100060: Joint_21
+    100062: Joint_22
+    100064: Joint_23
+    100066: Joint_24
+    100068: Joint_24_Goal
+    100070: Joint_5
+    100072: Joint_6
+    100074: Joint_7
+    100076: Joint_8
+    100078: Joint_9
+    100080: Left_Elbow
+    100082: Left_Eye
+    100084: Left_Foot
+    100086: Left_Hip
+    100088: Left_Knee
+    100090: Left_Shoulder
+    100092: Left_Wrist
+    100094: LeftBrow
+    100096: LeftLegFlipper
+    100098: Lowerlip
+    100100: Middle_1
+    100102: Middle_2
+    100104: Middle_3
+    100106: Middle_Kunckle
+    100108: Mouth_Animator
+    100110: Music
+    100112: Neck
+    100114: Null
+    100116: Null_1
+    100118: Pelvis
+    100120: Pinky_1
+    100122: Pinky_2
+    100124: Pinky_3
+    100126: Pinky_Knuckle
+    100128: Pointer_1
+    100130: Pointer_2
+    100132: Pointer_3
+    100134: Pointer_Knuckle
+    100136: Pyramid
+    100138: Pyramid_1
+    100140: Pyramid_10
+    100142: Pyramid_10_2
+    100144: Pyramid_11
+    100146: Pyramid_11_2
+    100148: Pyramid_12
+    100150: Pyramid_12_2
+    100152: Pyramid_13
+    100154: Pyramid_13_2
+    100156: Pyramid_1_2
+    100158: Pyramid_2
+    100160: Pyramid_2_2
+    100162: Pyramid_2_3
+    100164: Pyramid_3
+    100166: Pyramid_3_2
+    100168: Pyramid_4
+    100170: Pyramid_4_2
+    100172: Pyramid_5
+    100174: Pyramid_5_2
+    100176: Pyramid_6
+    100178: Pyramid_6_2
+    100180: Pyramid_7
+    100182: Pyramid_7_2
+    100184: Pyramid_8
+    100186: Pyramid_8_2
+    100188: Pyramid_9
+    100190: Pyramid_9_2
+    100192: R_Middle_1
+    100194: R_Middle_2
+    100196: R_Middle_3
+    100198: R_Middle_Knuckle
+    100200: R_Pinky_1
+    100202: R_Pinky_2
+    100204: R_Pinky_3
+    100206: R_Pinky_Knuckle
+    100208: R_Pointer_1
+    100210: R_Pointer_2
+    100212: R_Pointer_3
+    100214: R_Pointer_Knuckle
+    100216: R_Ring_1
+    100218: R_Ring_2
+    100220: R_Ring_3
+    100222: R_Ring_Knuckle
+    100224: R_Thumb_1
+    100226: R_Thumb_2
+    100228: R_Thumb_Knuckle
+    100230: Right_Elbow
+    100232: Right_Eye
+    100234: Right_Foot
+    100236: Right_Hip
+    100238: Right_Knee
+    100240: Right_Shoulder
+    100242: Right_Wrist
+    100244: RightBrow
+    100246: RightLegFlipper
+    100248: Ring_1
+    100250: Ring_2
+    100252: Ring_3
+    100254: Ring_Knuckle
+    100256: Root
+    100258: Root_2
+    100260: Sphere
+    100262: Stomach
+    100264: Tail
+    100266: Teeth
+    100268: Thumb_1
+    100270: Thumb_2
+    100272: Thumb_Knuckle
+    100274: Upperlip
+    100276: //RootNode
+    400000: Alien
+    400002: Alien_bottom
+    400004: Body
+    400006: Body_Joints
+    400008: Cane
+    400010: Chest
+    400012: Chest2
+    400014: Cylinder
+    400016: Cylinder_1
+    400018: Cylinder_1_2
+    400020: Cylinder_2
+    400022: Cylinder_2_2
+    400024: Cylinder_2_3
+    400026: Eyebrow_Animator
+    400028: Hat
+    400030: Hat_2
+    400032: Head
+    400034: HeadInside
+    400036: HeadStuff
+    400038: Joint_10
+    400040: Joint_11
+    400042: Joint_12
+    400044: Joint_13
+    400046: Joint_14
+    400048: Joint_15
+    400050: Joint_16
+    400052: Joint_17
+    400054: Joint_18
+    400056: Joint_19
+    400058: Joint_20
+    400060: Joint_21
+    400062: Joint_22
+    400064: Joint_23
+    400066: Joint_24
+    400068: Joint_24_Goal
+    400070: Joint_5
+    400072: Joint_6
+    400074: Joint_7
+    400076: Joint_8
+    400078: Joint_9
+    400080: Left_Elbow
+    400082: Left_Eye
+    400084: Left_Foot
+    400086: Left_Hip
+    400088: Left_Knee
+    400090: Left_Shoulder
+    400092: Left_Wrist
+    400094: LeftBrow
+    400096: LeftLegFlipper
+    400098: Lowerlip
+    400100: Middle_1
+    400102: Middle_2
+    400104: Middle_3
+    400106: Middle_Kunckle
+    400108: Mouth_Animator
+    400110: Music
+    400112: Neck
+    400114: Null
+    400116: Null_1
+    400118: Pelvis
+    400120: Pinky_1
+    400122: Pinky_2
+    400124: Pinky_3
+    400126: Pinky_Knuckle
+    400128: Pointer_1
+    400130: Pointer_2
+    400132: Pointer_3
+    400134: Pointer_Knuckle
+    400136: Pyramid
+    400138: Pyramid_1
+    400140: Pyramid_10
+    400142: Pyramid_10_2
+    400144: Pyramid_11
+    400146: Pyramid_11_2
+    400148: Pyramid_12
+    400150: Pyramid_12_2
+    400152: Pyramid_13
+    400154: Pyramid_13_2
+    400156: Pyramid_1_2
+    400158: Pyramid_2
+    400160: Pyramid_2_2
+    400162: Pyramid_2_3
+    400164: Pyramid_3
+    400166: Pyramid_3_2
+    400168: Pyramid_4
+    400170: Pyramid_4_2
+    400172: Pyramid_5
+    400174: Pyramid_5_2
+    400176: Pyramid_6
+    400178: Pyramid_6_2
+    400180: Pyramid_7
+    400182: Pyramid_7_2
+    400184: Pyramid_8
+    400186: Pyramid_8_2
+    400188: Pyramid_9
+    400190: Pyramid_9_2
+    400192: R_Middle_1
+    400194: R_Middle_2
+    400196: R_Middle_3
+    400198: R_Middle_Knuckle
+    400200: R_Pinky_1
+    400202: R_Pinky_2
+    400204: R_Pinky_3
+    400206: R_Pinky_Knuckle
+    400208: R_Pointer_1
+    400210: R_Pointer_2
+    400212: R_Pointer_3
+    400214: R_Pointer_Knuckle
+    400216: R_Ring_1
+    400218: R_Ring_2
+    400220: R_Ring_3
+    400222: R_Ring_Knuckle
+    400224: R_Thumb_1
+    400226: R_Thumb_2
+    400228: R_Thumb_Knuckle
+    400230: Right_Elbow
+    400232: Right_Eye
+    400234: Right_Foot
+    400236: Right_Hip
+    400238: Right_Knee
+    400240: Right_Shoulder
+    400242: Right_Wrist
+    400244: RightBrow
+    400246: RightLegFlipper
+    400248: Ring_1
+    400250: Ring_2
+    400252: Ring_3
+    400254: Ring_Knuckle
+    400256: Root
+    400258: Root_2
+    400260: Sphere
+    400262: Stomach
+    400264: Tail
+    400266: Teeth
+    400268: Thumb_1
+    400270: Thumb_2
+    400272: Thumb_Knuckle
+    400274: Upperlip
+    400276: //RootNode
+    2300000: Cane
+    2300002: Cylinder
+    2300004: Cylinder_1
+    2300006: Cylinder_1_2
+    2300008: Cylinder_2
+    2300010: Cylinder_2_2
+    2300012: Cylinder_2_3
+    2300014: HeadInside
+    2300016: Left_Eye
+    2300018: Pyramid
+    2300020: Pyramid_1
+    2300022: Pyramid_10
+    2300024: Pyramid_10_2
+    2300026: Pyramid_11
+    2300028: Pyramid_11_2
+    2300030: Pyramid_12
+    2300032: Pyramid_12_2
+    2300034: Pyramid_13
+    2300036: Pyramid_13_2
+    2300038: Pyramid_1_2
+    2300040: Pyramid_2
+    2300042: Pyramid_2_2
+    2300044: Pyramid_2_3
+    2300046: Pyramid_3
+    2300048: Pyramid_3_2
+    2300050: Pyramid_4
+    2300052: Pyramid_4_2
+    2300054: Pyramid_5
+    2300056: Pyramid_5_2
+    2300058: Pyramid_6
+    2300060: Pyramid_6_2
+    2300062: Pyramid_7
+    2300064: Pyramid_7_2
+    2300066: Pyramid_8
+    2300068: Pyramid_8_2
+    2300070: Pyramid_9
+    2300072: Pyramid_9_2
+    2300074: Right_Eye
+    2300076: Sphere
+    3300000: Cane
+    3300002: Cylinder
+    3300004: Cylinder_1
+    3300006: Cylinder_1_2
+    3300008: Cylinder_2
+    3300010: Cylinder_2_2
+    3300012: Cylinder_2_3
+    3300014: HeadInside
+    3300016: Left_Eye
+    3300018: Pyramid
+    3300020: Pyramid_1
+    3300022: Pyramid_10
+    3300024: Pyramid_10_2
+    3300026: Pyramid_11
+    3300028: Pyramid_11_2
+    3300030: Pyramid_12
+    3300032: Pyramid_12_2
+    3300034: Pyramid_13
+    3300036: Pyramid_13_2
+    3300038: Pyramid_1_2
+    3300040: Pyramid_2
+    3300042: Pyramid_2_2
+    3300044: Pyramid_2_3
+    3300046: Pyramid_3
+    3300048: Pyramid_3_2
+    3300050: Pyramid_4
+    3300052: Pyramid_4_2
+    3300054: Pyramid_5
+    3300056: Pyramid_5_2
+    3300058: Pyramid_6
+    3300060: Pyramid_6_2
+    3300062: Pyramid_7
+    3300064: Pyramid_7_2
+    3300066: Pyramid_8
+    3300068: Pyramid_8_2
+    3300070: Pyramid_9
+    3300072: Pyramid_9_2
+    3300074: Right_Eye
+    3300076: Sphere
+    4300000: Body
+    4300002: Cylinder_2
+    4300004: Cylinder_1
+    4300006: Cylinder
+    4300008: Cane
+    4300010: Cylinder_2_2
+    4300012: Cylinder_1_2
+    4300014: Cylinder_2_3
+    4300016: HeadInside
+    4300018: Right_Eye
+    4300020: Left_Eye
+    4300022: Sphere
+    4300024: Pyramid_13
+    4300026: Pyramid_12
+    4300028: Pyramid_11
+    4300030: Pyramid_10
+    4300032: Pyramid_9
+    4300034: Pyramid_8
+    4300036: Pyramid_7
+    4300038: Pyramid_6
+    4300040: Pyramid_5
+    4300042: Pyramid_4
+    4300044: Pyramid_3
+    4300046: Pyramid_2
+    4300048: Pyramid_1
+    4300050: Pyramid
+    4300052: Pyramid_13_2
+    4300054: Pyramid_12_2
+    4300056: Pyramid_11_2
+    4300058: Pyramid_10_2
+    4300060: Pyramid_9_2
+    4300062: Pyramid_8_2
+    4300064: Pyramid_7_2
+    4300066: Pyramid_6_2
+    4300068: Pyramid_5_2
+    4300070: Pyramid_4_2
+    4300072: Pyramid_3_2
+    4300074: Pyramid_2_2
+    4300076: Pyramid_1_2
+    4300078: Pyramid_2_3
+    7400000: Dance
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Body
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Dance
+      takeName: CINEMA_4D_Main
+      firstFrame: 0
+      lastFrame: 1750
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Alien_bottom
+        weight: 1
+      - path: Alien_bottom/Alien
+        weight: 1
+      - path: Alien_bottom/Alien/Body
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Hat
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Hat/Cylinder
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Hat/Cylinder_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Hat/Cylinder_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Middle_Kunckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Middle_Kunckle/Middle_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Middle_Kunckle/Middle_1/Middle_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Middle_Kunckle/Middle_1/Middle_2/Middle_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pinky_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pinky_Knuckle/Pinky_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pinky_Knuckle/Pinky_1/Pinky_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pinky_Knuckle/Pinky_1/Pinky_2/Pinky_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pointer_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pointer_Knuckle/Pointer_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pointer_Knuckle/Pointer_1/Pointer_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Pointer_Knuckle/Pointer_1/Pointer_2/Pointer_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Ring_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Ring_Knuckle/Ring_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Ring_Knuckle/Ring_1/Ring_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Ring_Knuckle/Ring_1/Ring_2/Ring_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Thumb_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Thumb_Knuckle/Thumb_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Left_Shoulder/Left_Elbow/Left_Wrist/Thumb_Knuckle/Thumb_1/Thumb_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/Head
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/Head/Lowerlip
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/Head/Root
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/Head/Root/LeftBrow
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/Head/Root_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/Head/Root_2/RightBrow
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/Head/Upperlip
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Eyebrow_Animator
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Hat_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Hat_2/Cylinder_1_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Hat_2/Cylinder_2_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Hat_2/Cylinder_2_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/HeadInside
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Left_Eye
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Mouth_Animator
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Right_Eye
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_1_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_2_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_2_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_3_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_4_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_5_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_6_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_7_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_8_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_9_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_10_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_11_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_12_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null/Pyramid_13_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_4
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_5
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_6
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_7
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_8
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_9
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_10
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_11
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_12
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Null_1/Pyramid_13
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Neck/HeadStuff/Teeth/Sphere
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/Cane
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Middle_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Middle_Knuckle/R_Middle_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Middle_Knuckle/R_Middle_1/R_Middle_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Middle_Knuckle/R_Middle_1/R_Middle_2/R_Middle_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pinky_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pinky_Knuckle/R_Pinky_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pinky_Knuckle/R_Pinky_1/R_Pinky_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pinky_Knuckle/R_Pinky_1/R_Pinky_2/R_Pinky_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pointer_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pointer_Knuckle/R_Pointer_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pointer_Knuckle/R_Pointer_1/R_Pointer_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Pointer_Knuckle/R_Pointer_1/R_Pointer_2/R_Pointer_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Ring_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Ring_Knuckle/R_Ring_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Ring_Knuckle/R_Ring_1/R_Ring_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Ring_Knuckle/R_Ring_1/R_Ring_2/R_Ring_3
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Thumb_Knuckle
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Thumb_Knuckle/R_Thumb_1
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Chest2/Right_Shoulder/Right_Elbow/Right_Wrist/R_Thumb_Knuckle/R_Thumb_1/R_Thumb_2
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Left_Hip
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Left_Hip/Left_Knee
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Left_Hip/Left_Knee/Left_Foot
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/LeftLegFlipper
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Right_Hip
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Right_Hip/Right_Knee
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Right_Hip/Right_Knee/Right_Foot
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/RightLegFlipper
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17/Joint_18
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17/Joint_18/Joint_19
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17/Joint_18/Joint_19/Joint_20
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17/Joint_18/Joint_19/Joint_20/Joint_21
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17/Joint_18/Joint_19/Joint_20/Joint_21/Joint_22
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17/Joint_18/Joint_19/Joint_20/Joint_21/Joint_22/Joint_23
+        weight: 1
+      - path: Alien_bottom/Alien/Body/Body_Joints/Chest/Stomach/Pelvis/Tail/Joint_5/Joint_6/Joint_7/Joint_8/Joint_9/Joint_10/Joint_11/Joint_12/Joint_13/Joint_14/Joint_15/Joint_16/Joint_17/Joint_18/Joint_19/Joint_20/Joint_21/Joint_22/Joint_23/Joint_24
+        weight: 1
+      - path: Alien_bottom/Alien/Joint_24_Goal
+        weight: 1
+      - path: Music
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
