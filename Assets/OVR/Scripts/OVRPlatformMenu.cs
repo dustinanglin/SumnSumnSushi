@@ -1,15 +1,15 @@
 /************************************************************************************
 
-Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
+Copyright   :   Copyright 2017 Oculus VR, LLC. All Rights reserved.
 
-Licensed under the Oculus VR Rift SDK License Version 3.3 (the "License");
+Licensed under the Oculus VR Rift SDK License Version 3.4.1 (the "License");
 you may not use the Oculus VR Rift SDK except in compliance with the License,
 which is provided at the time of installation or download, or which
 otherwise accompanies this software in either electronic or hard copy form.
 
 You may obtain a copy of the License at
 
-http://www.oculus.com/licenses/LICENSE-3.3
+https://developer.oculus.com/licenses/sdk-3.4.1
 
 Unless required by applicable law or agreed to in writing, the Oculus VR SDK
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -22,6 +22,7 @@ limitations under the License.
 using UnityEngine;
 using VR = UnityEngine.VR;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Shows the Oculus plaform UI.
@@ -36,9 +37,16 @@ public class OVRPlatformMenu : MonoBehaviour
 	public enum eHandler
 	{
 		ShowConfirmQuit,
+		RetreatOneLevel,
 	};
 
 	public eHandler shortPressHandler = eHandler.ShowConfirmQuit;
+
+	/// <summary>
+	/// Callback to handle short press. Returns true if ConfirmQuit menu should be shown.
+	/// </summary>
+	public System.Func<bool> OnShortPress;
+	private static Stack<string> sceneStack = new Stack<string>();
 
 	private float doubleTapDelay = 0.25f;
 	private float shortPressDelay = 0.25f;
@@ -134,11 +142,16 @@ public class OVRPlatformMenu : MonoBehaviour
 	/// </summary>
 	void Awake()
 	{
+		if (shortPressHandler == eHandler.RetreatOneLevel && OnShortPress == null)
+			OnShortPress = RetreatOneLevel;
+		
 		if (!OVRManager.isHmdPresent)
 		{
 			enabled = false;
 			return;
 		}
+
+		sceneStack.Push(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 	}
 
 	/// <summary>
@@ -173,10 +186,19 @@ public class OVRPlatformMenu : MonoBehaviour
 #endif
 	}
 
-	void DoHandler(eHandler handler)
+	/// <summary>
+	/// Sample handler for short press which retreats to the previous scene that used OVRPlatformMenu.
+	/// </summary>
+	private static bool RetreatOneLevel()
 	{
-		if (handler == eHandler.ShowConfirmQuit)
-			ShowConfirmQuitMenu ();
+		if (sceneStack.Count > 1)
+		{
+			string parentScene = sceneStack.Pop();
+			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync (parentScene);
+			return false;
+		}
+
+		return true;
 	}
 
 	/// <summary>
@@ -188,7 +210,10 @@ public class OVRPlatformMenu : MonoBehaviour
 #if UNITY_ANDROID
 		eBackButtonAction action = HandleBackButtonState();
 		if (action == eBackButtonAction.SHORT_PRESS)
-			DoHandler(shortPressHandler);
+		{
+			if (OnShortPress == null || OnShortPress())
+				ShowConfirmQuitMenu();
+		}
 #endif
 	}
 }

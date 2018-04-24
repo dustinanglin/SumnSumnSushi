@@ -1,15 +1,15 @@
 ﻿/************************************************************************************
 
-Copyright   :   Copyright 2014 Oculus VR, LLC. All Rights reserved.
+Copyright   :   Copyright 2017 Oculus VR, LLC. All Rights reserved.
 
-Licensed under the Oculus VR Rift SDK License Version 3.3 (the "License");
+Licensed under the Oculus VR Rift SDK License Version 3.4.1 (the "License");
 you may not use the Oculus VR Rift SDK except in compliance with the License,
 which is provided at the time of installation or download, or which
 otherwise accompanies this software in either electronic or hard copy form.
 
 You may obtain a copy of the License at
 
-http://www.oculus.com/licenses/LICENSE-3.3
+https://developer.oculus.com/licenses/sdk-3.4.1
 
 Unless required by applicable law or agreed to in writing, the Oculus VR SDK
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -62,9 +62,10 @@ public class OVRGrabber : MonoBehaviour
     protected Vector3 m_anchorOffsetPosition;
     protected float m_prevFlex;
 	protected OVRGrabbable m_grabbedObj = null;
-    Vector3 m_grabbedObjectPosOff;
-    Quaternion m_grabbedObjectRotOff;
+    protected Vector3 m_grabbedObjectPosOff;
+    protected Quaternion m_grabbedObjectRotOff;
 	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
+	protected bool operatingWithoutOVRCameraRig = true;
 
     /// <summary>
     /// The currently grabbed object.
@@ -86,13 +87,25 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
         m_anchorOffsetPosition = transform.localPosition;
         m_anchorOffsetRotation = transform.localRotation;
+
+		// If we are being used with an OVRCameraRig, let it drive input updates, which may come from Update or FixedUpdate.
+
+		OVRCameraRig rig = null;
+		if (transform.parent != null && transform.parent.parent != null)
+			rig = transform.parent.parent.GetComponent<OVRCameraRig>();
+		
+		if (rig != null)
+		{
+			rig.UpdatedAnchors += (r) => {OnUpdatedAnchors();};
+			operatingWithoutOVRCameraRig = false;
+		}
     }
 
-    void Start()
+    protected virtual void Start()
     {
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
@@ -111,16 +124,16 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
+	void FixedUpdate()
+	{
+		if (operatingWithoutOVRCameraRig)
+			OnUpdatedAnchors();
+	}
+
     // Hands follow the touch anchors by calling MovePosition each frame to reach the anchor.
     // This is done instead of parenting to achieve workable physics. If you don't require physics on 
     // your hands or held objects, you may wish to switch to parenting.
-    //
-    // BUG: currently (Unity 5.5.0f3.), there's an unavoidable cosmetic issue with
-    // the hand. FixedUpdate must be used, or else physics behavior is wildly erratic.
-    // However, FixedUpdate cannot be guaranteed to run every frame, even when at 90Hz.
-    // On frames where FixedUpdate fails to run, the hand will fail to update its position, causing apparent
-    // judder. A fix is in progress, but not fixable on the user side at this time.
-    void FixedUpdate()
+    void OnUpdatedAnchors()
     {
         Vector3 handPos = OVRInput.GetLocalControllerPosition(m_controller);
         Quaternion handRot = OVRInput.GetLocalControllerRotation(m_controller);
@@ -198,7 +211,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-    protected void GrabBegin()
+    protected virtual void GrabBegin()
     {
         float closestMagSq = float.MaxValue;
 		OVRGrabbable closestGrabbable = null;
@@ -287,7 +300,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-    protected void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
+    protected virtual void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
     {
         if (m_grabbedObj == null)
         {
@@ -336,7 +349,7 @@ public class OVRGrabber : MonoBehaviour
         m_grabbedObj = null;
     }
 
-    protected void GrabVolumeEnable(bool enabled)
+    protected virtual void GrabVolumeEnable(bool enabled)
     {
         if (m_grabVolumeEnabled == enabled)
         {
@@ -356,7 +369,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-	protected void OffhandGrabbed(OVRGrabbable grabbable)
+	protected virtual void OffhandGrabbed(OVRGrabbable grabbable)
     {
         if (m_grabbedObj == grabbable)
         {
