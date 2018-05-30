@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Discfly : MonoBehaviour {
 
-    public float disc_speed, rotate_speed, return_speed, max_throw_speed, release_limit = 1;
-    public float release_delay= 0;
+    public float disc_speed, rotate_speed, return_speed, max_throw_speed, trigger_release_limit = 1;
+    public float release_delay, min_throw_speed = 0;
+
 
     private float m_release_delay, lerp_time = 0;
     private float distance_from_home = 1;
@@ -21,7 +22,7 @@ public class Discfly : MonoBehaviour {
 	void Start () {
         Thrower = right_hand.GetComponent<ThrowSpeed>();
         m_release_delay = release_delay;
-        home = true;
+        home = false;
 	}
 	
 	// Update is called once per frame
@@ -29,9 +30,11 @@ public class Discfly : MonoBehaviour {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
         Debug.DrawRay(transform.position, transform.up, Color.blue);
 
-        throw_disc = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) < release_limit);
+        throw_disc = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) < trigger_release_limit);
 
         reset = OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch);
+
+        Debug.DrawRay(transform.position, Vector3.Project(Thrower.m_velocity, transform.forward), Color.yellow);
 
         //home = (transform.position == right_hand.transform.position);
 
@@ -41,7 +44,17 @@ public class Discfly : MonoBehaviour {
             {
                 delay_throw = true;
                 throw_velocity = Mathf.Clamp(Vector3.Magnitude(Thrower.m_velocity),0,max_throw_speed);
-                throw_dir = Thrower.m_velocity; 
+                if (throw_velocity <= min_throw_speed)
+                {
+                    throw_dir = Thrower.m_velocity;
+
+                    throw_velocity = Mathf.Clamp(throw_velocity,0,.01f);
+                }
+                else
+                {
+                    throw_dir = Thrower.m_velocity;
+                    transform.rotation = Quaternion.LookRotation(throw_dir, transform.up);
+                }
             }
             /*else
             {
@@ -54,13 +67,16 @@ public class Discfly : MonoBehaviour {
             }*/
         }
 
-        if (!throw_disc && throwing && !home)
+        if (!throw_disc && !home)
         {
             return_home = true;
-            distance_from_home = Vector3.Distance(transform.position, right_hand.transform.position);
-            start_pos = transform.position;
-            start_rot = transform.rotation;
-            lerp_time = 0;
+            if (throwing)
+            {
+                distance_from_home = Vector3.Distance(transform.position, right_hand.transform.position);
+                start_pos = transform.position;
+                start_rot = transform.rotation;
+                lerp_time = 0;
+            }
             throwing = false;
            // Debug.Log("Return Home!");
         }
@@ -73,7 +89,7 @@ public class Discfly : MonoBehaviour {
             }
             else
             {
-                transform.rotation = Quaternion.LookRotation(throw_dir, transform.up);
+
                 throwing = true;
                 home = false;
                 transform.parent = null;
@@ -122,7 +138,7 @@ public class Discfly : MonoBehaviour {
 
         if (throwing)
         {
-            transform.Translate(transform.forward * Time.deltaTime * Mathf.Clamp(disc_speed * throw_velocity,0,max_throw_speed), Space.World);
+            transform.Translate(Vector3.ClampMagnitude(throw_dir,1) * Time.deltaTime * Mathf.Clamp(disc_speed * throw_velocity,0,max_throw_speed), Space.World);
         }
 
         if (reset)
@@ -168,6 +184,7 @@ public class Discfly : MonoBehaviour {
 
             new_rotation = Quaternion.LookRotation(new_direction, new_up);
             transform.rotation = new_rotation;
+            throw_dir = transform.forward;
 
             Vector2 disc_plane = new Vector2(transform.forward.x, transform.forward.z);
             Vector2 world_plane = new Vector2(player.transform.forward.x, player.transform.forward.z);
@@ -182,6 +199,7 @@ public class Discfly : MonoBehaviour {
                 Vector3 toward_user = player.transform.position - transform.position;
                 new_rotation = Quaternion.LookRotation(toward_user);
                 transform.rotation = new_rotation;
+                throw_dir = transform.forward;
             }
             //Debug.Log("Bounce");
         }
