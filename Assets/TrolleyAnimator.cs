@@ -6,10 +6,13 @@ public class TrolleyAnimator : MonoBehaviour {
     private Animation trolley;
     private DoorAnimator door1, door2;
 
-    private bool animate_trolley1, animate_trolley2, trolley_animating;
+    private bool animate_trolley1, animate_trolley2, trolley_animating, dofadeIn, dofadeOut;
     private float trolley_pause, trolley_delay;
 
     public float tp, td;
+
+    public float fade_time = 1.0f;
+    private float fade_local;
 
 	// Use this for initialization
 	void Start () {
@@ -21,9 +24,13 @@ public class TrolleyAnimator : MonoBehaviour {
         animate_trolley1 = false;
         animate_trolley2 = false;
         trolley_animating = false;
+        dofadeIn = false;
+        dofadeOut = false;
 
         trolley_pause = tp;
         trolley_delay = td;
+
+        fade_local = fade_time;
         
 	}
 	
@@ -52,6 +59,7 @@ public class TrolleyAnimator : MonoBehaviour {
         {
             Debug.Log("Pause the Trolley!");
             trolley.Stop();
+            dofadeOut = true;
             animate_trolley1 = false;
             trolley_animating = false;
         }
@@ -71,6 +79,7 @@ public class TrolleyAnimator : MonoBehaviour {
         {
 
             Debug.Log("Trolley animation is finished!");
+            dofadeOut = true;
             trolley_animating = false;
             animate_trolley2 = false;
             animate_trolley1 = false;
@@ -78,7 +87,55 @@ public class TrolleyAnimator : MonoBehaviour {
             trolley_delay = td;
         }
 
+        if (dofadeOut && !dofadeIn)
+        {
+            trolleyAudioFadeOut();
+            //Debug.Log("doing fade out");
+        }
+
+        if (dofadeIn)
+        {
+            if (dofadeOut)
+            {
+                dofadeOut = false;
+                fade_local = fade_time - fade_local;
+            }
+            trolleyAudioFadeIn();
+            //Debug.Log("doing fade in");
+        }
+
 	}
+
+    private void trolleyAudioFadeOut()
+    {
+        fade_local -= Time.deltaTime;
+        if (fade_local > 0)
+        {
+            GetComponentInChildren<AudioSource>().volume = (fade_local / fade_time);
+            //Debug.Log(GetComponentInChildren<AudioSource>().volume);
+        }
+        else
+        {
+            fade_local = fade_time;
+            GetComponentInChildren<AudioSource>().Pause();
+            dofadeOut = false;
+        }
+    }
+
+    private void trolleyAudioFadeIn()
+    {
+        fade_local -= Time.deltaTime;
+        if (fade_local > 0 && GetComponentInChildren<AudioSource>().volume != 1.0f)
+        {
+            GetComponentInChildren<AudioSource>().volume = 1.0f - (fade_local / fade_time);
+            //Debug.Log(GetComponentInChildren<AudioSource>().volume);
+        }
+        else
+        {
+            fade_local = fade_time;
+            dofadeIn = false;
+        }
+    }
 
     public void doTrolleyAnimate()
     {
@@ -87,6 +144,8 @@ public class TrolleyAnimator : MonoBehaviour {
             animate_trolley1 = true;
             door1.animateDoor();
             Debug.Log("Animate the trolley!");
+            GetComponentInChildren<AudioSource>().Play();
+            dofadeIn = true;
         }
     }
 
@@ -94,5 +153,9 @@ public class TrolleyAnimator : MonoBehaviour {
     {
         animate_trolley2 = true;
         Debug.Log("Restart the trolley!");
+        GetComponentInChildren<AudioSource>().Play();
+        dofadeIn = true;
     }
+
+
 }

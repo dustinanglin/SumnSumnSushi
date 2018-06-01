@@ -8,6 +8,7 @@ public class VendingButton : MonoBehaviour {
     private bool do_vending = false;
     private float td, tp;
     public float trolley_delay, trolley_pause;
+    public GameObject sauce_bottle;
     private TrolleyAnimator trolleyAnimator;
     private Animator screenAnimator;
     private Animation trolley_animation;
@@ -61,7 +62,7 @@ public class VendingButton : MonoBehaviour {
             screenAnimator.SetBool("DoScreenMove", false);
 
 
-            GameObject sb = Instantiate(GameObject.Find("SauceBottleTemplate"));
+            GameObject sb = Instantiate(sauce_bottle);
             sb.transform.parent = GameObject.Find("SauceHolder").transform;
             sb.transform.localPosition = Vector3.zero;
             sb.GetComponent<Rigidbody>().isKinematic = true;

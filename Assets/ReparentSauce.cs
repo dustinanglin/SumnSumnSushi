@@ -18,12 +18,13 @@ public class ReparentSauce : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        //Debug.Log(other.gameObject.name);
-        if (other.gameObject.transform.parent.gameObject.name.Contains("SauceBottle"))
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.transform.parent.gameObject.name.Contains("Sauce") || other.gameObject.transform.name.Contains("Tube"))
         {
             Debug.Log("Removing from Trolley and restarting animation!");
             other.gameObject.transform.parent.gameObject.transform.SetParent(null);
             trolleyAnimator.restartTrolley();
         }
+
     }
 }

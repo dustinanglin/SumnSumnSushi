@@ -8,7 +8,7 @@ public class SceneDirector : MonoBehaviour {
     private Scene Chopstick, Superhot;
     GameObject ChopstickHolder;
     private List<GameObject> hottext = new List<GameObject>();
-    private bool loadsuper = false;
+    private bool loadsuper, loadxeno, loadtron, loadtrek = false;
     public float hottime = 1f;
     private float hottimelocal = 1f;
     private int hoterator = 0;
@@ -29,11 +29,50 @@ public class SceneDirector : MonoBehaviour {
     {
         if (loadsuper)
             HotTransition();
+
+        if (loadtrek)
+            TrekTransition();
+
+        if (loadtron)
+            TronTransition();
+
+        if (loadxeno)
+            XenoTransition();
 	}
     
     public void SetHot()
     {
         loadsuper = true;
+    }
+
+    public void SetXeno()
+    {
+        loadxeno = true;
+    }
+
+    public void SetTron()
+    {
+        loadtron = true;
+    }
+
+    public void SetTrek()
+    {
+        loadtrek = true;
+    }
+
+    private void TronTransition()
+    {
+        SceneManager.LoadScene("TronTest", LoadSceneMode.Single);
+    }
+
+    private void XenoTransition()
+    {
+        SceneManager.LoadScene("Alienz", LoadSceneMode.Single);
+    }
+
+    private void TrekTransition()
+    {
+
     }
 
     void HotTransition()

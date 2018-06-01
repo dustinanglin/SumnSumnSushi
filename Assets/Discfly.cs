@@ -14,13 +14,13 @@ public class Discfly : MonoBehaviour {
     private float throw_velocity = 0;
     private Quaternion new_rotation, start_rot;
     private Vector3 start_pos, throw_dir;
-    public GameObject right_hand;
+    public GameObject hand;
     private ThrowSpeed Thrower;
 
 
 	// Use this for initialization
 	void Start () {
-        Thrower = right_hand.GetComponent<ThrowSpeed>();
+        Thrower = hand.GetComponent<ThrowSpeed>();
         m_release_delay = release_delay;
         home = false;
 	}
@@ -29,14 +29,30 @@ public class Discfly : MonoBehaviour {
 	void Update () {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
         Debug.DrawRay(transform.position, transform.up, Color.blue);
+        if (hand.name.Contains("Right"))
+        {
+            throw_disc = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) < trigger_release_limit);
+        }
+        else
+        {
+            throw_disc = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) < trigger_release_limit);
+        }
 
-        throw_disc = (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) < trigger_release_limit);
 
-        reset = OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch);
+        if (hand.name.Contains("Right"))
+        {
+            reset = OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch);
+        }
+        else
+        {
+            reset = OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch);
+        }
+
+        
 
         Debug.DrawRay(transform.position, Vector3.Project(Thrower.m_velocity, transform.forward), Color.yellow);
 
-        //home = (transform.position == right_hand.transform.position);
+        //home = (transform.position == hand.transform.position);
 
         if (throw_disc && !throwing && !return_home)
         {
@@ -61,9 +77,9 @@ public class Discfly : MonoBehaviour {
                 throwing = false;
                 return_home = true;
                 /*m_release_delay = release_delay;
-                transform.parent = right_hand.transform;
-                transform.position = right_hand.transform.position;
-                transform.rotation = right_hand.transform.rotation;
+                transform.parent = hand.transform;
+                transform.position = hand.transform.position;
+                transform.rotation = hand.transform.rotation;
             }*/
         }
 
@@ -72,7 +88,7 @@ public class Discfly : MonoBehaviour {
             return_home = true;
             if (throwing)
             {
-                distance_from_home = Vector3.Distance(transform.position, right_hand.transform.position);
+                distance_from_home = Vector3.Distance(transform.position, hand.transform.position);
                 start_pos = transform.position;
                 start_rot = transform.rotation;
                 lerp_time = 0;
@@ -101,10 +117,10 @@ public class Discfly : MonoBehaviour {
         {
             lerp_time += (Time.deltaTime * return_speed);
             //Debug.Log("Returning to home...");
-            transform.rotation = Quaternion.Slerp(start_rot, right_hand.transform.rotation, lerp_time);
-            transform.position = Vector3.MoveTowards(transform.position, right_hand.transform.position, Mathf.Clamp(throw_velocity,return_speed,Mathf.Infinity) * disc_speed * Time.deltaTime);
-            float distance_away = Vector3.Distance(transform.position, right_hand.transform.position);
-            float start_dist_away = Vector3.Distance(start_pos, right_hand.transform.position);
+            transform.rotation = Quaternion.Slerp(start_rot, hand.transform.rotation, lerp_time);
+            transform.position = Vector3.MoveTowards(transform.position, hand.transform.position, Mathf.Clamp(throw_velocity,return_speed,Mathf.Infinity) * disc_speed * Time.deltaTime);
+            float distance_away = Vector3.Distance(transform.position, hand.transform.position);
+            float start_dist_away = Vector3.Distance(start_pos, hand.transform.position);
 
 
             if (distance_away >= .1f && start_dist_away > 0f)
@@ -112,25 +128,31 @@ public class Discfly : MonoBehaviour {
                 float percent_away = (start_dist_away - distance_away) / start_dist_away;
                 int sound_strength = Mathf.RoundToInt(percent_away * 180);
 
-                //int sound_strength = Mathf.Clamp(255 / Mathf.RoundToInt(Mathf.Clamp(Vector3.Distance(transform.position, right_hand.transform.position),1f,Mathf.Infinity)),1,255);
+                //int sound_strength = Mathf.Clamp(255 / Mathf.RoundToInt(Mathf.Clamp(Vector3.Distance(transform.position, hand.transform.position),1f,Mathf.Infinity)),1,255);
                 Debug.Log("Sound strength: " + sound_strength);
                 byte[] sound = {(byte)sound_strength, (byte)sound_strength , (byte)sound_strength , (byte)sound_strength , (byte)sound_strength };
                 OVRHapticsClip temp = new OVRHapticsClip(sound, sound.Length);
-                OVRHaptics.RightChannel.Preempt(temp);
+                if (hand.name.Contains("Right"))
+                    OVRHaptics.RightChannel.Preempt(temp);
+                else
+                    OVRHaptics.LeftChannel.Preempt(temp);
             }
            
 
 
-            if (Vector3.Distance(transform.position,right_hand.transform.position) < .1f)
+            if (Vector3.Distance(transform.position,hand.transform.position) < .1f)
             {
                 home = true;
                 return_home = false;
                 byte[] sound = { 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 };
                 OVRHapticsClip temp = new OVRHapticsClip(sound, sound.Length);
-                OVRHaptics.RightChannel.Preempt(temp);
-                transform.parent = right_hand.transform;
-                transform.position = right_hand.transform.position;
-                transform.rotation = right_hand.transform.rotation;
+                if (hand.name.Contains("Right"))
+                    OVRHaptics.RightChannel.Preempt(temp);
+                else
+                    OVRHaptics.LeftChannel.Preempt(temp);
+                transform.parent = hand.transform;
+                transform.position = hand.transform.position;
+                transform.rotation = hand.transform.rotation;
                 m_release_delay = release_delay;
 
             }
@@ -146,9 +168,9 @@ public class Discfly : MonoBehaviour {
             throwing = false;
             home = true;
             m_release_delay = release_delay;
-            transform.parent = right_hand.transform;
-            transform.position = right_hand.transform.position;
-            transform.rotation = right_hand.transform.rotation;
+            transform.parent = hand.transform;
+            transform.position = hand.transform.position;
+            transform.rotation = hand.transform.rotation;
         }
 
 	}
@@ -159,7 +181,7 @@ public class Discfly : MonoBehaviour {
         //Debug.Log("Collided with" + other.gameObject.name);
         //Debug.Log("Current forward: " + transform.forward);
 
-        if (!other.name.Contains("Right"))
+        if (!other.name.Contains("Hand"))
         {
             Vector3 col_normal;
             Vector3 new_up;
@@ -172,6 +194,19 @@ public class Discfly : MonoBehaviour {
             {
                 col_normal = other.gameObject.transform.up;
                 new_up = -1 * Vector3.Reflect(transform.up, col_normal);
+            }
+            else if (other.gameObject.name.Contains("Hex"))
+            {
+                col_normal = other.gameObject.transform.up;
+                new_up = Vector3.Reflect(transform.up, col_normal);
+                Renderer temp = other.gameObject.transform.parent.Find("HexColor").GetComponent<Renderer>();
+                Renderer temp2 = transform.Find("Tube_3").GetComponent<Renderer>();
+
+                if ((temp.material.name.Contains("Blue") && temp2.material.name.Contains("Mat.4"))
+                    || (temp.material.name.Contains("Orange") && temp2.material.name.Contains("Mat.3")))
+                {
+                    Object.Destroy(other.transform.parent.gameObject);
+                }
             }
             else
             {
@@ -235,9 +270,9 @@ public class Discfly : MonoBehaviour {
             if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) >= .1f)
             {
                 throwing = false;
-                transform.parent = right_hand.transform;
-                transform.position = right_hand.transform.position;
-                transform.rotation = right_hand.transform.rotation;
+                transform.parent = hand.transform;
+                transform.position = hand.transform.position;
+                transform.rotation = hand.transform.rotation;
             }
         }*/
     }

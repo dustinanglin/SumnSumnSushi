@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AlienEvents : MonoBehaviour {
 
     private Animation[] sushilogo, lamp1, lamp2, chestburster;
-    public float light_flicker_delay, alien_burst_delay, alien_dance_delay, tracker_delay = 0f;
+    public float light_flicker_delay, alien_burst_delay, alien_dance_delay, tracker_delay, end_of_scene = 0f;
     public float light_flicker_times = 1f;
 
     private ParticleSystem[] particles;
@@ -15,7 +16,7 @@ public class AlienEvents : MonoBehaviour {
     private HideHat dance_start;
 
 
-    private float time = 0f;
+    public float time = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -87,6 +88,11 @@ public class AlienEvents : MonoBehaviour {
             dance_alien.SetActive(true);
             spot_light.SetActive(true);
             door.SetActive(true);
+        }
+
+        if (time >= end_of_scene)
+        {
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
 	}
 }

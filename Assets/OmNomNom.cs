@@ -77,12 +77,23 @@ public class OmNomNom : MonoBehaviour {
                 switch (sauce_type)
                 {
                     case "HotSauce":
-                    GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetHot();
+                        GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetHot();
+                        break;
+
+                    case "XenoSauce":
+                        GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetXeno();
+                        break;
+
+                    case "TronSauce":
+                        GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetTron();
+                        break;
+
+                    default:
+                        if (!showing_nom)
+                            ShowOmNom();
                     break;
                 }
             }
-            else if (!showing_nom)
-                ShowOmNom();
         }
     }
 

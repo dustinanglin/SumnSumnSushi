@@ -28,7 +28,7 @@ public class DoorAnimator : MonoBehaviour {
 		if (animate_open && open_delay > 0)
         {
             open_delay -= Time.deltaTime;
-            Debug.Log(open_delay);
+            //Debug.Log(open_delay);
         }
 
         if (animate_open && open_delay <= 0 && !animating)
