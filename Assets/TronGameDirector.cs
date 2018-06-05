@@ -7,6 +7,7 @@ public class TronGameDirector : MonoBehaviour {
 
     public int number_of_hex;
     public float end_time_delay = 0f;
+    private bool do_final_fireworks = true;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,16 @@ public class TronGameDirector : MonoBehaviour {
 	void Update () {
 		if (number_of_hex <= 0)
         {
+            if (do_final_fireworks)
+            {
+                do_final_fireworks = false;
+                Debug.Log("Doing Final Fireworks");
+                GameObject finalred = GameObject.Find("FinalRedHolder");
+                GameObject finalblue = GameObject.Find("FinalBlueHolder");
+                GameObject.Instantiate(GameObject.Find("FinalRed"), finalred.transform.position, finalred.transform.rotation, finalred.transform);
+                GameObject.Instantiate(GameObject.Find("FinalBlue"), finalblue.transform.position, finalblue.transform.rotation, finalblue.transform);
+            }
+
             if (end_time_delay >= 0)
                 end_time_delay -= Time.deltaTime;
             else

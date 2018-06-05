@@ -20,7 +20,11 @@ public class DestroyMessage : MonoBehaviour {
     {
         GameObject.Find("WinDirector").GetComponent<TronGameDirector>().number_of_hex--;
         if (transform.Find("HexColor").GetComponent<Renderer>().material.name.Contains("Blue"))
+        {
+            //GameObject exploder = GameObject.Instantiate(GameObject.Find("HexTargetAnimate"), transform.position, GameObject.Find("HexTargetAnimate").transform.rotation);
+            //exploder.GetComponent<Animation>().Play();
             Instantiate(explode_blue, transform.position, transform.rotation);
+        }
         else
             Instantiate(explode_red, transform.position, transform.rotation);
     }

@@ -112,7 +112,9 @@
     <Compile Include="Assets\Foamhands.cs" />
     <Compile Include="Assets\FollowCharacters.cs" />
     <Compile Include="Assets\FollowTheBall.cs" />
+    <Compile Include="Assets\GenerateSpheres.cs" />
     <Compile Include="Assets\GunFire.cs" />
+    <Compile Include="Assets\HexExplode.cs" />
     <Compile Include="Assets\HexGrid.cs" />
     <Compile Include="Assets\HideHat.cs" />
     <Compile Include="Assets\JellyTest\_Scripts\Bone.cs" />
@@ -183,9 +185,13 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRSceneSampleController.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRWaitCursor.cs" />
+    <Compile Include="Assets\PhaserDetectorHit.cs" />
+    <Compile Include="Assets\PhaserShoot.cs" />
+    <Compile Include="Assets\PointBallMover.cs" />
     <Compile Include="Assets\ReparentSauce.cs" />
     <Compile Include="Assets\RightCollision.cs" />
     <Compile Include="Assets\Ringbell.cs" />
+    <Compile Include="Assets\RotateTransporter.cs" />
     <Compile Include="Assets\Saucable.cs" />
     <Compile Include="Assets\SaucePour.cs" />
     <Compile Include="Assets\SauceType.cs" />
