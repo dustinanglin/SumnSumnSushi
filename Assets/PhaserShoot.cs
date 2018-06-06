@@ -11,9 +11,11 @@ public class PhaserShoot : MonoBehaviour {
     private OVRInput.Controller current_controller;
     private GameObject my_sparks;
 
+    private AudioSource phaser_start, phaser_loop;
+
     private Vector3 hit_location;
 
-    private bool sparking = false;
+    private bool sparking, audio_start, audio_loop = false;
 
     public float phaser_speed = 0f;
 
@@ -26,6 +28,10 @@ public class PhaserShoot : MonoBehaviour {
         }
         else
             current_controller = OVRInput.Controller.LTouch;
+
+        phaser_start = GetComponents<AudioSource>()[0];
+        phaser_loop = GetComponents<AudioSource>()[1];
+
 	}
 	
 	// Update is called once per frame
@@ -33,6 +39,18 @@ public class PhaserShoot : MonoBehaviour {
         if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller) > trigger_pull)
         {
             phaser_line.transform.gameObject.SetActive(true);
+
+            if (!audio_start)
+            {
+                phaser_start.Play();
+                audio_start = true;
+            }
+
+            if (!phaser_start.isPlaying && !audio_loop)
+            {
+                phaser_loop.Play();
+                audio_loop = true;
+            }
 
             if (Physics.Raycast(phaser_location.transform.position, -1 * transform.right, out hit_spot, range))
             {
@@ -67,6 +85,10 @@ public class PhaserShoot : MonoBehaviour {
             phaser_hit_blob.GetComponent<PhaserDetectorHit>().miss = false;
             my_sparks.GetComponent<ParticleSystem>().Stop();
             sparking = false;
+            audio_start = false;
+            audio_loop = false;
+            phaser_start.Stop();
+            phaser_loop.Stop();
         }
 
         Debug.DrawRay(transform.position, -1 * transform.right, Color.red);

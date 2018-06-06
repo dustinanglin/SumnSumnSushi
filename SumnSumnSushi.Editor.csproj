@@ -162,6 +162,8 @@
   <ItemGroup>
     <None Include="Assets\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />
     <None Include="Assets\Day-Night Skyboxes\readme.txt" />
+    <None Include="Assets\Materials\Holodeck\AnimatedBeam.shader" />
+    <None Include="Assets\Materials\Holodeck\TargetSphere.shader" />
     <None Include="Assets\Metaballs\MarchingCubesComputeShader.compute" />
     <None Include="Assets\Metaballs\MetaballShader.shader" />
     <None Include="Assets\NatureStarterKit2\info.txt" />
