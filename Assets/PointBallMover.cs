@@ -8,13 +8,20 @@ using UnityEngine;
 public class PointBallMover : MonoBehaviour {
 
     public float range_x, range_y, range_z, speed;
+    public Material material;
     private bool is_moving = false;
     private Vector3 new_location, start;
 
     // Use this for initialization
     void Start () {
         start = transform.position;
-	}
+
+        GameObject child = transform.GetChild(0).gameObject;
+        Renderer rend = child.GetComponent<Renderer>();
+        Material new_mat = new Material(material);
+        new_mat.SetFloat("_Random_seed", Random.Range(0, 255.0f));
+        rend.material = new_mat;
+    }
 	
 	// Update is called once per frame
 	void Update () {
