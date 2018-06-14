@@ -9,6 +9,7 @@ public class PhaserShoot : MonoBehaviour {
     public LineRenderer phaser_line;
     public GameObject phaser_location, phaser_hit_blob, spark_fountain;
     private OVRInput.Controller current_controller;
+    private GameObject phaser_glow;
     private GameObject my_sparks;
 
     private AudioSource phaser_start, phaser_loop;
@@ -32,6 +33,9 @@ public class PhaserShoot : MonoBehaviour {
         phaser_start = GetComponents<AudioSource>()[0];
         phaser_loop = GetComponents<AudioSource>()[1];
 
+        phaser_glow = transform.Find("PhaserProjector/LightFlare").gameObject;
+        phaser_glow.SetActive(false);
+
 	}
 	
 	// Update is called once per frame
@@ -39,6 +43,7 @@ public class PhaserShoot : MonoBehaviour {
         if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller) > trigger_pull)
         {
             phaser_line.transform.gameObject.SetActive(true);
+            phaser_glow.SetActive(true);
 
             if (!audio_start)
             {
@@ -80,6 +85,7 @@ public class PhaserShoot : MonoBehaviour {
         else
         {
             phaser_line.transform.gameObject.SetActive(false);
+            phaser_glow.SetActive(false);
             hit_location = phaser_location.transform.position;
             phaser_hit_blob.transform.position = phaser_location.transform.position;
             phaser_hit_blob.GetComponent<PhaserDetectorHit>().miss = false;

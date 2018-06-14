@@ -12,6 +12,7 @@ public class SaucePour : MonoBehaviour {
     public float min_pour_angle = 60f;
     public float sauce_size = .3f;
     public float sauce_size_min = .1f;
+    public float max_float_rate = 500f;
 
 	// Use this for initialization
 	void Start () {
@@ -29,8 +30,8 @@ public class SaucePour : MonoBehaviour {
         {
 
             flow_amount = (min_pour_angle - pour_angle)/min_pour_angle;
-            sauce_emit.rateOverTime = flow_amount * 1000;
-            sauce_main.startSize = Mathf.Clamp(sauce_size * flow_amount,sauce_size_min,sauce_size);
+            sauce_emit.rateOverTime = flow_amount * max_float_rate;
+            //sauce_main.startSize = Mathf.Clamp(sauce_size * flow_amount,sauce_size_min,sauce_size);
             sauce_emit.enabled = true;
 
         }

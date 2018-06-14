@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_scenes/Holodeck.unity
+- path: E:/Photos/Thunder Road images/SpeechToText/Assets/SpeechToText/Scenes/speechToTextComparison.unity
   isLoaded: 1
   isActive: 1
