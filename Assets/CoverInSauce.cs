@@ -66,6 +66,17 @@ public class CoverInSauce : MonoBehaviour {
                     //spicy_particles.transform.parent = sushi.transform;
                     //spicy_particles.transform.localPosition = Vector3.zero;
                     break;
+
+                default:
+                    foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
+                    {
+                        rend.material = sauce_material;
+                    }
+                    //GameObject spicy_particles = Instantiate(GameObject.Find("SpicyParticles"));
+                    //spicy_particles.transform.parent = sushi.transform;
+                    //spicy_particles.transform.localPosition = Vector3.zero;
+                    break;
+
             }
         } 
     }

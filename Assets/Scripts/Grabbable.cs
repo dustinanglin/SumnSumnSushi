@@ -8,6 +8,7 @@ public class Grabbable : MonoBehaviour {
     private Rigidbody object_rigid_body;
     private GameObject grabbing_parent;
     private ChopstickRotateOculus parent_info;
+    private List<GameObject> children = new List<GameObject>();
     Vector3 grab_offset_pos;
     Vector3 linear_velocity;
     Vector3 angular_velocity;
@@ -19,6 +20,14 @@ public class Grabbable : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         object_rigid_body = this.GetComponent<Rigidbody>();
+        if (transform.childCount > 0)
+        {
+            foreach (Transform child in transform)
+            {
+                children.Add(child.gameObject);
+            }
+        }
+        Debug.Log("Got children");
 	}
 	
 	// Update is called once per frame
@@ -36,6 +45,11 @@ public class Grabbable : MonoBehaviour {
         parent_info = parent_sticks.GetComponent<ChopstickRotateOculus>();
         object_rigid_body.isKinematic = true;
 
+        
+        this.gameObject.layer = 20;
+        
+        
+
         //set relative position offset
         Vector3 relPos = this.transform.position - grabbing_parent.transform.position;
         relPos = Quaternion.Inverse(grabbing_parent.transform.rotation) * relPos;
@@ -45,11 +59,23 @@ public class Grabbable : MonoBehaviour {
         Quaternion relRot = Quaternion.Inverse(grabbing_parent.transform.rotation) * this.transform.rotation;
         grab_offset_rot = relRot;
 
+        if (transform.childCount > 0)
+        foreach (GameObject child in children)
+        {
+            child.layer = 20;
+        }
+
     }
 
     public void GrabEnd()
     {
         isGrabbed = false;
+        this.gameObject.layer = 0;
+        if (transform.childCount > 0)
+        foreach (GameObject child in children)
+        {
+            child.layer = 0;
+        }
 
         /*OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(parent_info.current_controller), orientation = OVRInput.GetLocalControllerRotation(parent_info.current_controller) };
         OVRPose offsetPose = new OVRPose { position = grab_offset_pos, orientation = grab_offset_rot};

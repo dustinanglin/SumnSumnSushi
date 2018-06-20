@@ -11,6 +11,7 @@ public class AlienEvents : MonoBehaviour {
 
     private ParticleSystem[] particles;
     public float spark_delay = 0f;
+    public bool do_not_end = false;
 
     private GameObject burst_spot, dance_alien, spot_light, door, tracker_dot;
     private HideHat dance_start;
@@ -90,7 +91,7 @@ public class AlienEvents : MonoBehaviour {
             door.SetActive(true);
         }
 
-        if (time >= end_of_scene)
+        if (time >= end_of_scene && !do_not_end)
         {
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }

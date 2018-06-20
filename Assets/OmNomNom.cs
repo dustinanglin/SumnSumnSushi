@@ -88,6 +88,10 @@ public class OmNomNom : MonoBehaviour {
                         GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetTron();
                         break;
 
+                    case "TrekSauce":
+                        GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetTrek();
+                        break;
+
                     default:
                         if (!showing_nom)
                             ShowOmNom();

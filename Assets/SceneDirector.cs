@@ -72,7 +72,7 @@ public class SceneDirector : MonoBehaviour {
 
     private void TrekTransition()
     {
-
+        SceneManager.LoadScene("Holodeck", LoadSceneMode.Single);
     }
 
     void HotTransition()
