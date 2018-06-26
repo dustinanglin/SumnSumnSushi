@@ -27,7 +27,7 @@ public class Grabbable : MonoBehaviour {
                 children.Add(child.gameObject);
             }
         }
-        Debug.Log("Got children");
+        //Debug.Log("Got children");
 	}
 	
 	// Update is called once per frame

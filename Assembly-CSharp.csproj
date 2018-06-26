@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Assets\AlienEvents.cs" />
     <Compile Include="Assets\AnimateBurst.cs" />
+    <Compile Include="Assets\AttachBody.cs" />
     <Compile Include="Assets\BellTriggers.cs" />
     <Compile Include="Assets\Bloodcontrol.cs" />
     <Compile Include="Assets\BoatDestroyer.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\FollowCharacters.cs" />
     <Compile Include="Assets\FollowTheBall.cs" />
     <Compile Include="Assets\GenerateSpheres.cs" />
+    <Compile Include="Assets\GenerateTrek.cs" />
     <Compile Include="Assets\GunFire.cs" />
     <Compile Include="Assets\HexExplode.cs" />
     <Compile Include="Assets\HexGrid.cs" />

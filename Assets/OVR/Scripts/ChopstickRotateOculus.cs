@@ -74,14 +74,14 @@ public class ChopstickRotateOculus : MonoBehaviour
         {
             grabbing = true;
             grab_target.GrabBegin(hand_anchor, this.gameObject);
-            Debug.Log("Begin grab");
+            //Debug.Log("Begin grab");
             //max_angle = rotate_angle;
         }
         else if (rotate_angle <= -1 && grabbing)
         {
             grabbing = false;
             grab_target.GrabEnd();
-            Debug.Log("Begin end");
+            //Debug.Log("Begin end");
             grab_target = null;
             left_target = null;
             right_target = null;
