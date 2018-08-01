@@ -35,46 +35,33 @@ public class CoverInSauce : MonoBehaviour {
         {
             sushi.GetComponent<Saucable>().sauce_type = sauce_type;
 
+            foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
+            {
+                rend.material = sauce_material;
+            }
+
             switch (sauce_type)
             {
                 case "HotSauce":
-                    foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
-                    {
-                        rend.material = sauce_material;
-                    }
+                    
                     GameObject spicy_particles = Instantiate(GameObject.Find("SpicyParticles"));
                     spicy_particles.transform.parent = sushi.transform;
                     spicy_particles.transform.localPosition = Vector3.zero;
                     break;
 
                 case "XenoSauce":
-                    foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
-                    {
-                        rend.material = sauce_material;
-                    }
-                    //GameObject spicy_particles = Instantiate(GameObject.Find("SpicyParticles"));
-                    //spicy_particles.transform.parent = sushi.transform;
-                    //spicy_particles.transform.localPosition = Vector3.zero;
                     break;
 
                 case "TronSauce":
-                    foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
-                    {
-                        rend.material = sauce_material;
-                    }
-                    //GameObject spicy_particles = Instantiate(GameObject.Find("SpicyParticles"));
-                    //spicy_particles.transform.parent = sushi.transform;
-                    //spicy_particles.transform.localPosition = Vector3.zero;
+                    break;
+
+                case "TrekSauce":
+                    GameObject trek_particles = Instantiate((GameObject)Resources.Load("TrekSauceParticles"), sushi.transform.position, sushi.transform.rotation, sushi.transform);
+                    trek_particles.transform.localPosition = new Vector3(0, 0, -1.6f);
+                    Debug.Log(trek_particles + "was created");
                     break;
 
                 default:
-                    foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
-                    {
-                        rend.material = sauce_material;
-                    }
-                    //GameObject spicy_particles = Instantiate(GameObject.Find("SpicyParticles"));
-                    //spicy_particles.transform.parent = sushi.transform;
-                    //spicy_particles.transform.localPosition = Vector3.zero;
                     break;
 
             }

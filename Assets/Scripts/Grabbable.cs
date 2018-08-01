@@ -65,6 +65,16 @@ public class Grabbable : MonoBehaviour {
             child.layer = 20;
         }
 
+        if (transform.gameObject.name.Contains("Combadge"))
+        {
+            GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetTrek();
+            AudioSource chirp = transform.gameObject.GetComponent<AudioSource>();
+            if (!chirp.isPlaying)
+            {
+                chirp.Play();
+            }
+        }
+
     }
 
     public void GrabEnd()

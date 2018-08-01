@@ -217,9 +217,6 @@
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>E:/Unity/Projects/Speed Up Project/SumnSumnSushi/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>E:/Unity/Projects/Speed Up Project/SumnSumnSushi/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>E:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>

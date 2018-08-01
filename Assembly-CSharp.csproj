@@ -89,6 +89,7 @@
     <Compile Include="Assets\HexExplode.cs" />
     <Compile Include="Assets\HexGrid.cs" />
     <Compile Include="Assets\HideHat.cs" />
+    <Compile Include="Assets\InitiatePhaserGame.cs" />
     <Compile Include="Assets\JellyTest\_Scripts\Bone.cs" />
     <Compile Include="Assets\JellyTest\_Scripts\Controller.cs" />
     <Compile Include="Assets\JellyTest\_Scripts\fpsdisplay.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRWaitCursor.cs" />
     <Compile Include="Assets\PhaserDetectorHit.cs" />
+    <Compile Include="Assets\PhaserGame.cs" />
     <Compile Include="Assets\PhaserShoot.cs" />
     <Compile Include="Assets\PointBallMover.cs" />
     <Compile Include="Assets\ReparentSauce.cs" />
@@ -192,6 +194,9 @@
     <Compile Include="Assets\Scripts\RayCasterGrav.cs" />
     <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\WaveOscillator.cs" />
+    <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
+    <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
+    <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
     <Compile Include="Assets\ShootUser.cs" />
     <Compile Include="Assets\ShotDetector.cs" />
     <Compile Include="Assets\shownormals.cs" />
@@ -199,6 +204,7 @@
     <Compile Include="Assets\ThrowSpeed.cs" />
     <Compile Include="Assets\TimeManipulator.cs" />
     <Compile Include="Assets\TrackerDistance.cs" />
+    <Compile Include="Assets\TransporterFade.cs" />
     <Compile Include="Assets\TriggerScreen.cs" />
     <Compile Include="Assets\TrolleyAnimator.cs" />
     <Compile Include="Assets\TronBladeGlow.cs" />
@@ -215,22 +221,36 @@
     <None Include="Assets\Metaballs\MetaballShader.shader" />
     <None Include="Assets\NatureStarterKit2\info.txt" />
     <None Include="Assets\OutlineParticle.shader" />
+    <None Include="Assets\ShaderForge\Readme.txt" />
     <None Include="Assets\OVR\Shaders\OVRColorRampAlpha.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\VertexAnimation.shader" />
     <None Include="Assets\OVR\Resources\Cubemap Blit.shader" />
     <None Include="Assets\OVR\Resources\OVRMRUnlit.shader" />
     <None Include="Assets\Test.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
     <None Include="Assets\OVR\Shaders\Unlit Crosshair.shader" />
     <None Include="Assets\OVR\Resources\Unlit Transparent Color.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\Parallax.shader" />
     <None Include="Assets\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />
+    <None Include="Assets\3DTextShader.shader" />
     <None Include="Assets\SauceParticleTemplate.shader" />
     <None Include="Assets\OVR\Resources\OVRMRCameraFrameLit.shader" />
     <None Include="Assets\Materials\Holodeck\AnimatedBeam.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\LightWrapping.shader" />
     <None Include="Assets\OVR\Resources\Underlay Transparent Occluder.shader" />
     <None Include="Assets\OVR\Resources\Texture2D Blit.shader" />
     <None Include="Assets\OutlineSprite.shader" />
     <None Include="Assets\TronGlowWave.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\TessellationDisplacement.shader" />
+    <None Include="Assets\Materials\Holodeck\SparkleGold.shader" />
+    <None Include="Assets\TrekBeamUpParticles.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\Tiles.shader" />
     <None Include="Assets\OVR\Resources\OVRMRCameraFrame.shader" />
     <None Include="Assets\OVR\Resources\OVRMRClipPlane.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\PixelRotator.shader" />
+    <None Include="Assets\ShaderForge\Example Assets\Shaders\CustomLighting.shader" />
     <None Include="Assets\OVR\Resources\Underlay Impostor.shader" />
     <None Include="Assets\OVR\Plugins\placeholder.txt" />
     <None Include="Assets\Metaballs\MarchingCubesComputeShader.compute" />
@@ -239,9 +259,6 @@
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>E:/Unity/Projects/Speed Up Project/SumnSumnSushi/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>E:/Unity/Projects/Speed Up Project/SumnSumnSushi/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>E:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -9,8 +9,8 @@ public class SceneDirector : MonoBehaviour {
     GameObject ChopstickHolder;
     private List<GameObject> hottext = new List<GameObject>();
     private bool loadsuper, loadxeno, loadtron, loadtrek = false;
-    public float hottime = 1f;
-    private float hottimelocal = 1f;
+    public float trektime, hottime = 1f;
+    private float trektimelocal, hottimelocal = 1f;
     private int hoterator = 0;
     private bool tryload = false;
 
@@ -21,6 +21,7 @@ public class SceneDirector : MonoBehaviour {
             hottext.Add(GameObject.Find("HotTransition").transform.Find("hot" + i).gameObject);
         }
         hottimelocal = hottime;
+        trektimelocal = trektime;
         hoterator = 0;
 	}
 	
@@ -72,7 +73,14 @@ public class SceneDirector : MonoBehaviour {
 
     private void TrekTransition()
     {
-        SceneManager.LoadScene("Holodeck", LoadSceneMode.Single);
+        if (trektimelocal <= 0)
+        {
+            SceneManager.LoadScene("Holodeck", LoadSceneMode.Single);
+        }
+        else
+        {
+            trektimelocal -= Time.deltaTime;
+        }
     }
 
     void HotTransition()

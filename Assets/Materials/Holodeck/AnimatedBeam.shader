@@ -1,5 +1,5 @@
 // Shader created with Shader Forge v1.38 
-// Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
+// Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
 /*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:0,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:0,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:True,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:True,fnfb:True,fsmp:False;n:type:ShaderForge.SFN_Final,id:4795,x:32854,y:32660,varname:node_4795,prsc:2|emission-2393-OUT;n:type:ShaderForge.SFN_Tex2d,id:6074,x:32283,y:32476,ptovrint:False,ptlb:MainTex,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:ed890e2c2834b20418879fccd8d7a24e,ntxv:0,isnm:False|UVIN-2831-UVOUT;n:type:ShaderForge.SFN_Multiply,id:2393,x:32495,y:32793,varname:node_2393,prsc:2|A-6074-RGB,B-2053-RGB,C-797-RGB,D-9248-OUT;n:type:ShaderForge.SFN_VertexColor,id:2053,x:32267,y:32721,varname:node_2053,prsc:2;n:type:ShaderForge.SFN_Color,id:797,x:32267,y:32902,ptovrint:True,ptlb:Color,ptin:_TintColor,varname:_TintColor,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Vector1,id:9248,x:32550,y:33116,varname:node_9248,prsc:2,v1:3;n:type:ShaderForge.SFN_Panner,id:2831,x:32062,y:32552,varname:node_2831,prsc:2,spu:-5,spv:0|UVIN-9367-UVOUT;n:type:ShaderForge.SFN_TexCoord,id:9367,x:32000,y:32321,varname:node_9367,prsc:2,uv:0,uaff:False;proporder:6074-797;pass:END;sub:END;*/
 
@@ -25,7 +25,6 @@ Shader "Shader Forge/AnimatedBeam" {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #define UNITY_PASS_FORWARDBASE
             #include "UnityCG.cginc"
             #pragma multi_compile_fwdbase
             #pragma multi_compile_fog
@@ -55,8 +54,8 @@ Shader "Shader Forge/AnimatedBeam" {
             float4 frag(VertexOutput i) : COLOR {
 ////// Lighting:
 ////// Emissive:
-                float4 node_9844 = _Time;
-                float2 node_2831 = (i.uv0+node_9844.g*float2(-5,0));
+                float4 node_9603 = _Time;
+                float2 node_2831 = (i.uv0+node_9603.g*float2(-5,0));
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(node_2831, _MainTex));
                 float3 emissive = (_MainTex_var.rgb*i.vertexColor.rgb*_TintColor.rgb*3.0);
                 float3 finalColor = emissive;

@@ -15,6 +15,9 @@ public class RotateTransporter : MonoBehaviour {
 		if (GetComponent<ParticleSystem>().isPlaying)
         {
             transform.Rotate(0, 0, rotate_speed);
+            transform.position = (GameObject.Find("CenterEyeAnchor").transform.position) + new Vector3(0, 1, 0);
         }
+
+
 	}
 }

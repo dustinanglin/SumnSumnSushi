@@ -264,4 +264,3 @@ E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Edito
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Editor.csproj.CopyComplete
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Editor.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Editor.pdb
-E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\Unity.ShaderGraph.Editor.dll

@@ -7,7 +7,8 @@ public class PhaserShoot : MonoBehaviour {
     private RaycastHit hit_spot;
     public float range, trigger_pull;
     public LineRenderer phaser_line;
-    public GameObject phaser_location, phaser_hit_blob, spark_fountain;
+    public GameObject phaser_location, phaser_hit_blob, spark_fountain, gm_object;
+    private PhaserGame game_manager;
     private OVRInput.Controller current_controller;
     private GameObject phaser_glow;
     private GameObject my_sparks;
@@ -35,6 +36,8 @@ public class PhaserShoot : MonoBehaviour {
 
         phaser_glow = transform.Find("PhaserProjector/LightFlare").gameObject;
         phaser_glow.SetActive(false);
+
+        game_manager = gm_object.GetComponent<PhaserGame>();
 
 	}
 	
@@ -66,7 +69,7 @@ public class PhaserShoot : MonoBehaviour {
                 phaser_hit_blob.transform.position = hit_location;
                 if (hit_spot.collider.name.Contains("Wall"))
                 {
-                    phaser_hit_blob.GetComponent<PhaserDetectorHit>().miss = true;
+                    //phaser_hit_blob.GetComponent<PhaserDetectorHit>().miss = true;
                 }
                 if (!sparking)
                 {
@@ -89,12 +92,15 @@ public class PhaserShoot : MonoBehaviour {
             hit_location = phaser_location.transform.position;
             phaser_hit_blob.transform.position = phaser_location.transform.position;
             phaser_hit_blob.GetComponent<PhaserDetectorHit>().miss = false;
-            my_sparks.GetComponent<ParticleSystem>().Stop();
+            phaser_hit_blob.GetComponent<PhaserDetectorHit>().needsReset = false;
+            if (my_sparks)
+                my_sparks.GetComponent<ParticleSystem>().Stop();
             sparking = false;
             audio_start = false;
             audio_loop = false;
             phaser_start.Stop();
             phaser_loop.Stop();
+
         }
 
         Debug.DrawRay(transform.position, -1 * transform.right, Color.red);
