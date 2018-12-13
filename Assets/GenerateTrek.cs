@@ -32,7 +32,7 @@ public class GenerateTrek : MonoBehaviour {
         else if (other.gameObject.transform.parent != null)
         {
             fish_sauce = other.gameObject.transform.parent.gameObject.GetComponent<Saucable>();
-            Debug.Log("Sauce is" + fish_sauce.sauce_type);
+            //Debug.Log("Sauce is" + fish_sauce.sauce_type);
         }
 
 

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_scenes/Holodeck.unity
+- path: Assets/_scenes/Chopstick Test.unity
   isLoaded: 1
   isActive: 1

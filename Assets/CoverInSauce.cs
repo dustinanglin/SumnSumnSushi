@@ -61,10 +61,42 @@ public class CoverInSauce : MonoBehaviour {
                     Debug.Log(trek_particles + "was created");
                     break;
 
+                case "DartSauce":
+                    //call dart function
+                    TransformToDart(sushi);
+                    break;
+
                 default:
                     break;
 
             }
         } 
+    }
+
+    private void TransformToDart(GameObject sushi)
+    {
+        Vector3 center;
+        float half_distance;
+        if (sushi.name.Contains("Roe"))
+        {
+            center = sushi.GetComponent<Collider>().bounds.center;
+            half_distance = sushi.GetComponent<Collider>().bounds.extents.x;
+        }
+        else
+        {
+            center = sushi.transform.Find("Rice").GetComponent<Collider>().bounds.center;
+            half_distance = sushi.transform.Find("Rice").GetComponent<Collider>().bounds.extents.x;
+        }
+
+   
+        GameObject fins = Instantiate((GameObject)Resources.Load("Fins"), sushi.transform.position, Quaternion.LookRotation(sushi.transform.right,sushi.transform.up), sushi.transform);
+        float fin_half_distance = fins.GetComponentInChildren<Collider>().bounds.extents.x;
+        fins.transform.Rotate(-30, 0, 0, Space.Self);
+        fins.transform.Translate(-1 * (half_distance + fin_half_distance - (fin_half_distance/5f)), 0, 0);
+
+        GameObject needle = Instantiate((GameObject)Resources.Load("Needle"), sushi.transform.position, Quaternion.LookRotation(sushi.transform.right, sushi.transform.up), sushi.transform);
+        float needle_half_distance = needle.GetComponent<Collider>().bounds.extents.y;
+        needle.transform.Translate(half_distance + needle_half_distance - (needle_half_distance/5f), 0, 0);
+        needle.transform.Rotate(0, 0, -90, Space.Self);
     }
 }
