@@ -6,16 +6,20 @@ public class Discfly : MonoBehaviour {
 
     public float disc_speed, rotate_speed, return_speed, max_throw_speed, trigger_release_limit = 1;
     public float release_delay, min_throw_speed = 0;
+    public float pitch_modifier = 0;
 
 
     private float m_release_delay, lerp_time = 0;
     private float distance_from_home = 1;
     private bool throw_disc, throwing, home, delay_throw, reset, return_home = false;
+    private bool slow_throw = false;
+    private bool first_grab = true;
     private float throw_velocity = 0;
     private Quaternion new_rotation, start_rot;
     private Vector3 start_pos, throw_dir;
     public GameObject hand;
     private ThrowSpeed Thrower;
+    private AudioSource disc_start, disc_idle, disc_throw, disc_fly, disc_bounce;
 
 
 	// Use this for initialization
@@ -23,6 +27,17 @@ public class Discfly : MonoBehaviour {
         Thrower = hand.GetComponent<ThrowSpeed>();
         m_release_delay = release_delay;
         home = false;
+
+        disc_start = GetComponents<AudioSource>()[0];
+        disc_idle = GetComponents<AudioSource>()[1];
+        disc_fly = GetComponents<AudioSource>()[2];
+        disc_throw = GetComponents<AudioSource>()[3];
+        disc_bounce = GetComponents<AudioSource>()[4];
+
+        foreach (AudioSource sound in GetComponents<AudioSource>())
+        {
+            sound.pitch = 1 + pitch_modifier;
+        }
 	}
 	
 	// Update is called once per frame
@@ -63,11 +78,12 @@ public class Discfly : MonoBehaviour {
                 if (throw_velocity <= min_throw_speed)
                 {
                     throw_dir = Thrower.m_velocity;
-
+                    slow_throw = true;
                     throw_velocity = Mathf.Clamp(throw_velocity,0,.01f);
                 }
                 else
                 {
+                    slow_throw = false;
                     throw_dir = Thrower.m_velocity;
                     transform.rotation = Quaternion.LookRotation(throw_dir, transform.up);
                 }
@@ -155,12 +171,45 @@ public class Discfly : MonoBehaviour {
                 transform.rotation = hand.transform.rotation;
                 m_release_delay = release_delay;
 
+                if (first_grab)
+                {
+                    first_grab = false;
+                    disc_start.Play();
+                }
+
+
             }
         }
 
         if (throwing)
         {
             transform.Translate(Vector3.ClampMagnitude(throw_dir,1) * Time.deltaTime * Mathf.Clamp(disc_speed * throw_velocity,0,max_throw_speed), Space.World);
+
+            if (!slow_throw)
+            {
+                if (!disc_throw.isPlaying && !disc_fly.isPlaying)
+                {
+                    disc_idle.Stop();
+                    disc_throw.Play();
+                }
+                else if (!disc_fly.isPlaying)
+                {
+                    disc_fly.Play();
+                }
+            }
+            else if (!disc_idle.isPlaying)
+            {
+                disc_idle.Play();
+            }
+        }
+        else
+        {
+            if (!disc_start.isPlaying && !first_grab && !disc_idle.isPlaying)
+            {
+                disc_fly.Stop();
+                disc_throw.Stop();
+                disc_idle.Play();
+            }
         }
 
         if (reset)
@@ -237,6 +286,11 @@ public class Discfly : MonoBehaviour {
                 throw_dir = transform.forward;
             }
             //Debug.Log("Bounce");
+
+            float rand_bounce_mod = Random.Range(-.2f, .2f);
+            disc_bounce.pitch = 1 + rand_bounce_mod;
+            disc_bounce.Play();
+
         }
 
        /*if (transform.forward.z < 0f)

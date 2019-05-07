@@ -9,9 +9,10 @@ public class TronGameDirector : MonoBehaviour {
     public float end_time_delay = 0f;
     private bool do_final_fireworks = true;
 
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -34,4 +35,6 @@ public class TronGameDirector : MonoBehaviour {
                 SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
 	}
+
+
 }
