@@ -76,6 +76,7 @@
     <Compile Include="Assets\DestroyMessage.cs" />
     <Compile Include="Assets\DiscColor.cs" />
     <Compile Include="Assets\Discfly.cs" />
+    <Compile Include="Assets\DiscInstructions.cs" />
     <Compile Include="Assets\DoorAnimator.cs" />
     <Compile Include="Assets\DoorDelay.cs" />
     <Compile Include="Assets\DrawNormal.cs" />

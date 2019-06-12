@@ -6,7 +6,8 @@ public class InitiatePhaserGame : MonoBehaviour {
 
     private GenerateSpheres director;
     private PhaserGame game_manager;
-    public GameObject director_container, gm_object;
+    public Material lcars1, lcars2;
+    public GameObject director_container, gm_object, lcars_screen;
     private AudioSource[] button_audio;
     public float delay_time;
     private float delay_time_local;
@@ -19,7 +20,8 @@ public class InitiatePhaserGame : MonoBehaviour {
         game_manager = gm_object.GetComponent<PhaserGame>();
         delay_time_local = delay_time;
         button_audio = GetComponents<AudioSource>();
-	}
+        lcars_screen.GetComponent<Renderer>().material = lcars1;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -33,6 +35,7 @@ public class InitiatePhaserGame : MonoBehaviour {
             }
             else if (!director.isInitiated())
             {
+                lcars_screen.GetComponent<Renderer>().material = lcars2;
                 Debug.Log("initiate game!");
                 game_manager.setInitiated(true);
                 director.setInitiate();
@@ -57,7 +60,7 @@ public class InitiatePhaserGame : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.name.Contains("Pusher") && !director.isInitiated() && !initiate_game)
+        if (other.name.Contains("Pusher") && !director.isInitiated() && !initiate_game && !game_manager.showEnd)
         {
             initiate_game = true;
         }

@@ -20,11 +20,15 @@ public class Discfly : MonoBehaviour {
     public GameObject hand;
     private ThrowSpeed Thrower;
     private AudioSource disc_start, disc_idle, disc_throw, disc_fly, disc_bounce;
+    private DiscColor disc_color;
+    private DiscInstructions instructions;
 
 
 	// Use this for initialization
 	void Start () {
         Thrower = hand.GetComponent<ThrowSpeed>();
+        disc_color = this.GetComponent<DiscColor>();
+        instructions = this.GetComponentInChildren<DiscInstructions>();
         m_release_delay = release_delay;
         home = false;
 
@@ -38,6 +42,8 @@ public class Discfly : MonoBehaviour {
         {
             sound.pitch = 1 + pitch_modifier;
         }
+
+        instructions.SetInstructionText(1);
 	}
 	
 	// Update is called once per frame
@@ -175,6 +181,8 @@ public class Discfly : MonoBehaviour {
                 {
                     first_grab = false;
                     disc_start.Play();
+                    disc_color.SetInitiated();
+                    instructions.SetInstructionText(2);
                 }
 
 
@@ -184,9 +192,10 @@ public class Discfly : MonoBehaviour {
         if (throwing)
         {
             transform.Translate(Vector3.ClampMagnitude(throw_dir,1) * Time.deltaTime * Mathf.Clamp(disc_speed * throw_velocity,0,max_throw_speed), Space.World);
-
+            
             if (!slow_throw)
             {
+                instructions.SetInstructionText(3);
                 if (!disc_throw.isPlaying && !disc_fly.isPlaying)
                 {
                     disc_idle.Stop();
