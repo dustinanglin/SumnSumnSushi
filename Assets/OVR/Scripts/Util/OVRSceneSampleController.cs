@@ -121,8 +121,8 @@ public class OVRSceneSampleController : MonoBehaviour
         if (cameraController != null)
         {
             // Add a GridCube component to this object
-            gridCube = gameObject.AddComponent<OVRGridCube>();
-            gridCube.SetOVRCameraController(ref cameraController);
+            //gridCube = gameObject.AddComponent<OVRGridCube>();
+            //gridCube.SetOVRCameraController(ref cameraController);
         } 
     }
 

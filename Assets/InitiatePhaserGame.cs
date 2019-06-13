@@ -11,7 +11,7 @@ public class InitiatePhaserGame : MonoBehaviour {
     private AudioSource[] button_audio;
     public float delay_time;
     private float delay_time_local;
-    private bool audio_played, initiate_game = false;
+    public bool audio_played, initiate_game = false;
 
 
 	// Use this for initialization

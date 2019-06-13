@@ -52,7 +52,7 @@ public class ChopstickRotateOculus : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         //Debug.Log("Left:" + left_colliding + " Right:" + right_colliding);

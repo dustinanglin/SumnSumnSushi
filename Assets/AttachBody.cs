@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttachBody : MonoBehaviour {
 
     public Transform head;
-    public float rotate_tolerance, lerp_speed;
+    public float rotate_tolerance, lerp_speed, max_height;
     private Vector2 head_forward, body_forward;
     public bool turn_body;
     private Quaternion look_direction;
@@ -22,7 +22,15 @@ public class AttachBody : MonoBehaviour {
         Debug.DrawRay(transform.position, new Vector3(body_forward.x, 0, body_forward.y));
         Debug.DrawRay(head.position, new Vector3(head_forward.x, 0, head_forward.y));
 
-        transform.position = new Vector3(head.position.x, transform.position.y, head.position.z);
+        float y_position = transform.position.y;
+        if (head.position.y - y_position < 0)
+            y_position = head.position.y - max_height;
+        else if (head.position.y - y_position > max_height)
+            y_position = head.position.y - max_height;
+
+
+
+        transform.position = new Vector3(head.position.x, y_position, head.position.z);
 
         //Debug.Log("Angle between:" + Vector2.Angle(head_forward, body_forward));
 

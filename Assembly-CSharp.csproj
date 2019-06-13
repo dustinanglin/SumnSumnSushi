@@ -80,6 +80,7 @@
     <Compile Include="Assets\DoorAnimator.cs" />
     <Compile Include="Assets\DoorDelay.cs" />
     <Compile Include="Assets\DrawNormal.cs" />
+    <Compile Include="Assets\ExitHolodeck.cs" />
     <Compile Include="Assets\FaceUser.cs" />
     <Compile Include="Assets\Foamhands.cs" />
     <Compile Include="Assets\FollowCharacters.cs" />
@@ -196,12 +197,14 @@
     <Compile Include="Assets\Scripts\RayCasterGrav.cs" />
     <Compile Include="Assets\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\WaveOscillator.cs" />
+    <Compile Include="Assets\SetWorldPosition.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
     <Compile Include="Assets\ShootUser.cs" />
     <Compile Include="Assets\ShotDetector.cs" />
     <Compile Include="Assets\shownormals.cs" />
+    <Compile Include="Assets\SoundWarp.cs" />
     <Compile Include="Assets\SuperHotColorScheme.cs" />
     <Compile Include="Assets\ThrowSpeed.cs" />
     <Compile Include="Assets\TimeManipulator.cs" />
