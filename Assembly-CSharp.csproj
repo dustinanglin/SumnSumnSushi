@@ -165,6 +165,7 @@
     <Compile Include="Assets\PhaserGame.cs" />
     <Compile Include="Assets\PhaserShoot.cs" />
     <Compile Include="Assets\PointBallMover.cs" />
+    <Compile Include="Assets\RadarDoppler.cs" />
     <Compile Include="Assets\ReparentSauce.cs" />
     <Compile Include="Assets\RightCollision.cs" />
     <Compile Include="Assets\Ringbell.cs" />

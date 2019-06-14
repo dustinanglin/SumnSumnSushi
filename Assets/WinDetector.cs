@@ -13,17 +13,20 @@ public class WinDetector : MonoBehaviour {
     private float ticker;
     private float fade = 0;
     private GameObject sushi, hot, txtbkg, endgame;
-    private bool increment;
+    private AudioSource end_sound;
+    private bool increment, not_played;
 
 	// Use this for initialization
 	void Start () {
         enemynum = GameObject.FindGameObjectsWithTag("Enemy").Length;
         endgame = GameObject.Find("EndGame");
+        end_sound = GetComponent<AudioSource>();
         sushi = endgame.transform.Find("Super").gameObject;
         hot = endgame.transform.Find("Hot").gameObject;
         txtbkg = endgame.transform.Find("TextBkg").gameObject;
         ticker = text_time;
         increment = false;
+        not_played = true;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +35,16 @@ public class WinDetector : MonoBehaviour {
         {
             txtbkg.SetActive(true);
             EndGame();
+            if (not_played)
+            {
+                foreach (AudioSource sound in FindObjectsOfType<AudioSource>())
+                {
+                    sound.volume = .1f;
+                }
+                end_sound.volume = 1f;
+                end_sound.Play();
+                not_played = false;
+            }
         }
 	}
 

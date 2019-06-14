@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunFire : MonoBehaviour {
 
     private Animation gunAnimation;
+    //private AudioSource gun_shot;
     private AnimationState gunState;
     private OVRInput.Controller current_controller;
     private TimeManipulator timeMan;
@@ -16,6 +17,7 @@ public class GunFire : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gunAnimation = this.GetComponentInChildren<Animation>();
+        //gun_shot = GetComponent<AudioSource>();
         timeMan = GameObject.Find("TimeController").GetComponent<TimeManipulator>();
         gunState = gunAnimation["Gunfire"];
         if (name.Contains("Left"))
@@ -41,6 +43,7 @@ public class GunFire : MonoBehaviour {
             gunState.speed = fire_speed;
             gunAnimation.Play();
             GetComponentInChildren<BulletGenerator>().Fire();
+            //gun_shot.Play();
             timeMan.FireBoost();
         }
         if (fired && trigger_down <= .8f)
