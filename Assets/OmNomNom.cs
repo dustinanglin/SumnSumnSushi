@@ -9,9 +9,14 @@ public class OmNomNom : MonoBehaviour {
     private GameObject om;
     private GameObject nom1;
     private GameObject nom2;
+    private GameObject paku_spot;
+    public GameObject pakupaku;
     private bool showing_nom = false;
     public float countdown_time = 10;
     private float timer = 0;
+
+
+    private AudioSource eat_pop;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +24,8 @@ public class OmNomNom : MonoBehaviour {
         om = omNomText.transform.Find("Om").gameObject;
         nom1 = omNomText.transform.Find("Nom1").gameObject;
         nom2 = omNomText.transform.Find("Nom2").gameObject;
+        paku_spot = omNomText.transform.Find("PakuPaku").gameObject;
+        eat_pop = GetComponent<AudioSource>();
         //Debug.Log(om.name + nom1.name + nom2.name);
      }
 	
@@ -29,13 +36,16 @@ public class OmNomNom : MonoBehaviour {
         {
             
             timer -= Time.unscaledDeltaTime;
-            if (timer <= countdown_time && !om.activeSelf)
+            if (timer <= countdown_time && !pakupaku.activeSelf)// && !om.activeSelf)
             {
                 Debug.Log(timer);
                 Debug.Log("Showing Om");
-                om.SetActive(true);
+                pakupaku.SetActive(true);
+                pakupaku.transform.position = paku_spot.transform.position;
+                pakupaku.transform.rotation = paku_spot.transform.rotation;
+                //om.SetActive(true);
             }
-            if (timer <= (countdown_time * 8 / 10) && !nom1.activeSelf)
+            /*if (timer <= (countdown_time * 8 / 10) && !nom1.activeSelf)
             {
                 Debug.Log(timer);
                 Debug.Log("Showing Nom1");
@@ -46,13 +56,14 @@ public class OmNomNom : MonoBehaviour {
                 Debug.Log(timer);
                 Debug.Log("Showing Nom1");
                 nom2.SetActive(true);
-            }
+            }*/
             if (timer <= 0)
             {
                 showing_nom = false;
-                om.SetActive(false);
-                nom1.SetActive(false);
-                nom2.SetActive(false);
+                pakupaku.SetActive(false);
+                //om.SetActive(false);
+                //nom1.SetActive(false);
+                //nom2.SetActive(false);
             }
         }
 	}
@@ -70,6 +81,9 @@ public class OmNomNom : MonoBehaviour {
             string ishot = colliding_object.tag;
             Destroy(colliding_object);
             Debug.Log("Fish ate!");
+
+            eat_pop.pitch = Random.Range(1f, 2f);
+            eat_pop.Play();
 
             if (colliding_object.GetComponent<Saucable>())
             {

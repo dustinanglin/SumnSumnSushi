@@ -209,6 +209,7 @@
     <Compile Include="Assets\SuperHotColorScheme.cs" />
     <Compile Include="Assets\ThrowSpeed.cs" />
     <Compile Include="Assets\TimeManipulator.cs" />
+    <Compile Include="Assets\TrackAchievements.cs" />
     <Compile Include="Assets\TrackerDistance.cs" />
     <Compile Include="Assets\TransporterFade.cs" />
     <Compile Include="Assets\TriggerScreen.cs" />
@@ -231,6 +232,7 @@
     <None Include="Assets\OVR\Shaders\OVRColorRampAlpha.shader" />
     <None Include="Assets\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
     <None Include="Assets\ShaderForge\Example Assets\Shaders\VertexAnimation.shader" />
+    <None Include="Assets\SpriteShowInFront.shader" />
     <None Include="Assets\OVR\Resources\Cubemap Blit.shader" />
     <None Include="Assets\OVR\Resources\OVRMRUnlit.shader" />
     <None Include="Assets\Test.shader" />

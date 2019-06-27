@@ -23,6 +23,7 @@ public class ChopstickRotateOculus : MonoBehaviour
     public GameObject hand_anchor;
     private ChopstickShadowRotate my_shadow;
     private AudioSource stickclick;
+    private AudioSource pickup;
 
     private bool play_click = false;
 
@@ -33,7 +34,8 @@ public class ChopstickRotateOculus : MonoBehaviour
         left_colliding = false;
         right_colliding = false;
         max_angle = 20;
-        stickclick = GetComponentInChildren<AudioSource>();
+        stickclick = GetComponentsInChildren<AudioSource>()[0];
+        pickup = GetComponentsInChildren<AudioSource>()[1];
 
         switch (this.name)
         {
@@ -81,6 +83,8 @@ public class ChopstickRotateOculus : MonoBehaviour
         {
             grabbing = true;
             grab_target.GrabBegin(hand_anchor, this.gameObject);
+            pickup.pitch = Random.Range(1.5f, 2f);
+            pickup.Play();
             //Debug.Log("Begin grab");
             //max_angle = rotate_angle;
         }
@@ -100,12 +104,12 @@ public class ChopstickRotateOculus : MonoBehaviour
             my_shadow.max_angle = max_angle;
         }
 
-        if (rotate_angle >= 7.5 && grab_target == null)
+        if (rotate_angle >= 8 && grab_target == null)
         {
             cant_grab = true;
         }
 
-        if (cant_grab && rotate_angle < 7.5)
+        if (cant_grab && rotate_angle < 8)
         {
             cant_grab = false;
         }
@@ -122,7 +126,7 @@ public class ChopstickRotateOculus : MonoBehaviour
         {
             stickclick.pitch = Random.Range(.8f, 1.1f);
             stickclick.Play();
-            Debug.Log(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller));
+            //Debug.Log(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller));
             play_click = false;
         }
 

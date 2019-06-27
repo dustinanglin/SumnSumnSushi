@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class AlienEvents : MonoBehaviour {
 
     private Animation[] sushilogo, lamp1, lamp2, chestburster;
+    private TrackAchievements tracker;
     private AudioSource spark, buzz, explode, burst;
     public float light_flicker_delay, alien_burst_delay, alien_dance_delay, tracker_delay, end_of_scene = 0f;
     public float light_flicker_times = 1f;
@@ -52,8 +53,8 @@ public class AlienEvents : MonoBehaviour {
         spark = GetComponents<AudioSource>()[1];
         buzz = GetComponents<AudioSource>()[2];
         explode = GetComponents<AudioSource>()[3];
- 
 
+        tracker = new TrackAchievements();
 
         for (int i = 0; i < particles.Length; i += 2)
         {
@@ -138,6 +139,7 @@ public class AlienEvents : MonoBehaviour {
         if (time >= end_of_scene && !do_not_end)
         {
             //SceneManager.LoadScene(0, LoadSceneMode.Single);
+            tracker.SaveLastLevel("alienz");
             loadchopstick = true;
         }
 	}

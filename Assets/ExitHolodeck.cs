@@ -12,6 +12,7 @@ public class ExitHolodeck : MonoBehaviour {
     private PhaserGame game_manager;
     private AudioSource end_transport, end_button;
     private bool loadchopstick = false;
+    private TrackAchievements tracker;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,8 @@ public class ExitHolodeck : MonoBehaviour {
         end_button = GetComponents<AudioSource>()[1];
         transport_effect = transport_cube.GetComponent<TransporterFade>();
         StartCoroutine(LoadLevel());
+
+        tracker = new TrackAchievements();
 	}
 	
 	// Update is called once per frame
@@ -60,6 +63,7 @@ public class ExitHolodeck : MonoBehaviour {
             end_button.Play();
             loadchopstick = true;
             transport_effect.transport_out = true;
+            tracker.SaveLastLevel("holodeck");
         }
 
         //Debug.Log(other.name);

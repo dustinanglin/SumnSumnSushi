@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneDirector : MonoBehaviour {
 
     private Scene Chopstick, Superhot;
+    private TrackAchievements tracker;
     GameObject ChopstickHolder;
     private List<GameObject> hottext = new List<GameObject>();
     private bool loadsuper, loadxeno, loadtron, loadtrek = false;
@@ -15,8 +16,14 @@ public class SceneDirector : MonoBehaviour {
     private bool tryload = false;
     private bool preloadlevel, loadlevel = false;
 
+    private AudioSource trek_sound, alienz_sound;
+
 	// Use this for initialization
 	void Start () {
+        tracker = GameObject.Find("AchievementTracker").GetComponent<TrackAchievements>();
+        trek_sound = GetComponents<AudioSource>()[0];
+        alienz_sound = GetComponents<AudioSource>()[1];
+
         for (int i = 1; i < 25; i++)
         {
             hottext.Add(GameObject.Find("HotTransition").transform.Find("hot" + i).gameObject);
@@ -24,6 +31,22 @@ public class SceneDirector : MonoBehaviour {
         hottimelocal = hottime;
         trektimelocal = trektime;
         hoterator = 0;
+
+
+        string lastlevel = tracker.GetLastLevel();
+
+        switch (lastlevel)
+        {
+            case "holodeck":
+                trek_sound.Play();
+                break;
+            case "alienz":
+                alienz_sound.Play();
+                break;
+            default:
+                Debug.Log("No last level");
+                break;
+        }
 	}
 	
 	// Update is called once per frame
