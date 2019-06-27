@@ -10,9 +10,9 @@ public class BoatDestroyer : MonoBehaviour {
             if (other.gameObject)
                 if (other.gameObject.transform.parent)
                 {
-                    //Debug.Log(other.gameObject.transform.parent.gameObject.name + " has entered Destoyer!");
-                    if (other.gameObject.transform.parent.gameObject.name.Contains("SushiBoat"))
-                        Destroy(other.gameObject.transform.parent.gameObject,5);
+                    //Debug.Log(other.gameObject.transform.parent.gameObject.transform.parent.gameObject.name + " has entered Destoyer!");
+                    if (other.gameObject.transform.parent.gameObject.transform.parent.gameObject.name.Contains("SushiBoat"))
+                        Destroy(other.gameObject.transform.parent.gameObject.transform.parent.gameObject,5);
                 }
     }
 

@@ -6,6 +6,7 @@ public class TriggerScreen : MonoBehaviour {
 
     private GameObject orderScreen;
     private Animator screenAnimator, doorAnimator;
+    private AudioSource screen_move;
     private bool doorMoved, buttonsRefreshed;
 
 	// Use this for initialization
@@ -13,6 +14,7 @@ public class TriggerScreen : MonoBehaviour {
         orderScreen = GameObject.Find("VendingScreen");
         screenAnimator = orderScreen.GetComponent<Animator>();
         doorAnimator = this.GetComponent<Animator>();
+        screen_move = orderScreen.GetComponentsInChildren<AudioSource>()[0];
 
         doorMoved = false;
         buttonsRefreshed = false;
@@ -25,6 +27,7 @@ public class TriggerScreen : MonoBehaviour {
             screenAnimator.SetBool("DoScreenMove", true);
             doorMoved = true;
             buttonsRefreshed = false;
+            screen_move.Play();
             //Debug.Log("Move Screen!");
         }
 

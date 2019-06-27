@@ -21,6 +21,7 @@ public class Ringbell : MonoBehaviour {
 
     public AudioClip bellRing;
     private AudioSource source;
+    private AudioSource door_open;
 
     private GameObject hiddenDoor;
     private Animator doorAnimator;
@@ -30,6 +31,7 @@ public class Ringbell : MonoBehaviour {
         source = GetComponent<AudioSource>();
         hiddenDoor = GameObject.Find("HiddenDoor");
         doorAnimator = hiddenDoor.GetComponent<Animator>();
+        door_open = hiddenDoor.GetComponents<AudioSource>()[0];
     }
 
 
@@ -77,6 +79,7 @@ public class Ringbell : MonoBehaviour {
             source.PlayOneShot(bellRing);
             Debug.Log("Pushed");
             doorAnimator.SetBool("OpenDoor", true);
+            door_open.Play();
         }
          else if (percent_pushed <= .1f && pushed)
         {

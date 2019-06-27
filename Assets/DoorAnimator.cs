@@ -11,6 +11,8 @@ public class DoorAnimator : MonoBehaviour {
 
     private bool animate_open, animate_close, animating;
 
+    private AudioSource door_open, door_close;
+
 	// Use this for initialization
 	void Start () {
         animate_open = false;
@@ -18,6 +20,9 @@ public class DoorAnimator : MonoBehaviour {
         animating = false;
 
         doorAnimation = this.GetComponent<Animation>();
+
+        door_open = GetComponents<AudioSource>()[0];
+        door_close = GetComponents<AudioSource>()[1];
 
         open_delay = od;
         close_delay = cd;
@@ -38,6 +43,7 @@ public class DoorAnimator : MonoBehaviour {
             doorState.time = 0f;
             doorState.speed = 1;
             doorAnimation.Play();
+            door_open.Play();
             animating = true;
         }
 
@@ -47,6 +53,7 @@ public class DoorAnimator : MonoBehaviour {
             animate_open = false;
             animating = false;
             animate_close = true;
+
         }
 
         if (animate_close && close_delay > 0)
@@ -61,6 +68,7 @@ public class DoorAnimator : MonoBehaviour {
             doorState.time = doorState.length;
             doorState.speed = -1;
             doorAnimation.Play();
+            door_close.Play();
             animating = true;
         }
 

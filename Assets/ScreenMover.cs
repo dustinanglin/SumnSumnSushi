@@ -6,6 +6,7 @@ public class ScreenMover : MonoBehaviour {
 
     public bool finishedMoving, doorClosed;
     private Animator screenAnimator, doorAnimator;
+    private AudioSource door_close;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,8 @@ public class ScreenMover : MonoBehaviour {
         doorClosed = false;
         screenAnimator = this.GetComponent<Animator>();
         doorAnimator = GameObject.Find("HiddenDoor").GetComponent<Animator>();
-	}
+        door_close = GameObject.Find("HiddenDoor").GetComponents<AudioSource>()[1];
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -30,6 +32,7 @@ public class ScreenMover : MonoBehaviour {
             {
                 doorClosed = true;
                 doorAnimator.SetBool("OpenDoor", false);
+                door_close.Play();
             }
         }
     }

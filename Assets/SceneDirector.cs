@@ -13,6 +13,7 @@ public class SceneDirector : MonoBehaviour {
     private float trektimelocal, hottimelocal = 1f;
     private int hoterator = 0;
     private bool tryload = false;
+    private bool preloadlevel, loadlevel = false;
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +41,28 @@ public class SceneDirector : MonoBehaviour {
         if (loadxeno)
             XenoTransition();
 	}
+
+    public void PreLoadLevel(string levelname)
+    {
+        StartCoroutine(LoadLevel(levelname));
+    }
+
+    IEnumerator LoadLevel(string levelname)
+    {
+        var async = SceneManager.LoadSceneAsync(levelname);
+        async.allowSceneActivation = false;
+
+        while (async.progress < .9f)
+        {
+            Debug.Log(async.progress);
+            yield return null;
+        }
+
+        while (!loadlevel)
+            yield return null;
+
+        async.allowSceneActivation = true;
+     }
     
     public void SetHot()
     {
@@ -63,19 +86,37 @@ public class SceneDirector : MonoBehaviour {
 
     private void TronTransition()
     {
-        SceneManager.LoadScene("TronTest", LoadSceneMode.Single);
+        //SceneManager.LoadScene("TronTest", LoadSceneMode.Single);
+        if (!preloadlevel)
+        {
+            preloadlevel = true;
+            StartCoroutine(LoadLevel("TronTest"));
+        }
+        loadlevel = true;
     }
 
     private void XenoTransition()
     {
-        SceneManager.LoadScene("Alienz", LoadSceneMode.Single);
+        //SceneManager.LoadScene("Alienz", LoadSceneMode.Single);
+        if (!preloadlevel)
+        {
+            preloadlevel = true;
+            StartCoroutine(LoadLevel("Alienz"));
+        }
+        loadlevel = true;
     }
 
     private void TrekTransition()
     {
+        if (!preloadlevel)
+        {
+            preloadlevel = true;
+            StartCoroutine(LoadLevel("Holodeck"));
+        }
         if (trektimelocal <= 0)
         {
-            SceneManager.LoadScene("Holodeck", LoadSceneMode.Single);
+            //SceneManager.LoadScene("Holodeck", LoadSceneMode.Single);
+            loadlevel = true;
         }
         else
         {
@@ -85,6 +126,11 @@ public class SceneDirector : MonoBehaviour {
 
     void HotTransition()
     {
+        if (!preloadlevel)
+        {
+            preloadlevel = true;
+            StartCoroutine(LoadLevel("OtherSceneTest"));
+        }
         if (hottimelocal <= 0)
         {
             if (hoterator < hottext.Count)
@@ -97,7 +143,8 @@ public class SceneDirector : MonoBehaviour {
         if (hoterator >= hottext.Count && !tryload)
         {
             tryload = true;
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            //SceneManager.LoadScene(1, LoadSceneMode.Single);
+            loadlevel = true;
         }
     }
 }

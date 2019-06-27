@@ -5,7 +5,9 @@ using UnityEngine;
 public class VendingButton : MonoBehaviour {
 
     public bool pushed;
+    public string level_name;
     private bool do_vending = false;
+    private SceneDirector scene_director;
     private float td, tp;
     public float trolley_delay, trolley_pause;
     public GameObject sauce_bottle;
@@ -13,6 +15,7 @@ public class VendingButton : MonoBehaviour {
     private Animator screenAnimator;
     private Animation trolley_animation;
     private Animation left_door_animation, right_door_animation;
+    private AudioSource screen_move_reverse;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +30,11 @@ public class VendingButton : MonoBehaviour {
 
         td = trolley_delay;
         tp = trolley_pause;
-	}
+
+        scene_director = GameObject.Find("SceneDirector").GetComponent<SceneDirector>();
+
+        screen_move_reverse = GameObject.Find("VendingScreen").GetComponentsInChildren<AudioSource>()[1];
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -61,6 +68,7 @@ public class VendingButton : MonoBehaviour {
             pushed = true;
             screenAnimator.SetBool("DoScreenMove", false);
 
+            screen_move_reverse.Play();
 
             GameObject sb = Instantiate(sauce_bottle);
             sb.transform.parent = GameObject.Find("SauceHolder").transform;
@@ -71,6 +79,7 @@ public class VendingButton : MonoBehaviour {
             tp = trolley_pause;
             do_vending = true;
 
+            //scene_director.PreLoadLevel(level_name);
         }
     }
 

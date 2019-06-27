@@ -22,6 +22,9 @@ public class ChopstickRotateOculus : MonoBehaviour
     public Grabbable right_target;
     public GameObject hand_anchor;
     private ChopstickShadowRotate my_shadow;
+    private AudioSource stickclick;
+
+    private bool play_click = false;
 
     // Use this for initialization
     void Start()
@@ -30,6 +33,7 @@ public class ChopstickRotateOculus : MonoBehaviour
         left_colliding = false;
         right_colliding = false;
         max_angle = 20;
+        stickclick = GetComponentInChildren<AudioSource>();
 
         switch (this.name)
         {
@@ -57,6 +61,9 @@ public class ChopstickRotateOculus : MonoBehaviour
 
         //Debug.Log("Left:" + left_colliding + " Right:" + right_colliding);
         //Debug.Log(grab_target);
+
+        //Debug.Log(rotate_angle);
+        Rotate();
 
         MoveChopsticks();
 
@@ -93,21 +100,35 @@ public class ChopstickRotateOculus : MonoBehaviour
             my_shadow.max_angle = max_angle;
         }
 
-        if (rotate_angle >= 8 && grab_target == null)
+        if (rotate_angle >= 7.5 && grab_target == null)
         {
             cant_grab = true;
         }
 
-        if (cant_grab && rotate_angle < 8)
+        if (cant_grab && rotate_angle < 7.5)
+        {
             cant_grab = false;
+        }
 
-        Rotate();
+        
 
     }
 
     void Rotate()
     {
         rotate_angle = Mathf.Clamp(14 * OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller) - 6,-10,max_angle);
+
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller) >= .9 && !grabbing && play_click)
+        {
+            stickclick.pitch = Random.Range(.8f, 1.1f);
+            stickclick.Play();
+            Debug.Log(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller));
+            play_click = false;
+        }
+
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller) < .9)
+            play_click = true;
+
         right_chopstick.transform.localEulerAngles = new Vector3(0, 0, rotate_angle);
     }
 

@@ -35,7 +35,7 @@ public class HexGrid : MonoBehaviour {
                     Vector3 v = new Vector3(transform.position.x + i * horizontal_spacing, transform.position.y + k * vertical_spacing + offset, transform.position.z);
                     GameObject t_Hex = GameObject.Instantiate(hex, v, hex.transform.rotation, this.transform);
                     t_Hex.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = (Random.Range(0, 1.0f) > .5f) ? glow_red : glow_blue;
-                    Debug.Log("I made it this far in the loop");
+                    //Debug.Log("I made it this far in the loop");
                     hex_num++;
                 }
             else
