@@ -50,7 +50,13 @@ public class TriggerScreen : MonoBehaviour {
         for (i = 1; i <= 9; i++)
         {
             string buttonName = "Button" + i;
-            GameObject.Find(buttonName).GetComponent<VendingButton>().pushed = false;
+            string buttonHolder = "Button" + i + "Holder";
+            if (GameObject.Find(buttonHolder))
+                GameObject.Find(buttonHolder).GetComponentInChildren<VendingButton>().pushed = false;
+            if (GameObject.Find(buttonName))
+                GameObject.Find(buttonName).GetComponent<VendingButton>().pushed = false;
+            Animator buttonAnim = GameObject.Find(buttonHolder).GetComponent<Animator>();
+            buttonAnim.SetBool("ButtonPress", false);
         }
     }
 }

@@ -12,7 +12,7 @@ public class VendingButton : MonoBehaviour {
     public float trolley_delay, trolley_pause;
     public GameObject sauce_bottle;
     private TrolleyAnimator trolleyAnimator;
-    private Animator screenAnimator;
+    private Animator screenAnimator, buttonAnimator;
     private Animation trolley_animation;
     private Animation left_door_animation, right_door_animation;
     private AudioSource screen_move_reverse;
@@ -21,6 +21,8 @@ public class VendingButton : MonoBehaviour {
 	void Start () {
         pushed = false;
         screenAnimator = GameObject.Find("VendingScreen").GetComponent<Animator>();
+
+        buttonAnimator = transform.parent.gameObject.GetComponent<Animator>();
 
         trolleyAnimator = GameObject.Find("TrackHolder").GetComponent<TrolleyAnimator>();
 
@@ -69,6 +71,11 @@ public class VendingButton : MonoBehaviour {
             screenAnimator.SetBool("DoScreenMove", false);
 
             screen_move_reverse.Play();
+
+            if (buttonAnimator)
+            {
+                buttonAnimator.SetBool("ButtonPress", true);
+            }
 
             GameObject sb = Instantiate(sauce_bottle);
             sb.transform.parent = GameObject.Find("SauceHolder").transform;
