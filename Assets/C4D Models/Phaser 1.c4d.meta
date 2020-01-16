@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: 4abd1297cce042c4aa26f4318124ddd0
-timeCreated: 1528948615
-licenseType: Free
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: Cap_1
     100002: Cap_1_2
@@ -36,6 +34,7 @@ ModelImporter:
     100056: Plane_1
     100058: Plane_2
     100060: Plane_2_2
+    100062: Spline
     400000: Cap_1
     400002: Cap_1_2
     400004: Cap_1_3
@@ -67,6 +66,7 @@ ModelImporter:
     400056: Plane_1
     400058: Plane_2
     400060: Plane_2_2
+    400062: Spline
     2300000: Cap_1
     2300002: Cap_1_2
     2300004: Cap_1_3
@@ -155,10 +155,37 @@ ModelImporter:
     4300054: Cap_2_7
     4300056: Cube_1
     9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: ee17b992003b33d4dbcf9208b09d4018, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat
+    second: {fileID: 2100000, guid: 7dc6e76b60968ac4f9f275dbbfcc619d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.1
+    second: {fileID: 2100000, guid: 2999f04f791a95d4fb866b6dfdd5d5e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.2
+    second: {fileID: 2100000, guid: 001b5764409867f449135602b61bd246, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 7b5cab19cc6faaf46a7b9996372b564d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -171,6 +198,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -195,6 +224,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
