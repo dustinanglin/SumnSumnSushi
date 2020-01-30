@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grabbable : MonoBehaviour {
 
-    private bool isGrabbed = false;
+    public bool isGrabbed = false;
     private Rigidbody object_rigid_body;
     private GameObject grabbing_parent;
     private ChopstickRotateOculus parent_info;

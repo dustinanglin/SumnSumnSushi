@@ -35,9 +35,12 @@ public class CoverInSauce : MonoBehaviour {
         {
             sushi.GetComponent<Saucable>().sauce_type = sauce_type;
 
-            foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
+            if (sauce_material)
             {
-                rend.material = sauce_material;
+                foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
+                {
+                    rend.material = sauce_material;
+                }
             }
 
             switch (sauce_type)
@@ -63,7 +66,8 @@ public class CoverInSauce : MonoBehaviour {
 
                 case "DartSauce":
                     //call dart function
-                    TransformToDart(sushi);
+                    //TransformToDart(sushi);
+                    TransformToMonster(sushi);
                     break;
 
                 default:
@@ -71,6 +75,17 @@ public class CoverInSauce : MonoBehaviour {
 
             }
         } 
+    }
+
+    private void TransformToMonster(GameObject sushi)
+    {
+        Instantiate((GameObject)Resources.Load("MonsterParts"), sushi.transform);
+        MonsterJump monster_temp = sushi.AddComponent<MonsterJump>();
+        monster_temp.jump_delay = 1;
+        monster_temp.jump_strength = 10;
+        monster_temp.jump_offset = new Vector3(0, .1f, 0);
+        monster_temp.force_radius = .5f;
+        monster_temp.do_jump = true;
     }
 
     private void TransformToDart(GameObject sushi)

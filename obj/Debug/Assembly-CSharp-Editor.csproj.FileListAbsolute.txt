@@ -78,8 +78,6 @@ E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.GoogleAudioSpatializer.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.Graphs.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.HoloLens.dll
-E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.iOS.Extensions.Common.dll
-E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.iOS.Extensions.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.Networking.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.Purchasing.dll
@@ -91,7 +89,6 @@ E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.Tree
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.UI.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.UIAutomation.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.VR.dll
-E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.WebGL.Extensions.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.WindowsStandalone.Extensions.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEngine.AccessibilityModule.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEngine.AIModule.dll
@@ -264,3 +261,7 @@ E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Edito
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Editor.csproj.CopyComplete
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Editor.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-Editor.pdb
+E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\Oculus.VR.Editor.pdb
+E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\Oculus.VR.Scripts.Editor.pdb
+E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\Oculus.VR.pdb
+E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml

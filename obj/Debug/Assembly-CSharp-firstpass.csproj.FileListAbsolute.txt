@@ -197,3 +197,6 @@ E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-first
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-firstpass.csproj.CopyComplete
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-firstpass.dll
 E:\Unity\Projects\Speed Up Project\SumnSumnSushi\obj\Debug\Assembly-CSharp-firstpass.pdb
+E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\Oculus.VR.Editor.pdb
+E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\Oculus.VR.Scripts.Editor.pdb
+E:\Unity\Projects\Speed Up Project\SumnSumnSushi\Temp\bin\Debug\Oculus.VR.pdb
