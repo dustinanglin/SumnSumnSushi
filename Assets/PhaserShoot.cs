@@ -76,12 +76,13 @@ public class PhaserShoot : MonoBehaviour {
                     sparking = true;
                     if (my_sparks)
                         Destroy(my_sparks);
-                    my_sparks = Instantiate(spark_fountain, hit_spot.point, Quaternion.FromToRotation(hit_spot.point, hit_spot.normal), null);
+                    my_sparks = Instantiate(spark_fountain, hit_spot.point, Quaternion.LookRotation(hit_spot.normal), null);
                 }
                 if (sparking)
                 {
                     my_sparks.transform.position = hit_spot.point;
-                    my_sparks.transform.rotation = Quaternion.FromToRotation(hit_spot.point, hit_spot.normal);
+                    my_sparks.transform.rotation = Quaternion.LookRotation(hit_spot.normal);
+                    Debug.DrawRay(hit_spot.point, hit_spot.normal, Color.red);
                 }
             }
         }
