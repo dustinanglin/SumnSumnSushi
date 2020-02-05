@@ -64,10 +64,14 @@ public class CoverInSauce : MonoBehaviour {
                     Debug.Log(trek_particles + "was created");
                     break;
 
-                case "DartSauce":
+                case "MonsterSauce":
                     //call dart function
                     //TransformToDart(sushi);
                     TransformToMonster(sushi);
+                    break;
+
+                case "SciFiSauce":
+                    LaunchSushi(sushi);
                     break;
 
                 default:
@@ -75,6 +79,15 @@ public class CoverInSauce : MonoBehaviour {
 
             }
         } 
+    }
+
+    private void LaunchSushi(GameObject sushi)
+    {
+        RocketSushi rocket_temp = sushi.AddComponent<RocketSushi>();
+        rocket_temp.acceleration_rate = .01f;
+        rocket_temp.pause_time = 3;
+        rocket_temp.shake_intensity = .0005f;
+        rocket_temp.shake_speed = 75;
     }
 
     private void TransformToMonster(GameObject sushi)

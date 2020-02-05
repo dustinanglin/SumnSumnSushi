@@ -6,6 +6,7 @@ public class TriggerTune : MonoBehaviour {
 
     private animate_pip pipAnimator;
     private RadioTune radioTuner;
+    public float tune_force;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,7 @@ public class TriggerTune : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude >= 2.5f)
+        if (collision.relativeVelocity.magnitude >= tune_force)
         {
             pipAnimator.do_animate = true;
             radioTuner.tune_new_audio = true;

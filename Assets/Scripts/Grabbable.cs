@@ -44,6 +44,7 @@ public class Grabbable : MonoBehaviour {
         grabbing_parent = parent_anchor;
         parent_info = parent_sticks.GetComponent<ChopstickRotateOculus>();
         object_rigid_body.isKinematic = true;
+        //object_rigid_body.interpolation
 
         
         this.gameObject.layer = 20;

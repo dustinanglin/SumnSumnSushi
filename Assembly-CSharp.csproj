@@ -126,6 +126,7 @@
     <Compile Include="Assets\ReparentSauce.cs" />
     <Compile Include="Assets\RightCollision.cs" />
     <Compile Include="Assets\Ringbell.cs" />
+    <Compile Include="Assets\RocketSushi.cs" />
     <Compile Include="Assets\RotateTransporter.cs" />
     <Compile Include="Assets\Saucable.cs" />
     <Compile Include="Assets\SaucePour.cs" />

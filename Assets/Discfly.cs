@@ -192,7 +192,9 @@ public class Discfly : MonoBehaviour {
         if (throwing)
         {
             transform.Translate(Vector3.ClampMagnitude(throw_dir,1) * Time.deltaTime * Mathf.Clamp(disc_speed * throw_velocity,0,max_throw_speed), Space.World);
-            
+            //GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.ClampMagnitude(throw_dir, 1) * Time.fixedDeltaTime * Mathf.Clamp(disc_speed * throw_velocity, 0, max_throw_speed));
+
+
             if (!slow_throw)
             {
                 instructions.SetInstructionText(3);
