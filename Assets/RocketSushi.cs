@@ -29,7 +29,7 @@ public class RocketSushi : MonoBehaviour {
         rocket_trail.SetActive(false);
 
         //explosion effects
-        explosion = (GameObject)Resources.Load("Single_Firework");
+        explosion = (GameObject)Resources.Load("Single_Firework_Blue");
 
         //sushi becomes zero g
         sushi_body = GetComponent<Rigidbody>();
