@@ -84,6 +84,7 @@
     <Compile Include="Assets\DoorAnimator.cs" />
     <Compile Include="Assets\DoorDelay.cs" />
     <Compile Include="Assets\DrawNormal.cs" />
+    <Compile Include="Assets\DuckFly.cs" />
     <Compile Include="Assets\ExitHolodeck.cs" />
     <Compile Include="Assets\FaceUser.cs" />
     <Compile Include="Assets\Foamhands.cs" />
