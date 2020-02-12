@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: 0d4d8be40d7f1b940a05b00f3ea20356
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Back_sight_left
+    100002: Back_sight_right
+    100004: Barrel
+    100006: Boole
+    100008: Buttom_body_Cylinder_6
+    100010: Cube_10
+    100012: Cube_11
+    100014: Cube_3
+    100016: Cube_4
+    100018: Cube_5
+    100020: Cube_6
+    100022: Cube_7
+    100024: Cube_8
+    100026: Cube_9
+    100028: Front_sight
+    100030: Handle
+    100032: Ridges
+    100034: Top_body
+    100036: Trigger
+    100038: Under_ridge
+    100040: //RootNode
+    400000: Back_sight_left
+    400002: Back_sight_right
+    400004: Barrel
+    400006: Boole
+    400008: Buttom_body_Cylinder_6
+    400010: Cube_10
+    400012: Cube_11
+    400014: Cube_3
+    400016: Cube_4
+    400018: Cube_5
+    400020: Cube_6
+    400022: Cube_7
+    400024: Cube_8
+    400026: Cube_9
+    400028: Front_sight
+    400030: Handle
+    400032: Ridges
+    400034: Top_body
+    400036: Trigger
+    400038: Under_ridge
+    400040: //RootNode
+    2100000: Mat.3
+    2100002: Mat.2
+    2100004: Mat.1
+    2100006: No Name
+    2300000: Back_sight_left
+    2300002: Back_sight_right
+    2300004: Barrel
+    2300006: Buttom_body_Cylinder_6
+    2300008: Cube_10
+    2300010: Cube_11
+    2300012: Cube_3
+    2300014: Cube_4
+    2300016: Cube_5
+    2300018: Cube_6
+    2300020: Cube_7
+    2300022: Cube_8
+    2300024: Cube_9
+    2300026: Front_sight
+    2300028: Handle
+    2300030: Top_body
+    2300032: Trigger
+    2300034: Under_ridge
+    3300000: Back_sight_left
+    3300002: Back_sight_right
+    3300004: Barrel
+    3300006: Buttom_body_Cylinder_6
+    3300008: Cube_10
+    3300010: Cube_11
+    3300012: Cube_3
+    3300014: Cube_4
+    3300016: Cube_5
+    3300018: Cube_6
+    3300020: Cube_7
+    3300022: Cube_8
+    3300024: Cube_9
+    3300026: Front_sight
+    3300028: Handle
+    3300030: Top_body
+    3300032: Trigger
+    3300034: Under_ridge
+    4300000: Trigger
+    4300002: Handle
+    4300004: Back_sight_left
+    4300006: Back_sight_right
+    4300008: Front_sight
+    4300010: Barrel
+    4300012: Under_ridge
+    4300014: Top_body
+    4300016: Cube_11
+    4300018: Cube_10
+    4300020: Cube_9
+    4300022: Cube_8
+    4300024: Cube_7
+    4300026: Cube_6
+    4300028: Cube_5
+    4300030: Cube_4
+    4300032: Cube_3
+    4300034: Buttom_body_Cylinder_6
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.001
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
