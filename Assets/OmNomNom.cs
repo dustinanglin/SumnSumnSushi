@@ -10,6 +10,7 @@ public class OmNomNom : MonoBehaviour {
     private GameObject nom1;
     private GameObject nom2;
     private GameObject paku_spot;
+    private GameObject DuckHuntDirector;
     public GameObject pakupaku;
     private bool showing_nom = false;
     public float countdown_time = 10;
@@ -26,6 +27,7 @@ public class OmNomNom : MonoBehaviour {
         nom2 = omNomText.transform.Find("Nom2").gameObject;
         paku_spot = omNomText.transform.Find("PakuPaku").gameObject;
         eat_pop = GetComponent<AudioSource>();
+        DuckHuntDirector = GameObject.Find("DuckHuntDirector");
         //Debug.Log(om.name + nom1.name + nom2.name);
      }
 	
@@ -102,6 +104,10 @@ public class OmNomNom : MonoBehaviour {
                         GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetTron();
                         break;
 
+                    case "TargetSauce":
+                        if(!DuckHuntDirector.GetComponent<DuckHunt>().isGameRunning())
+                            DuckHuntDirector.GetComponent<DuckHunt>().InitiateGame();
+                        break;
                     /*case "TrekSauce":
                         GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetTrek();
                         break;*/

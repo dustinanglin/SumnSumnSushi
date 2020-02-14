@@ -85,6 +85,7 @@
     <Compile Include="Assets\DoorDelay.cs" />
     <Compile Include="Assets\DrawNormal.cs" />
     <Compile Include="Assets\DuckFly.cs" />
+    <Compile Include="Assets\DuckHunt.cs" />
     <Compile Include="Assets\ExitHolodeck.cs" />
     <Compile Include="Assets\FaceUser.cs" />
     <Compile Include="Assets\Foamhands.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Assets\WelcomeSign.cs" />
     <Compile Include="Assets\WinDetector.cs" />
     <Compile Include="Assets\XenoAnimate.cs" />
+    <Compile Include="Assets\ZapperShoot.cs" />
     <None Include="Assets\Materials\Holodeck\TargetSphere.shader" />
     <None Include="Assets\Day-Night Skyboxes\readme.txt" />
     <None Include="Assets\Metaballs\MetaballShader.shader" />
