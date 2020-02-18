@@ -52,7 +52,7 @@ public class WinDetector : MonoBehaviour {
     {
         if (total_time <= 0)
         {
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            SceneManager.LoadScene("SushiHub");
         }
 
         if (ticker < (-1 * text_time))

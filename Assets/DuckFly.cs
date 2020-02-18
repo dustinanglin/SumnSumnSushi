@@ -71,7 +71,7 @@ public class DuckFly : MonoBehaviour {
 
     private void doFlyAway()
     {
-        animator.SetBool("fly_up", true);
+        animator.SetBool("duck_fly_away", true);
         x_vel = 0;
         y_vel = duck_speed * fall_speed;
 

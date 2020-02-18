@@ -113,7 +113,7 @@ public class SceneDirector : MonoBehaviour {
         if (!preloadlevel)
         {
             preloadlevel = true;
-            StartCoroutine(LoadLevel("TronTest"));
+            StartCoroutine(LoadLevel("Tron"));
         }
         loadlevel = true;
     }
@@ -152,7 +152,7 @@ public class SceneDirector : MonoBehaviour {
         if (!preloadlevel)
         {
             preloadlevel = true;
-            StartCoroutine(LoadLevel("OtherSceneTest"));
+            StartCoroutine(LoadLevel("SushiHot"));
         }
         if (hottimelocal <= 0)
         {

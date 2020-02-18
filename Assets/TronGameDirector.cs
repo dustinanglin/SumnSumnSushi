@@ -33,8 +33,8 @@ public class TronGameDirector : MonoBehaviour {
 
             if (end_time_delay >= 0)
                 end_time_delay -= Time.deltaTime;
-            else 
-                SceneManager.LoadScene(0, LoadSceneMode.Single);
+            else
+                SceneManager.LoadScene("SushiHub", LoadSceneMode.Single);
         }
 	}
 

@@ -33,7 +33,7 @@ public class ExitHolodeck : MonoBehaviour {
 
     IEnumerator LoadLevel()
     {
-        var async = SceneManager.LoadSceneAsync("Chopstick Test");
+        var async = SceneManager.LoadSceneAsync("SushiHub");
         async.allowSceneActivation = false;
 
         while (async.progress < .9f)

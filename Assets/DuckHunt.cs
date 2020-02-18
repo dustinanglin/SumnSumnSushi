@@ -12,6 +12,8 @@ public class DuckHunt : MonoBehaviour {
     private bool deadduck, duck_off_screen, gameover, play_endsound;
     private int shots_remaining;
     private GameObject duck, dog, left_zapper, right_zapper, chop_left, chop_left_shadow, chop_right, chop_right_shadow;
+    private SpriteRenderer shot_indicator;
+    private Sprite[] shots;
 
 	// Use this for initialization
 	void Start () {
@@ -23,8 +25,16 @@ public class DuckHunt : MonoBehaviour {
         chop_left = GameObject.Find("Chopsticks_Left");
         chop_left_shadow = GameObject.Find("Chopsticks_Left_Shadow");
 
+        shot_indicator = transform.Find("DuckHuntShots").GetComponent<SpriteRenderer>();
+
         end_sounds = GetComponents<AudioSource>();
         gameover = true;
+
+        shots = new Sprite[4];
+        shots[0] = Resources.Load<Sprite>("shots_0");
+        shots[1] = Resources.Load<Sprite>("shots_1");
+        shots[2] = Resources.Load<Sprite>("shots_2");
+        shots[3] = Resources.Load<Sprite>("shots_3");
 
         //InitiateGame();
     }
@@ -38,7 +48,16 @@ public class DuckHunt : MonoBehaviour {
             else if ((shots_remaining <=0 && duck_off_screen) || (deadduck && duck_off_screen))
                 EndGame();
         }
+        DebugControls();
 	}
+
+    private void DebugControls()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            DecrementShots();
+        }
+    }
 
     public void DuckIsDead()
     {
@@ -70,13 +89,16 @@ public class DuckHunt : MonoBehaviour {
         left_zapper.SetActive(true);
 
         right_zapper.GetComponent<ZapperShoot>().InitiateDuck(duck.GetComponent<DuckFly>());
-        right_zapper.GetComponent<ZapperShoot>().InitiateDuck(duck.GetComponent<DuckFly>());
+        left_zapper.GetComponent<ZapperShoot>().InitiateDuck(duck.GetComponent<DuckFly>());
 
         //disable chopsticks
         chop_left.SetActive(false);
         chop_left_shadow.SetActive(false);
         chop_right.SetActive(false);
         chop_right_shadow.SetActive(false);
+
+        //enable shots indicator
+        shot_indicator.gameObject.SetActive(true);
 
         //set inital game conditions
         shots_remaining = max_shots;
@@ -85,6 +107,7 @@ public class DuckHunt : MonoBehaviour {
         gameover = false;
         play_endsound = false;
         duck_off_screen = false;
+        shot_indicator.sprite = shots[shots_remaining];
 
         AnimationClip[] clips;
         clips = dog_peep.runtimeAnimatorController.animationClips;
@@ -95,6 +118,9 @@ public class DuckHunt : MonoBehaviour {
     public void DecrementShots()
     {
         shots_remaining--;
+        if (shots_remaining >= 0)
+            shot_indicator.sprite = shots[shots_remaining];
+        Debug.Log(shots_remaining);
     }
 
     public int ShotsRemaining()
@@ -143,6 +169,8 @@ public class DuckHunt : MonoBehaviour {
                 chop_left_shadow.SetActive(true);
                 chop_right.SetActive(true);
                 chop_right_shadow.SetActive(true);
+
+                shot_indicator.gameObject.SetActive(false);
 
                 Destroy(duck);
                 Destroy(dog);

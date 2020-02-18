@@ -25,7 +25,7 @@ public class ZapperShoot : MonoBehaviour {
         initial_trigger_distance = trigger.transform.localPosition.z;
 
         shoot = false;
-        reset = false;
+        reset = true;
 
         current_controller = this.name.Contains("Left") ? OVRInput.Controller.LTouch : OVRInput.Controller.RTouch;
         zapper_sound = GetComponent<AudioSource>();
@@ -78,19 +78,19 @@ public class ZapperShoot : MonoBehaviour {
         RaycastHit hit;
         Physics.Raycast(zapperCaster.transform.position, -1 * zapperCaster.transform.forward, out hit);
 
-        GameObject duck_maybe = hit.collider.gameObject;
-        Debug.Log(duck_maybe.name);
-
-        if (duck_maybe.name.Contains("Duck"))
+        if (hit.collider)
         {
-            duck_collider = duck_maybe.GetComponent<DuckFly>();
-            duck_collider.shot = true;
-        }
-        else
-        {
-            duck.ScareDuck();
+            GameObject duck_maybe = hit.collider.gameObject;
+            Debug.Log(duck_maybe.name);
+
+            if (duck_maybe.name.Contains("Duck"))
+            {
+                duck_collider = duck_maybe.GetComponent<DuckFly>();
+                duck_collider.shot = true;
+            }
         }
 
+        duck.ScareDuck();
         director.DecrementShots();
     }
 }
