@@ -74,6 +74,10 @@ public class CoverInSauce : MonoBehaviour {
                     LaunchSushi(sushi);
                     break;
 
+                case "DigitalSauce":
+                    DigitalTransformation(sushi);
+                    break;
+
                 default:
                     break;
 
@@ -100,6 +104,14 @@ public class CoverInSauce : MonoBehaviour {
         monster_temp.jump_offset = new Vector3(0, .1f, 0);
         monster_temp.force_radius = .5f;
         monster_temp.do_jump = true;
+    }
+
+    private void DigitalTransformation(GameObject sushi)
+    {
+        foreach (Transform child in sushi.transform)
+        {
+            child.gameObject.AddComponent<MeshSquare>().emission_multiplier = 3;
+        }
     }
 
     private void TransformToDart(GameObject sushi)

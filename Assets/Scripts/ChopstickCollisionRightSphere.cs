@@ -17,7 +17,7 @@ public class ChopstickCollisionRightSphere : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
-        //Debug.Log("Trigger with:" + collision.gameObject);
+        Debug.Log("Trigger with:" + collision.gameObject);
 
         if (collision.gameObject.GetComponent<Grabbable>() != null && my_sticks.grabbing == false)
         {
@@ -31,11 +31,13 @@ public class ChopstickCollisionRightSphere : MonoBehaviour {
         }
     }
 
+
+
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.GetComponent<Grabbable>() != null && my_sticks.grabbing == false)
         {
-            //Debug.Log("Collided ended with:" + collision.gameObject.name);
+            Debug.Log("Collided ended with:" + collision.gameObject.name);
             my_sticks.right_target = null;
         }
         else if (collision.gameObject.GetComponentInParent<Grabbable>() != null && my_sticks.grabbing == false)

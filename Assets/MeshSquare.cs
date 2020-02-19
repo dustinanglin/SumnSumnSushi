@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class MeshSquare : MonoBehaviour
 {
-    public GameObject mesh_object;
+    private MeshFilter mesh_object;
     public Vector3 dimensions;
     private Mesh mesh, CubeMesh;
-    public bool use_mesh;
+    private ParticleSystem.EmissionModule emitter;
+    private bool use_mesh;
+    public float emission_multiplier;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,22 @@ public class MeshSquare : MonoBehaviour
         verts[3] = new Vector3(1, -1);
         verts[4] = new Vector3(-1, -1);*/
 
+        GetComponent<Renderer>().material = Resources.Load("DigitalMat") as Material;
         mesh.name = "Custom Mesh";
+        if (!this.name.Contains("Sphere"))
+        {
+            GameObject particle_object = Instantiate((GameObject)Resources.Load("OutlineParticles"), transform.position, transform.rotation, transform);
+            ParticleSystem particles = particle_object.GetComponent<ParticleSystem>();
+            ParticleSystem.ShapeModule shape = particles.shape;
+            shape.meshRenderer = GetComponent<MeshRenderer>();
+            emitter = particle_object.GetComponent<ParticleSystem>().emission;
+            use_mesh = true;
+        }
+        else
+        {
+            use_mesh = false;
+        }
+
 
     }
 
@@ -32,10 +50,10 @@ public class MeshSquare : MonoBehaviour
     {
         if (use_mesh)
             UseMesh();
-        else
-            SquareFromDimensions();
+        //else
+           // SquareFromDimensions();
 
-        GetComponent<MeshFilter>().mesh = mesh;
+        //GetComponent<MeshFilter>().mesh = mesh;
     }
 
     private void SquareFromDimensions()
@@ -64,12 +82,15 @@ public class MeshSquare : MonoBehaviour
 
     private void UseMesh()
     {
-        CubeMesh = mesh_object.GetComponent<MeshFilter>().mesh;
+        /*CubeMesh = mesh_object.mesh;
+
+        //Debug.Log("Mesh # of verts: " + mesh.vertices.Length);
 
         Vector3[] verts = new Vector3[CubeMesh.vertices.Length + 1];
         CubeMesh.vertices.CopyTo(verts, 0);
         verts[CubeMesh.vertices.Length] = verts[0];
 
-        mesh.vertices = verts;
+        mesh.vertices = verts;*/
+        emitter.rateOverTime = GetComponent<MeshFilter>().mesh.vertices.Length * emission_multiplier;
     }
 }

@@ -65,6 +65,7 @@ public class ChopstickRotateOculus : MonoBehaviour
         //Debug.Log(grab_target);
 
         //Debug.Log(rotate_angle);
+        //Debug.Log(max_angle);
         Rotate();
 
         MoveChopsticks();
@@ -76,6 +77,7 @@ public class ChopstickRotateOculus : MonoBehaviour
                 grab_target = left_target;
                 max_angle = rotate_angle;
                 my_shadow.max_angle = max_angle;
+                Debug.Log("Grab Target Set to:" + left_target);
             }
         }
 
@@ -85,24 +87,26 @@ public class ChopstickRotateOculus : MonoBehaviour
             grab_target.GrabBegin(hand_anchor, this.gameObject);
             pickup.pitch = Random.Range(1.5f, 2f);
             pickup.Play();
-            //Debug.Log("Begin grab");
+            Debug.Log("Begin grab");
             //max_angle = rotate_angle;
         }
-        else if (rotate_angle <= -1 && grabbing)
+        else if (rotate_angle < (max_angle) && grabbing)
         {
             grabbing = false;
             grab_target.GrabEnd();
-            //Debug.Log("Begin end");
+            Debug.Log("Begin end");
             grab_target = null;
             left_target = null;
             right_target = null;
-        }
-
-        if (rotate_angle <= -1)
-        {
             max_angle = 20;
             my_shadow.max_angle = max_angle;
         }
+
+        /*if (rotate_angle <= -1)
+        {
+            max_angle = 20;
+            my_shadow.max_angle = max_angle;
+        }*/
 
         if (rotate_angle >= 8 && grab_target == null)
         {
