@@ -93,6 +93,7 @@
     <Compile Include="Assets\FollowTheBall.cs" />
     <Compile Include="Assets\GenerateSpheres.cs" />
     <Compile Include="Assets\GenerateTrek.cs" />
+    <Compile Include="Assets\GodzillaDirector.cs" />
     <Compile Include="Assets\GunFire.cs" />
     <Compile Include="Assets\HexExplode.cs" />
     <Compile Include="Assets\HexExplodePitch.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Assets\PointBallMover.cs" />
     <Compile Include="Assets\RadarDoppler.cs" />
     <Compile Include="Assets\RadioTune.cs" />
+    <Compile Include="Assets\RecenterPose.cs" />
     <Compile Include="Assets\ReparentSauce.cs" />
     <Compile Include="Assets\RightCollision.cs" />
     <Compile Include="Assets\Ringbell.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="Assets\shownormals.cs" />
     <Compile Include="Assets\SoundWarp.cs" />
     <Compile Include="Assets\SuperHotColorScheme.cs" />
+    <Compile Include="Assets\TankAI.cs" />
     <Compile Include="Assets\ThrowSpeed.cs" />
     <Compile Include="Assets\TimeManipulator.cs" />
     <Compile Include="Assets\TrackAchievements.cs" />
