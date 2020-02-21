@@ -148,7 +148,7 @@ public class AlienEvents : MonoBehaviour {
     IEnumerator LoadLevel()
     {
         Debug.Log("LoadingLevel");
-        var async = SceneManager.LoadSceneAsync("Chopstick Test");
+        var async = SceneManager.LoadSceneAsync("SushiHub");
         async.allowSceneActivation = false;
 
         while (async.progress < .9f)
