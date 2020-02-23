@@ -110,6 +110,39 @@ public class Grabbable : MonoBehaviour {
         }
     }
 
+    public void GrabEnd(bool destroyed)
+    {
+        if (this)
+        {
+            isGrabbed = false;
+            this.gameObject.layer = 0;
+            if (transform.childCount > 0)
+                foreach (GameObject child in children)
+                {
+                    child.layer = 0;
+                }
+
+            /*OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(parent_info.current_controller), orientation = OVRInput.GetLocalControllerRotation(parent_info.current_controller) };
+            OVRPose offsetPose = new OVRPose { position = grab_offset_pos, orientation = grab_offset_rot};
+            localPose = localPose * offsetPose;
+
+            OVRPose trackingSpace = grabbing_parent.transform.ToOVRPose() * localPose.Inverse();
+            Vector3 linearVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(parent_info.current_controller);
+            Vector3 angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(parent_info.current_controller);
+
+           */
+            /*Debug.Log("At time of release:");
+            Debug.Log(linear_velocity);
+            Debug.Log(angular_velocity);*/
+
+            object_rigid_body.isKinematic = false;
+            object_rigid_body.velocity = prev_linear_velocity * 1.5f;
+            object_rigid_body.angularVelocity = prev_angular_velocity;
+            parent_info.grabbing_destroyed = destroyed;
+            grabbing_parent = null;
+        }
+    }
+
     void GrabMove()
     {
         Vector3 newPos = grabbing_parent.transform.position + grabbing_parent.transform.rotation * grab_offset_pos;

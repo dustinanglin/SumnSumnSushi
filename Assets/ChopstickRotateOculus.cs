@@ -17,6 +17,7 @@ public class ChopstickRotateOculus : MonoBehaviour
     public bool right_colliding;
     public bool grabbing = false;
     public bool cant_grab = false;
+    public bool grabbing_destroyed = false;
     public Grabbable grab_target;
     public Grabbable left_target;
     public Grabbable right_target;
@@ -90,10 +91,13 @@ public class ChopstickRotateOculus : MonoBehaviour
             Debug.Log("Begin grab");
             //max_angle = rotate_angle;
         }
-        else if (rotate_angle < (max_angle) && grabbing)
+        else if ((rotate_angle < (max_angle) && grabbing )|| grabbing_destroyed)
         {
+            my_shadow.PauseCollisions();
             grabbing = false;
-            grab_target.GrabEnd();
+            grabbing_destroyed = false;
+            if (grab_target)
+                grab_target.GrabEnd();
             Debug.Log("Begin end");
             grab_target = null;
             left_target = null;

@@ -6,29 +6,34 @@ public class ChopstickShadowRotate : MonoBehaviour {
 
 
     private Vector3 pivot_point;
+    public float pause_time;
     private GameObject left_chopstick;
     private GameObject right_chopstick;
     private GameObject right_actual, left_actual;
     private OVRInput.Controller current_controller;
-    private float rotate_angle;
+    private float rotate_angle, pause_timer;
     public float max_angle;
     public float min_angle;
     public float chopstick_speed;
     public bool left_colliding;
     public bool right_colliding;
     public bool grabbing = false;
+    private bool pause_collision = false;
     public Grabbable grab_target;
     public Grabbable left_target;
     public Grabbable right_target;
     private GameObject hand_anchor;
+    private CapsuleCollider[] colliders;
 
     // Use this for initialization
     void Start()
     {
         left_chopstick = this.transform.Find("Left").gameObject;
         right_chopstick = this.transform.Find("Right").gameObject;
+        colliders = GetComponentsInChildren<CapsuleCollider>();
         
         max_angle = 20;
+        pause_timer = pause_time;
 
         switch (this.name)
         {
@@ -57,7 +62,32 @@ public class ChopstickShadowRotate : MonoBehaviour {
 
         MoveChopsticks();
         Rotate();
+        if (pause_collision)
+            DoPause();
 
+    }
+
+    public void PauseCollisions()
+    {
+        pause_collision = true;
+        pause_timer = pause_time;
+    }
+
+    private void DoPause()
+    {
+        Debug.Log("Doing Pause");
+        if (pause_timer >= 0)
+        {
+            pause_timer -= Time.deltaTime;
+            foreach (CapsuleCollider collider in colliders)
+                collider.enabled = false;
+        }
+        else
+        {
+            pause_collision = false;
+            foreach (CapsuleCollider collider in colliders)
+                collider.enabled = true;
+        }
     }
 
     void Rotate()

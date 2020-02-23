@@ -81,6 +81,7 @@ public class OmNomNom : MonoBehaviour {
         if (colliding_object.GetComponent<Grabbable>() != null)
         {
             string ishot = colliding_object.tag;
+            colliding_object.GetComponent<Grabbable>().GrabEnd(true);
             Destroy(colliding_object);
             Debug.Log("Fish ate!");
 
