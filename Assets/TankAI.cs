@@ -29,7 +29,7 @@ public class TankAI : MonoBehaviour
 
         Vector3 toAimPointGun = AimPoint.position - Canon.position;
         pitch = Mathf.Clamp(Vector3.SignedAngle(-Canon_initial.forward, Vector3.ProjectOnPlane(toAimPointGun, Canon_initial.right), Canon_initial.right), -gun_pitch_limit,gun_pitch_limit);
-        Debug.Log(Vector3.SignedAngle(-Canon_initial.forward, Vector3.ProjectOnPlane(toAimPointGun, Canon_initial.right), Canon_initial.right));
+        //Debug.Log(Vector3.SignedAngle(-Canon_initial.forward, Vector3.ProjectOnPlane(toAimPointGun, Canon_initial.right), Canon_initial.right));
  
 
         Canon.rotation = Quaternion.Slerp(Canon.rotation,Canon_initial.rotation * Quaternion.AngleAxis(pitch, Vector3.right),aim_speed);

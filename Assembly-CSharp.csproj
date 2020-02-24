@@ -124,6 +124,7 @@
     <Compile Include="Assets\PhaserDetectorHit.cs" />
     <Compile Include="Assets\PhaserGame.cs" />
     <Compile Include="Assets\PhaserShoot.cs" />
+    <Compile Include="Assets\PlaneFly.cs" />
     <Compile Include="Assets\PointBallMover.cs" />
     <Compile Include="Assets\RadarDoppler.cs" />
     <Compile Include="Assets\RadioTune.cs" />
