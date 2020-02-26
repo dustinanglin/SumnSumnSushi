@@ -24,7 +24,7 @@ public class fpsdisplay : MonoBehaviour
 	
 	void Start()
 	{
-		if( !GetComponent<Text>() )
+		if( !GetComponent<TextMesh>() )
 		{
 			Debug.Log("UtilityFramesPerSecond needs a GUIText component!");
 			enabled = false;
@@ -45,15 +45,15 @@ public class fpsdisplay : MonoBehaviour
 			// display two fractional digits (f2 format)
 			float fps = accum/frames;
 			string format = System.String.Format("{0:F2} FPS",fps);
-			GetComponent<Text>().text = format;
+			GetComponent<TextMesh>().text = format;
 			
-			if(fps < 30)
+			/*if(fps < 30)
 				GetComponent<Text>().material.color = Color.yellow;
 			else 
 				if(fps < 10)
 					GetComponent<Text>().material.color = Color.red;
 			else
-				GetComponent<Text>().material.color = Color.green;
+				GetComponent<Text>().material.color = Color.green;*/
 			//	DebugConsole.Log(format,level);
 			timeleft = updateInterval;
 			accum = 0.0F;
