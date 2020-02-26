@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_scenes/SushiHub.unity
+- path: Assets/_scenes/PrefabLab.unity
   isLoaded: 1
   isActive: 1
