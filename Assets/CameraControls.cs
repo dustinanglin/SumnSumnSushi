@@ -7,9 +7,10 @@ public class CameraControls : MonoBehaviour
 {
     private OVRInput.Controller ControllingHand;
     private RenderTexture renderTexture;
-    public AnimationCurve focalsize, aperture, focallength, focusrange;
+    public AnimationCurve focalsize, aperture, focallength, shutter_animation, zoom_text_curve;
     public GameObject Hand, SceneCamera, DSLRCameraPreview, Photospot;
-    private Transform Cube, ShutterMask;
+    private TextMesh ZoomText;
+    private Transform Cube, ShutterMask, FocusArea, RaycastSpot;
     private float zoom, focus, initial_amount, l_z, l_f, screenshot_time_local, mask_lerp;
     private Vector3 initial;
     private bool zooming, focusing, zoomreset, focusreset, screenshot, screenshotreset;
@@ -22,6 +23,11 @@ public class CameraControls : MonoBehaviour
     {
         Camera = SceneCamera.GetComponent<Camera>();
         DepthOfField = SceneCamera.GetComponent<DepthOfField>();
+
+        FocusArea = GameObject.Find("FocusZone").transform;
+        RaycastSpot = transform.Find("RaycastSpot");
+
+        ZoomText = transform.Find("ZoomText").GetComponent<TextMesh>();
 
         renderTexture = Camera.targetTexture;
 
@@ -46,7 +52,7 @@ public class CameraControls : MonoBehaviour
         screenshotreset = true;
 
         Cube = transform.Find("DirectionCube");
-        ShutterMask = transform.Find("ShutterMask");
+        ShutterMask = transform.Find("Shutter");
 
         mask_lerp = 0;
 
@@ -74,8 +80,25 @@ public class CameraControls : MonoBehaviour
         else
             screenshotreset = true;
 
+        CastRays();
 
         transform.localRotation = Quaternion.Euler(0, 0, DSLRCameraPreview.transform.eulerAngles.z);
+
+        FocusArea.localPosition = new Vector3(0, FocusArea.localPosition.y, DepthOfField.focalLength - .5f);
+    }
+
+    private void CastRays()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(RaycastSpot.position, RaycastSpot.forward);
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            Debug.Log("Ray hit: " + hit.collider.name);
+            Debug.DrawLine(RaycastSpot.position, hit.point, Color.green);
+        }
+        else
+            Debug.DrawLine(RaycastSpot.position, RaycastSpot.forward * 100,Color.red);
+
     }
 
 
@@ -85,13 +108,14 @@ public class CameraControls : MonoBehaviour
         {
             screenshotreset = false;
             screenshot_time_local = screenshot_time;
-            initial = ShutterMask.localScale;
+            //initial = ShutterMask.localScale;
+            initial = ShutterMask.localPosition;
             mask_lerp = 0;
         }
 
         if (screenshot_time_local >= 0)
         {
-            if (screenshot_time_local > screenshot_time / 2.0f)
+            /*if (screenshot_time_local > screenshot_time / 2.0f)
             {
                 ShutterMask.localScale = Vector3.Lerp(initial, new Vector3(0, 0, 0), mask_lerp);
                 mask_lerp += Time.deltaTime * 1 / (screenshot_time / 2.0f);
@@ -104,13 +128,17 @@ public class CameraControls : MonoBehaviour
                 mask_lerp -= Time.deltaTime * 1 / (screenshot_time / 2.0f);
                 Debug.Log(mask_lerp);
                 //ShutterMask.localScale = new Vector3(ShutterMask.localScale.x + (Time.deltaTime * 10) / (screenshot_time / 2), ShutterMask.localScale.y + (Time.deltaTime * 10) / (screenshot_time / 2), ShutterMask.localScale.z);
-            }
+            }*/
+            var normalized_time = (screenshot_time - screenshot_time_local) / screenshot_time;
+            Debug.Log(normalized_time);
+            ShutterMask.localPosition = new Vector3(0, shutter_animation.Evaluate(normalized_time),0);
 
             screenshot_time_local -= Time.deltaTime;
         }
         else
         {
-            ShutterMask.localScale = initial;
+            //ShutterMask.localScale = initial;
+            ShutterMask.localPosition = initial;
             screenshot = false;
         }
 
@@ -138,9 +166,13 @@ public class CameraControls : MonoBehaviour
         zoom = Mathf.Clamp(initial_amount + l_z * zoom_speed,5,90);
         Camera.fieldOfView = zoom;
         var normalized_zoom = zoom / 90;
+
         DepthOfField.focalSize = focalsize.Evaluate(normalized_zoom);
         DepthOfField.aperture = aperture.Evaluate(normalized_zoom);
         DepthOfField.focalLength = focallength.Evaluate(normalized_zoom) + focus;
+
+        ZoomText.text = "Z" + Mathf.Round(zoom_text_curve.Evaluate(1-normalized_zoom)).ToString();
+
         Debug.Log(Vector3.SignedAngle(Cube.up, Vector3.ProjectOnPlane(Hand.transform.right, transform.forward), transform.forward));  
     }
 
