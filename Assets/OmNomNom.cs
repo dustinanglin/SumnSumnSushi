@@ -22,14 +22,24 @@ public class OmNomNom : MonoBehaviour {
     // Use this for initialization
     void Start () {
         omNomText = GameObject.Find("OmNomText");
-        om = omNomText.transform.Find("Om").gameObject;
-        nom1 = omNomText.transform.Find("Nom1").gameObject;
-        nom2 = omNomText.transform.Find("Nom2").gameObject;
-        paku_spot = omNomText.transform.Find("PakuPaku").gameObject;
+        if (GameObject.Find("Om"))
+            om = omNomText.transform.Find("Om").gameObject;
+
+        if (GameObject.Find("Nom1"))
+            nom1 = omNomText.transform.Find("Nom1").gameObject;
+
+        if (GameObject.Find("Nom2"))
+            nom2 = omNomText.transform.Find("Nom2").gameObject;
+
+        if (GameObject.Find("PakuPaku"))
+            paku_spot = omNomText.transform.Find("PakuPaku").gameObject;
+
+        if (GameObject.Find("DuckHuntDirector"))
+            DuckHuntDirector = GameObject.Find("DuckHuntDirector");
+
         eat_pop = GetComponent<AudioSource>();
-        DuckHuntDirector = GameObject.Find("DuckHuntDirector");
         //Debug.Log(om.name + nom1.name + nom2.name);
-     }
+    }
 	
 	// Update is called once per frame
 	void Update () {

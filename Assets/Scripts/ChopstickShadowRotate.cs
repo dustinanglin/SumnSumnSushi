@@ -75,7 +75,7 @@ public class ChopstickShadowRotate : MonoBehaviour {
 
     private void DoPause()
     {
-        Debug.Log("Doing Pause");
+        //Debug.Log("Doing Pause");
         if (pause_timer >= 0)
         {
             pause_timer -= Time.deltaTime;
