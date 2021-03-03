@@ -187,6 +187,7 @@
     <Compile Include="Assets\TrolleyAnimator.cs" />
     <Compile Include="Assets\TronBladeGlow.cs" />
     <Compile Include="Assets\TronGameDirector.cs" />
+    <Compile Include="Assets\UseMask.cs" />
     <Compile Include="Assets\VendingButton.cs" />
     <Compile Include="Assets\VignetteControl.cs" />
     <Compile Include="Assets\WallAnimate.cs" />
@@ -209,6 +210,7 @@
     <None Include="Assets\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />
     <None Include="Assets\3DTextShader.shader" />
     <None Include="Assets\SauceParticleTemplate.shader" />
+    <None Include="Assets\ObjectMask.shader" />
     <None Include="Assets\Materials\Holodeck\AnimatedBeam.shader" />
     <None Include="Assets\ShaderForge\Example Assets\Shaders\LightWrapping.shader" />
     <None Include="Assets\OutlineSprite.shader" />
