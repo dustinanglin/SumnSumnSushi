@@ -66,6 +66,7 @@
     <Compile Include="Assets\AnimateBurst.cs" />
     <Compile Include="Assets\AttachBody.cs" />
     <Compile Include="Assets\BellTriggers.cs" />
+    <Compile Include="Assets\BlackOut.cs" />
     <Compile Include="Assets\Bloodcontrol.cs" />
     <Compile Include="Assets\BoatDestroyer.cs" />
     <Compile Include="Assets\BoatGenerator.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\DoorAnimator.cs" />
     <Compile Include="Assets\DoorDelay.cs" />
     <Compile Include="Assets\DrawNormal.cs" />
+    <Compile Include="Assets\DrawRayToSun.cs" />
     <Compile Include="Assets\DuckFly.cs" />
     <Compile Include="Assets\DuckHunt.cs" />
     <Compile Include="Assets\ExitHolodeck.cs" />

@@ -54,7 +54,14 @@ public class Grabbable : MonoBehaviour {
         //set relative position offset
         Vector3 relPos = this.transform.position - grabbing_parent.transform.position;
         relPos = Quaternion.Inverse(grabbing_parent.transform.rotation) * relPos;
-        grab_offset_pos = relPos;
+
+        if (this.name.Contains("Sun"))
+        {
+            grab_offset_pos = Quaternion.Inverse(grabbing_parent.transform.rotation) * (parent_sticks.transform.Find("Left_chR/ClickSpot/SunSpot").transform.position - grabbing_parent.transform.position);
+            Debug.Log("Special Sun Grab");
+        }
+        else
+            grab_offset_pos = relPos;
 
         //set relative rotation offset
         Quaternion relRot = Quaternion.Inverse(grabbing_parent.transform.rotation) * this.transform.rotation;
