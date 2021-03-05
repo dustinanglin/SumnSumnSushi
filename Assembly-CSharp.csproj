@@ -124,6 +124,7 @@
     <Compile Include="Assets\Metaballs\RotateCamera.cs" />
     <Compile Include="Assets\MonsterJump.cs" />
     <Compile Include="Assets\MotionTrack.cs" />
+    <Compile Include="Assets\MushaShake.cs" />
     <Compile Include="Assets\OmNomNom.cs" />
     <Compile Include="Assets\PhaserDetectorHit.cs" />
     <Compile Include="Assets\PhaserGame.cs" />

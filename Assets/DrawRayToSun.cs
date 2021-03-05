@@ -9,6 +9,7 @@ public class DrawRayToSun : MonoBehaviour
     public GameObject trackingSphere;
     public GameObject playerHead;
     public GameObject grabSpot;
+
     private bool popped;
     public float distance = 1f;
 
@@ -26,6 +27,7 @@ public class DrawRayToSun : MonoBehaviour
         //Debug.DrawRay(trackingSphere.transform.position, trackingSphere.transform.forward * -1, Color.blue);
         if (trackingSphere.GetComponent<Grabbable>().isGrabbed == false)
         {
+            this.transform.position = playerHead.transform.position;
             trackingSphere.transform.localPosition = new Vector3(0, 0, distance * -1);
             trackingSphere.transform.rotation = this.transform.rotation;
             trackingSphere.GetComponent<BlackOut>().turn_lights_on();
@@ -35,7 +37,7 @@ public class DrawRayToSun : MonoBehaviour
         }
         else
         {
-            trackingSphere.transform.rotation = Quaternion.LookRotation(playerHead.transform.position - trackingSphere.transform.position);
+            //trackingSphere.transform.rotation = Quaternion.LookRotation(playerHead.transform.position - trackingSphere.transform.position);
             trackingSphere.GetComponent<BlackOut>().turn_lights_out();
             trackingSphere.GetComponent<MeshRenderer>().enabled = true;
             trackingSphere.transform.Find("SunGlow").gameObject.SetActive(true);

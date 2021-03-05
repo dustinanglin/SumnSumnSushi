@@ -98,10 +98,13 @@ public class OmNomNom : MonoBehaviour {
             eat_pop.pitch = Random.Range(1f, 2f);
             eat_pop.Play();
 
+   
+            string sauce_type = "";
+
             if (colliding_object.GetComponent<Saucable>())
-            {
-                string sauce_type = colliding_object.GetComponent<Saucable>().sauce_type;
-                switch (sauce_type)
+                sauce_type = colliding_object.GetComponent<Saucable>().sauce_type;
+
+            switch (sauce_type)
                 {
                     case "HotSauce":
                         GameObject.Find("SceneDirector").GetComponent<SceneDirector>().SetHot();
@@ -128,7 +131,6 @@ public class OmNomNom : MonoBehaviour {
                             ShowOmNom();
                     break;
                 }
-            }
         }
     }
 

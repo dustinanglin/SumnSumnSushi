@@ -118,7 +118,7 @@ public class PlaneFly : MonoBehaviour
                     //transform.rotation = Quaternion.LookRotation(transform.position - AimPoint.position, transform.up);
                     begin_rot = transform.rotation;
 
-                    Debug.Log("Do Look At");
+                    //Debug.Log("Do Look At");
                 }
             }
         }
@@ -140,8 +140,8 @@ public class PlaneFly : MonoBehaviour
             }
             //l_r = Mathf.Floor(l_r);
                 //Mathf.MoveTowards(l_r, -angle * angle_modifier, lerp_speed);
-            Debug.Log("Angle:" + angle);
-            Debug.Log("l_r:" + l_r);
+           // Debug.Log("Angle:" + angle);
+           // Debug.Log("l_r:" + l_r);
 
             ////l_r = -angle * 3f; //Mathf.Lerp(l_r,-angle,Time.deltaTime);
             ////Debug.Log();
@@ -165,7 +165,7 @@ public class PlaneFly : MonoBehaviour
 
     private void DoPitch(float t_pitch)
     {
-        Debug.Log("Do Pitch");
+        //Debug.Log("Do Pitch");
         //Debug.Log(l_p);
         if (l_p < t_pitch)
         {
@@ -177,7 +177,7 @@ public class PlaneFly : MonoBehaviour
 
     private void DoRoll(float t_roll)
     {
-        Debug.Log("Do Roll");
+       // Debug.Log("Do Roll");
         //Debug.Log(l_r);
         if (l_r < t_roll)
         {
