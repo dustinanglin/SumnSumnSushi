@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class OmNomNom : MonoBehaviour {
@@ -95,7 +96,11 @@ public class OmNomNom : MonoBehaviour {
             Destroy(colliding_object);
             Debug.Log("Fish ate!");
 
-            eat_pop.pitch = Random.Range(1f, 2f);
+            if (SceneManager.GetActiveScene().name.Contains("Godzilla"))
+                eat_pop.pitch = Random.Range(1f, 1.3f);
+            else
+                eat_pop.pitch = Random.Range(1f, 2f);
+
             eat_pop.Play();
 
    

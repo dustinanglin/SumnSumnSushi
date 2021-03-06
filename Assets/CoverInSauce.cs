@@ -26,6 +26,11 @@ public class CoverInSauce : MonoBehaviour {
         {
             SetSushiSauce(other);
         }
+        else if (other.GetComponentInChildren<Saucable>())
+        {
+            foreach (Transform child in other.transform)
+                SetSushiSauce(child.gameObject);
+        }
     }
 
     private void SetSushiSauce(GameObject sushi)
