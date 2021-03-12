@@ -9,14 +9,31 @@ public class CoverInSauce : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        sauce_material = this.GetComponentInParent<SauceType>().sauced_sushi_material;
-        sauce_type = this.GetComponentInParent<SauceType>().sauce_type;
+        if (this.name.Contains("Dish"))
+        {
+            sauce_material = this.GetComponent<SauceType>().sauced_sushi_material;
+            sauce_type = this.GetComponent<SauceType>().sauce_type;
+        }
+        else
+        {
+            sauce_material = this.GetComponentInParent<SauceType>().sauced_sushi_material;
+            sauce_type = this.GetComponentInParent<SauceType>().sauce_type;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (this.name.Contains("Dish"))
+        {
+            sauce_material = this.GetComponent<SauceType>().sauced_sushi_material;
+            sauce_type = this.GetComponent<SauceType>().sauce_type;
+        }
+        else
+        {
+            sauce_material = this.GetComponentInParent<SauceType>().sauced_sushi_material;
+            sauce_type = this.GetComponentInParent<SauceType>().sauce_type;
+        }
+    }
 
     private void OnParticleCollision(GameObject other)
     {
@@ -29,7 +46,27 @@ public class CoverInSauce : MonoBehaviour {
         else if (other.GetComponentInChildren<Saucable>())
         {
             foreach (Transform child in other.transform)
-                SetSushiSauce(child.gameObject);
+            {
+                if (child.name.Contains("Dish"))
+                {
+                    SetDishSauce(child.gameObject);
+                    Debug.Log("Dish Sauce Set");
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+
+        if (other.gameObject.GetComponent<Saucable>())
+        {
+            SetSushiSauce(other.gameObject);
+        }
+        else if (other.gameObject.GetComponentInParent<Saucable>())
+        {
+            SetSushiSauce(other.gameObject.transform.parent.gameObject);
         }
     }
 
@@ -88,6 +125,65 @@ public class CoverInSauce : MonoBehaviour {
 
             }
         } 
+    }
+
+    private void SetDishSauce(GameObject dish_sauce)
+    {
+        if (dish_sauce.GetComponent<Saucable>().sauce_type != sauce_type)
+        {
+            dish_sauce.GetComponent<Saucable>().sauce_type = sauce_type;
+            dish_sauce.GetComponent<SauceType>().sauce_type = sauce_type;
+            dish_sauce.GetComponent<SauceType>().sauced_sushi_material = sauce_material;
+
+            if (sauce_material)
+            {
+                foreach (Renderer rend in dish_sauce.GetComponentsInChildren<Renderer>())
+                {
+                    rend.material = sauce_material;
+                }
+            }
+
+            switch (sauce_type)
+            {
+                case "HotSauce":
+
+                    GameObject spicy_particles = Instantiate(GameObject.Find("SpicyParticles"));
+                    spicy_particles.transform.parent = dish_sauce.transform;
+                    spicy_particles.transform.localPosition = new Vector3(0, 0.1f, 0);
+                    spicy_particles.transform.localScale = new Vector3(1, 1, 1);
+                    break;
+
+                case "XenoSauce":
+                    break;
+
+                case "TronSauce":
+                    break;
+
+                case "TrekSauce":
+                    GameObject trek_particles = Instantiate((GameObject)Resources.Load("TrekSauceParticles"), dish_sauce.transform.position, dish_sauce.transform.rotation, dish_sauce.transform);
+                    trek_particles.transform.localPosition = new Vector3(0, 0, -1.6f);
+                    Debug.Log(trek_particles + "was created");
+                    break;
+
+                case "MonsterSauce":
+                    //call dart function
+                    //TransformToDart(sushi);
+                    TransformToMonster(dish_sauce);
+                    break;
+
+                case "SciFiSauce":
+                    LaunchSushi(dish_sauce);
+                    break;
+
+                case "DigitalSauce":
+                    DigitalTransformation(dish_sauce);
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
     }
 
     private void LaunchSushi(GameObject sushi)

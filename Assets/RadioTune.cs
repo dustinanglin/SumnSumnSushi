@@ -5,6 +5,7 @@ using UnityEngine;
 public class RadioTune : MonoBehaviour {
 
     public bool tune_new_audio = false;
+    public bool demo_mode = false;
     private int max_tunes, current_track, current_static;
     private bool start_static, changing = false;
     private AudioSource[] audioSources;
@@ -13,7 +14,10 @@ public class RadioTune : MonoBehaviour {
 	void Start () {
         audioSources = GetComponents<AudioSource>();
         max_tunes = GetComponents<AudioSource>().Length;
-        current_track = Random.Range(3, max_tunes);
+        if (demo_mode)
+            current_track = 5;
+        else
+            current_track = Random.Range(3, max_tunes);
         //Debug.Log("current track:" + current_track);
         audioSources[current_track].Play();
 	}
@@ -31,6 +35,7 @@ public class RadioTune : MonoBehaviour {
         {
             ChangeTrack();
         }
+
 	}
 
     private void ChangeTrack()
@@ -45,9 +50,16 @@ public class RadioTune : MonoBehaviour {
         }
         if (!start_static && !audioSources[current_static].isPlaying)
         {
-            current_track = Random.Range(3, max_tunes);
+            if (demo_mode)
+                current_track = 6;
+            else
+                current_track = Random.Range(3, max_tunes);
+
             audioSources[current_track].Play();
-            audioSources[current_track].time = Random.Range(0f, audioSources[current_track].clip.length / 2);
+
+            if (!demo_mode)
+                audioSources[current_track].time = Random.Range(0f, audioSources[current_track].clip.length / 2);
+
             changing = false;
         }
     }

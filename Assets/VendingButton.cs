@@ -5,7 +5,6 @@ using UnityEngine;
 public class VendingButton : MonoBehaviour {
 
     public bool pushed;
-    public string level_name;
     private bool do_vending = false;
     private SceneDirector scene_director;
     private float td, tp;
