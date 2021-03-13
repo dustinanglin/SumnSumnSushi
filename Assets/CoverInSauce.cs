@@ -6,9 +6,29 @@ public class CoverInSauce : MonoBehaviour {
 
     private Material sauce_material;
     private string sauce_type;
+    private GameObject combo_effect;
+    private GameObject dish_sauce;
+
+    private Material hot, xeno, tron, trek, monster, scifi, digital, target, pokemon, godzilla;
+    private AudioSource new_combo_yay, combo_poof;
 
 	// Use this for initialization
 	void Start () {
+
+        hot = GameObject.Find("HotSauce").GetComponent<SauceType>().sauced_sushi_material;
+        xeno = GameObject.Find("XenoSauce").GetComponent<SauceType>().sauced_sushi_material;
+        tron = GameObject.Find("TronSauce").GetComponent<SauceType>().sauced_sushi_material;
+        trek = GameObject.Find("TrekSauce").GetComponent<SauceType>().sauced_sushi_material;
+        monster = GameObject.Find("MonsterSauce").GetComponent<SauceType>().sauced_sushi_material;
+        scifi = GameObject.Find("SciFiSauce").GetComponent<SauceType>().sauced_sushi_material;
+        digital = GameObject.Find("DigitalSauce").GetComponent<SauceType>().sauced_sushi_material;
+        target = GameObject.Find("TargetSauce").GetComponent<SauceType>().sauced_sushi_material;
+
+        combo_effect = GameObject.Find("SauceComboParticles");
+        dish_sauce = GameObject.Find("DishSauce");
+        new_combo_yay = dish_sauce.GetComponents<AudioSource>()[0];
+        combo_poof = dish_sauce.GetComponents<AudioSource>()[1];
+
         if (this.name.Contains("Dish"))
         {
             sauce_material = this.GetComponent<SauceType>().sauced_sushi_material;
@@ -77,14 +97,6 @@ public class CoverInSauce : MonoBehaviour {
         {
             sushi.GetComponent<Saucable>().sauce_type = sauce_type;
 
-            if (sauce_material)
-            {
-                foreach (Renderer rend in sushi.GetComponentsInChildren<Renderer>())
-                {
-                    rend.material = sauce_material;
-                }
-            }
-
             switch (sauce_type)
             {
                 case "HotSauce":
@@ -92,18 +104,22 @@ public class CoverInSauce : MonoBehaviour {
                     GameObject spicy_particles = Instantiate(GameObject.Find("SpicyParticles"));
                     spicy_particles.transform.parent = sushi.transform;
                     spicy_particles.transform.localPosition = Vector3.zero;
+                    SauceObject(sushi, sauce_material);
                     break;
 
                 case "XenoSauce":
+                    SauceObject(sushi, sauce_material);
                     break;
 
                 case "TronSauce":
+                    SauceObject(sushi, sauce_material);
                     break;
 
                 case "TrekSauce":
                     GameObject trek_particles = Instantiate((GameObject)Resources.Load("TrekSauceParticles"), sushi.transform.position, sushi.transform.rotation, sushi.transform);
                     trek_particles.transform.localPosition = new Vector3(0, 0, -1.6f);
                     Debug.Log(trek_particles + "was created");
+                    SauceObject(sushi, sauce_material);
                     break;
 
                 case "MonsterSauce":
@@ -120,6 +136,10 @@ public class CoverInSauce : MonoBehaviour {
                     DigitalTransformation(sushi);
                     break;
 
+                case "TargetSauce":
+                    SauceObject(sushi, sauce_material);
+                    break;
+
                 default:
                     break;
 
@@ -127,23 +147,308 @@ public class CoverInSauce : MonoBehaviour {
         } 
     }
 
+    private void SauceObject(GameObject saucedObject, Material sauceMaterial)
+    {
+        if (sauceMaterial)
+        {
+            foreach (Renderer rend in saucedObject.GetComponentsInChildren<Renderer>())
+            {
+                if (!rend.gameObject.name.Contains("Particle"))
+                    rend.material = sauceMaterial;
+            }
+        }
+    }
+
+    private string GetComboType(string existing_sauce, string new_sauce)
+    {
+        switch (existing_sauce)
+        {
+            case "HotSauce":
+                if (new_sauce.Contains("HotSauce") || new_sauce.Contains("TargetSauce") || new_sauce.Contains("DigitalSauce"))
+                    return "HotSauce";
+                else
+                    return new_sauce;
+
+            case "XenoSauce":
+                if (new_sauce.Contains("XenoSauce") || new_sauce.Contains("SciFiSauce") || new_sauce.Contains("MonsterSauce"))
+                    return "XenoSauce";
+                else return new_sauce;
+
+            case "TronSauce":
+                if (new_sauce.Contains("TronSauce") || new_sauce.Contains("SciFiSauce") || new_sauce.Contains("DigitalSauce"))
+                    return "TronSauce";
+                else return new_sauce;
+
+            case "TrekSauce":
+                if (new_sauce.Contains("TrekSauce") || new_sauce.Contains("TargetSauce") || new_sauce.Contains("ScifiSauce"))
+                    return "TrekSauce";
+                else return new_sauce;
+
+            case "MonsterSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return new_sauce;
+
+                if (new_sauce.Contains("SciFiSauce"))
+                    return "XenoSauce";
+
+                if (new_sauce.Contains("TargetSauce"))
+                    return "GodzillaSauce";
+
+                if (new_sauce.Contains("DigitalSauce"))
+                    return "PokemonSauce";
+
+                else return new_sauce;
+
+            case "SciFiSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return "XenoSauce";
+
+                if (new_sauce.Contains("SciFiSauce"))
+                    return new_sauce;
+
+                if (new_sauce.Contains("TargetSauce"))
+                    return "TrekSauce";
+
+                if (new_sauce.Contains("DigitalSauce"))
+                    return "TronSauce";
+
+                else return new_sauce;
+
+            case "DigitalSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return "PokemonSauce";
+
+                if (new_sauce.Contains("SciFiSauce"))
+                    return "TronSauce";
+
+                if (new_sauce.Contains("TargetSauce"))
+                    return "HotSauce";
+
+                if (new_sauce.Contains("DigitalSauce"))
+                    return new_sauce;
+
+                else return new_sauce;
+
+            case "TargetSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return "GodzillaSauce";
+
+                if (new_sauce.Contains("SciFiSauce"))
+                    return "TrekSauce";
+
+                if (new_sauce.Contains("TargetSauce"))
+                    return new_sauce;
+
+                if (new_sauce.Contains("DigitalSauce"))
+                    return "HotSauce";
+
+                else return new_sauce;
+
+            default:
+                return new_sauce;
+
+        }
+
+    }
+
+    private void doComboEffect()
+    {
+        combo_effect.GetComponent<ParticleSystem>().Play();
+        dish_sauce.GetComponent<ShowCombo>().ShowComboPopup();
+        new_combo_yay.PlayDelayed(0.5f);
+        combo_poof.Play();
+    }
+
+    private Material GetComboMaterial(string existing_sauce, string new_sauce)
+    {
+        switch (existing_sauce)
+        {
+            case "HotSauce":
+                if (new_sauce.Contains("HotSauce") || new_sauce.Contains("TargetSauce") || new_sauce.Contains("DigitalSauce"))
+                    return hot;
+                else
+                    return sauce_material;
+
+            case "XenoSauce":
+                if (new_sauce.Contains("XenoSauce") || new_sauce.Contains("SciFiSauce") || new_sauce.Contains("MonsterSauce"))
+                    return xeno;
+                else return sauce_material;
+
+            case "TronSauce":
+                if (new_sauce.Contains("TronSauce") || new_sauce.Contains("SciFiSauce") || new_sauce.Contains("DigitalSauce"))
+                    return tron;
+                else return sauce_material;
+
+            case "TrekSauce":
+                if (new_sauce.Contains("TrekSauce") || new_sauce.Contains("TargetSauce") || new_sauce.Contains("ScifiSauce"))
+                    return trek;
+                else return sauce_material;
+
+            case "MonsterSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return sauce_material;
+
+                if (new_sauce.Contains("SciFiSauce"))
+                {
+                    doComboEffect();
+                    return xeno;
+                }
+
+                if (new_sauce.Contains("TargetSauce"))
+                {
+                    return godzilla;
+                }
+
+                if (new_sauce.Contains("DigitalSauce"))
+                {
+                    return pokemon;
+                }
+
+                else return sauce_material;
+
+            case "SciFiSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                {
+                    doComboEffect();
+                    return xeno;
+                }
+
+                if (new_sauce.Contains("SciFiSauce"))
+                    return sauce_material;
+
+                if (new_sauce.Contains("TargetSauce"))
+                {
+                    doComboEffect();
+                    return trek;
+                }
+
+                if (new_sauce.Contains("DigitalSauce"))
+                {
+                    doComboEffect();
+                    return tron;
+                }
+
+                else return sauce_material;
+
+            case "DigitalSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return pokemon;
+
+                if (new_sauce.Contains("SciFiSauce"))
+                {
+                    doComboEffect();
+                    return tron;
+                }
+
+                if (new_sauce.Contains("TargetSauce"))
+                {
+                    doComboEffect();
+                    return hot;
+                }
+
+                if (new_sauce.Contains("DigitalSauce"))
+                    return sauce_material;
+
+                else return sauce_material;
+
+            case "TargetSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return godzilla;
+
+                if (new_sauce.Contains("SciFiSauce"))
+                {
+                    doComboEffect();
+                    return trek;
+                }
+
+                if (new_sauce.Contains("TargetSauce"))
+                    return sauce_material;
+
+                if (new_sauce.Contains("DigitalSauce"))
+                {
+                    doComboEffect();
+                    return hot;
+                }
+
+                else return sauce_material;
+
+            default:
+                return sauce_material;
+
+        }
+
+    }
+
+    private bool IsSameOrSub(string existing_sauce, string new_sauce)
+    {
+        switch (existing_sauce)
+        {
+            case "HotSauce":
+                if (new_sauce.Contains("HotSauce") || new_sauce.Contains("TargetSauce") || new_sauce.Contains("DigitalSauce"))
+                    return true;
+                else return false;
+
+            case "XenoSauce":
+                if (new_sauce.Contains("XenoSauce") || new_sauce.Contains("SciFiSauce") || new_sauce.Contains("MonsterSauce"))
+                    return true;
+                else return false;
+
+            case "TronSauce":
+                if (new_sauce.Contains("TronSauce") || new_sauce.Contains("SciFiSauce") || new_sauce.Contains("DigitalSauce"))
+                    return true;
+                else return false;
+
+            case "TrekSauce":
+                if (new_sauce.Contains("TrekSauce") || new_sauce.Contains("TargetSauce") || new_sauce.Contains("SciFiSauce"))
+                    return true;
+                else return false;
+
+            case "MonsterSauce":
+                if (new_sauce.Contains("MonsterSauce"))
+                    return true;
+                else return false;
+
+            case "SciFiSauce":
+                if (new_sauce.Contains("SciFiSauce"))
+                    return true;
+                else return false;
+
+            case "DigitalSauce":
+                if (new_sauce.Contains("DigitalSauce"))
+                    return true;
+                else return false;
+
+            case "TargetSauce":
+                if (new_sauce.Contains("TargetSauce"))
+                    return true;
+                else return false;
+
+            default:
+                return false;
+
+        }
+    }
+
     private void SetDishSauce(GameObject dish_sauce)
     {
-        if (dish_sauce.GetComponent<Saucable>().sauce_type != sauce_type)
+  
+        if (!IsSameOrSub(dish_sauce.GetComponent<Saucable>().sauce_type, sauce_type))
         {
-            dish_sauce.GetComponent<Saucable>().sauce_type = sauce_type;
-            dish_sauce.GetComponent<SauceType>().sauce_type = sauce_type;
-            dish_sauce.GetComponent<SauceType>().sauced_sushi_material = sauce_material;
+            string new_sauce_type = GetComboType(dish_sauce.GetComponent<Saucable>().sauce_type, sauce_type);
+            Material new_sauce_material = GetComboMaterial(dish_sauce.GetComponent<Saucable>().sauce_type, sauce_type);
 
-            if (sauce_material)
+            dish_sauce.GetComponent<Saucable>().sauce_type = new_sauce_type;
+            dish_sauce.GetComponent<SauceType>().sauce_type = new_sauce_type;
+            dish_sauce.GetComponent<SauceType>().sauced_sushi_material = new_sauce_material;
+
+
+            foreach(Transform child in dish_sauce.transform)
             {
-                foreach (Renderer rend in dish_sauce.GetComponentsInChildren<Renderer>())
-                {
-                    rend.material = sauce_material;
-                }
+                if (child.name.Contains("SpicyParticles") || child.name.Contains("TrekSauceParticles"))
+                    Destroy(child.gameObject);
             }
 
-            switch (sauce_type)
+            switch (new_sauce_type)
             {
                 case "HotSauce":
 
@@ -151,32 +456,42 @@ public class CoverInSauce : MonoBehaviour {
                     spicy_particles.transform.parent = dish_sauce.transform;
                     spicy_particles.transform.localPosition = new Vector3(0, 0.1f, 0);
                     spicy_particles.transform.localScale = new Vector3(1, 1, 1);
+                    SauceObject(dish_sauce, new_sauce_material);
                     break;
 
                 case "XenoSauce":
+                    SauceObject(dish_sauce, new_sauce_material);
                     break;
 
                 case "TronSauce":
+                    SauceObject(dish_sauce, new_sauce_material);
                     break;
 
                 case "TrekSauce":
                     GameObject trek_particles = Instantiate((GameObject)Resources.Load("TrekSauceParticles"), dish_sauce.transform.position, dish_sauce.transform.rotation, dish_sauce.transform);
-                    trek_particles.transform.localPosition = new Vector3(0, 0, -1.6f);
+                    trek_particles.transform.localPosition = new Vector3(0, -.01f, 0);
+                    trek_particles.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+                    trek_particles.transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
                     Debug.Log(trek_particles + "was created");
+                    SauceObject(dish_sauce, new_sauce_material);
                     break;
 
                 case "MonsterSauce":
                     //call dart function
                     //TransformToDart(sushi);
-                    TransformToMonster(dish_sauce);
+                    SauceObject(dish_sauce, new_sauce_material);
                     break;
 
                 case "SciFiSauce":
-                    LaunchSushi(dish_sauce);
+                    SauceObject(dish_sauce, new_sauce_material);
                     break;
 
                 case "DigitalSauce":
-                    DigitalTransformation(dish_sauce);
+                    SauceObject(dish_sauce, new_sauce_material);
+                    break;
+
+                case "TargetSauce":
+                    SauceObject(dish_sauce, new_sauce_material);
                     break;
 
                 default:

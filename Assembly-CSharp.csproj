@@ -175,6 +175,7 @@
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
     <Compile Include="Assets\ShootUser.cs" />
     <Compile Include="Assets\ShotDetector.cs" />
+    <Compile Include="Assets\ShowCombo.cs" />
     <Compile Include="Assets\shownormals.cs" />
     <Compile Include="Assets\SoundWarp.cs" />
     <Compile Include="Assets\SuperHotColorScheme.cs" />

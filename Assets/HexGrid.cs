@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HexGrid : MonoBehaviour {
 
-    public GameObject hex, director;
+    public GameObject hex1, hex2, director;
     private TronGameDirector win_director;
     private int hex_num = 0;
     public Material glow_red, glow_blue;
@@ -33,8 +33,9 @@ public class HexGrid : MonoBehaviour {
                     if (i % 2 == 0)
                         offset = vertical_spacing / 2;
                     Vector3 v = new Vector3(transform.position.x + i * horizontal_spacing, transform.position.y + k * vertical_spacing + offset, transform.position.z);
-                    GameObject t_Hex = GameObject.Instantiate(hex, v, hex.transform.rotation, this.transform);
-                    t_Hex.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = (Random.Range(0, 1.0f) > .5f) ? glow_red : glow_blue;
+                    GameObject t_Hex = RandomHex();
+                    Instantiate(t_Hex, v, t_Hex.transform.rotation, this.transform);
+                    //t_Hex.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = (Random.Range(0, 1.0f) > .5f) ? glow_red : glow_blue;
                     //Debug.Log("I made it this far in the loop");
                     hex_num++;
                 }
@@ -45,12 +46,18 @@ public class HexGrid : MonoBehaviour {
                     if (i % 2 == 0)
                         offset = vertical_spacing / 2;
                     Vector3 v = new Vector3(transform.position.x + i * horizontal_spacing, transform.position.y + k * vertical_spacing + offset, transform.position.z);
-                    GameObject t_Hex = GameObject.Instantiate(hex, v, hex.transform.rotation, this.transform);
-                    t_Hex.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = (Random.Range(0, 1.0f) > .5f) ? glow_red : glow_blue;
+                    GameObject t_Hex = RandomHex();
+                    Instantiate(t_Hex, v, t_Hex.transform.rotation, this.transform);
+                    //t_Hex.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = (Random.Range(0, 1.0f) > .5f) ? glow_red : glow_blue;
                     hex_num++;
                 }
         }
         win_director.number_of_hex = hex_num;
         //Debug.Log("Number of hexes is " + hex_num);
+    }
+
+    private GameObject RandomHex()
+    {
+        return (Random.Range(0, 1.0f) > .5f) ? hex1 : hex2;
     }
 }
