@@ -14,12 +14,13 @@ public class TankAI : MonoBehaviour
     void Start()
     {
         AimPoint = GameObject.Find("Player/OVRCameraRig/TrackingSpace/CenterEyeAnchor/ShootTarget").transform;
+        //AimPoint = GameObject.Find("Player/OVRCameraRig/TrackingSpace/CenterEyeAnchor").transform;
 
         Turret = transform.Find("Tank_Cab");
-        Canon = transform.Find("Tank_Cab/Gun_Swivel");
-        Canon_initial = Turret.Find("SwivelInitial");
+        Canon = transform.Find("Tank_Cab/Canon");
+        Canon_initial = Turret.Find("Canon_Initial");
         Turret_initial = transform.Find("CabInitial");
-        Canon_Fire = transform.Find("Tank_Cab/Gun_Swivel/Gun_Barrel/Bullet");
+        Canon_Fire = transform.Find("Tank_Cab/Canon/Gun_Barrel/Bullet");
     }
 
     // Update is called once per frame
