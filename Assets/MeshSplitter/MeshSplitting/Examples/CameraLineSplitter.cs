@@ -86,8 +86,9 @@ namespace MeshSplitting.Examples
         {
             _startPos = start;
             _endPos = end;
-            float cutDistance = Vector3.Distance(start, end);
-            CreateCutPlane(fwd, cutDistance);
+            //float cutDistance = Vector3.Distance(start, end);
+            //CreateCutPlane(fwd, cutDistance);
+            CreateCutPlane(fwd, .5f);
         }
 
         private void DoMouseMode()

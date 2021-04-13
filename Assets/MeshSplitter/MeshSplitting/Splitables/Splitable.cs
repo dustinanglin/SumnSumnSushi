@@ -367,6 +367,7 @@ namespace MeshSplitting.Splitables
         }
 
         protected virtual void PostProcessObject(GameObject go) {
+            go.layer = LayerMask.NameToLayer("SushiBoat");
         }
     }
 }
