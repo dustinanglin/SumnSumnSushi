@@ -248,6 +248,7 @@
     <None Include="Assets\ShaderForge\Example Assets\Shaders\Tiles.shader" />
     <None Include="Assets\ShaderForge\Example Assets\Shaders\PixelRotator.shader" />
     <None Include="Assets\ShaderForge\Example Assets\Shaders\CustomLighting.shader" />
+    <None Include="Assets\Materials\BeatEmUpSaber\Fresnel.shader" />
     <None Include="Assets\Metaballs\MarchingCubesComputeShader.compute" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Unity/Projects/Speed Up Project/SumnSumnSushi/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
