@@ -23,6 +23,12 @@ public class SaberInteraction : MonoBehaviour
     [SerializeField]
     private float bladeDropOff;
 
+    [SerializeField]
+    private GameObject cutGlow;
+
+    [SerializeField]
+    private bool leftsaber;
+
     private GameObject sparks, sparksBoom;
 
     private Vector3 startPoint, endPoint, velocity;
@@ -31,6 +37,9 @@ public class SaberInteraction : MonoBehaviour
     private LineRenderer bladeGlow, bladeCap;
 
     private bool doingCut = false;
+    private bool doSpakrs = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,14 +51,26 @@ public class SaberInteraction : MonoBehaviour
         sparks = transform.Find("SparkFount").gameObject;
         sparksBoom = transform.Find("SparkFountBoom").gameObject;
         sparkCaster = transform.Find("SparkCaster").gameObject;
+
+        cutGlow.GetComponent<ParticleSystem>().Stop();
+        sparks.GetComponent<ParticleSystem>().Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 _tempVelocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch);
+        Vector3 _tempVelocity;
         //Debug.Log("Magnitude " + Vector3.Magnitude(_tempVelocity));
-        velocity = Vector3.Normalize(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch)) * .5f;
+        if (leftsaber)
+        {
+            _tempVelocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch);
+            velocity = Vector3.Normalize(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch)) * .5f;
+        }
+        else
+        {
+            _tempVelocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch);
+            velocity = Vector3.Normalize(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch)) * .5f;
+        }
 
         //Debug.Log("Velocity: " + velocity);
         Debug.DrawRay(transform.position, transform.up, Color.blue);
@@ -62,25 +83,25 @@ public class SaberInteraction : MonoBehaviour
 
     private void DrawBlade()
     {
-        bladeGlow.SetPosition(2, transform.position + transform.rotation * new Vector3(0, bladeOffset1, 0));
+        /*bladeGlow.SetPosition(2, transform.localPosition + transform.rotation * new Vector3(0, bladeOffset1, 0));
         bladeGlow.SetPosition(1, transform.position + transform.rotation * new Vector3(0, -bladeOffset2 + bladeDropOff, 0));
         bladeGlow.SetPosition(0, transform.position + transform.rotation * new Vector3(0, -bladeOffset2 , 0));
 
         bladeCap.SetPosition(0, transform.position + transform.rotation * new Vector3(0, bladeOffset1, 0));
-        bladeCap.SetPosition(1, transform.position + transform.rotation * new Vector3(0, bladeOffset1 + bladeCapOffset, 0));
+        bladeCap.SetPosition(1, transform.position + transform.rotation * new Vector3(0, bladeOffset1 + bladeCapOffset, 0));*/
+
+        bladeGlow.SetPosition(2, new Vector3(0, bladeOffset1, 0));
+        bladeGlow.SetPosition(1, new Vector3(0, -bladeOffset2 + bladeDropOff,0));
+        bladeGlow.SetPosition(0, new Vector3(0, -bladeOffset2, 0));
+
+        bladeCap.SetPosition(0, new Vector3(0, bladeOffset1, 0));
+        bladeCap.SetPosition(1, new Vector3(0, bladeOffset1 + bladeCapOffset, 0)); 
 
         bladeGlow.startWidth = bladeWidth + Mathf.Sin(Time.time * bladeGlowSpeed) * bladeGlowVariance;
         bladeGlow.endWidth = bladeWidth + Mathf.Sin(Time.time * bladeGlowSpeed) * bladeGlowVariance;
         bladeCap.startWidth = bladeWidth + Mathf.Sin(Time.time * bladeGlowSpeed) * bladeGlowVariance;
         bladeCap.endWidth = bladeWidth + Mathf.Sin(Time.time * bladeGlowSpeed) * bladeGlowVariance;
     }
-
-    /*void FixedUpdate()
-    {
-        saberRB.MovePosition(transform.position);
-        saberRB.MoveRotation(transform.rotation);
-        Debug.Log("Angular Velocity: " + saberRB.angularVelocity);
-    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -110,7 +131,10 @@ public class SaberInteraction : MonoBehaviour
         else
         {
             setSparkSpot(sparks);
-            sparks.SetActive(true);
+            setSparkSpot(cutGlow);
+            //setSparkSpot(cutGlow.GetComponent<Rigidbody>());
+            sparks.GetComponent<ParticleSystem>().Play();
+            cutGlow.GetComponent<ParticleSystem>().Play();
         }
 
     }
@@ -131,13 +155,29 @@ public class SaberInteraction : MonoBehaviour
         sp.transform.rotation = Quaternion.LookRotation(point.normal);
     }
 
+    private void setSparkSpot(Rigidbody rb)
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(sparkCaster.transform.position, transform.up);
+        Physics.Raycast(sparkCaster.transform.position, transform.up, out hit, 1.0f);
+        rb.MovePosition(hit.point);
+        rb.MoveRotation(Quaternion.LookRotation(hit.normal));
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         //endPoint = collision.GetContact(0).point;
         //endSphere.transform.position = endPoint;
         //if (collision.gameObject.GetComponent<CutoutMotor>())
         //collision.gameObject.GetComponent<CutoutMotor>().SetSpeed(2);
-        setSparkSpot(sparks);
+        if (!collision.gameObject.GetComponent<Splitable>())
+        {
+            setSparkSpot(sparks);
+            setSparkSpot(cutGlow);
+            //setSparkSpot(cutGlow.GetComponent<Rigidbody>());
+            sparks.GetComponent<ParticleSystem>().Play();
+            cutGlow.GetComponent<ParticleSystem>().Play();
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -152,7 +192,8 @@ public class SaberInteraction : MonoBehaviour
         }
         cutter.GetComponent<CameraLineSplitter>().doColliderCut(startPoint, endPoint,transform.up);*/
 
-        sparks.SetActive(false);
+        sparks.GetComponent<ParticleSystem>().Stop();
+        cutGlow.GetComponent<ParticleSystem>().Stop();
     }
 
     private void OnTriggerEnter(Collider other)

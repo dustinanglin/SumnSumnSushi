@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneDirector : MonoBehaviour {
 
     private Scene Chopstick, Superhot;
+    private SaveandLoad saver;
     private TrackAchievements tracker;
     GameObject ChopstickHolder;
     private List<GameObject> hottext = new List<GameObject>();
@@ -47,6 +48,10 @@ public class SceneDirector : MonoBehaviour {
                 Debug.Log("No last level");
                 break;
         }
+
+        saver = GetComponent<SaveandLoad>();
+        saver.LoadObjects();
+
 	}
 	
 	// Update is called once per frame
@@ -63,6 +68,8 @@ public class SceneDirector : MonoBehaviour {
 
         if (loadxeno)
             XenoTransition();
+
+
 	}
 
     public void PreLoadLevel(string levelname)
@@ -84,6 +91,7 @@ public class SceneDirector : MonoBehaviour {
         while (!loadlevel)
             yield return null;
 
+        saver.SaveObjects();
         async.allowSceneActivation = true;
      }
     

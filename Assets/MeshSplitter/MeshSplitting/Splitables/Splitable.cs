@@ -14,12 +14,14 @@ namespace MeshSplitting.Splitables
 #endif
 
         public GameObject OptionalTargetObject;
+        public Material CapMaterial;
         public bool Convex = false;
         public float SplitForce = 0f;
 
         public bool CreateCap = true;
         public bool UseCapUV = false;
         public bool CustomUV = false;
+        public bool SplitCaps = true;
         public Vector2 CapUVMin = Vector2.zero;
         public Vector2 CapUVMax = Vector2.one;
 
@@ -60,7 +62,7 @@ namespace MeshSplitting.Splitables
                     if (_meshContainerStatic[i].IsMeshSplit())
                     {
                         anySplit = true;
-                        if (CreateCap) _meshSplitterStatic[i].MeshCreateCaps();
+                        if (CreateCap) _meshSplitterStatic[i].MeshCreateCaps(SplitCaps);
                     }
                 }
 
@@ -75,7 +77,7 @@ namespace MeshSplitting.Splitables
                     if (_meshContainerSkinned[i].IsMeshSplit())
                     {
                         anySplit = true;
-                        if (CreateCap) _meshSplitterSkinned[i].MeshCreateCaps();
+                        if (CreateCap) _meshSplitterSkinned[i].MeshCreateCaps(SplitCaps);
                     }
                 }
 
@@ -155,11 +157,22 @@ namespace MeshSplitting.Splitables
             }
 
             GameObject[] newGOs = new GameObject[2];
+            GameObject[] newCaps = new GameObject[2];
+
             if (OptionalTargetObject == null)
             {
                 newGOs[0] = Instantiate(gameObject) as GameObject;
                 newGOs[0].name = gameObject.name;
                 newGOs[1] = gameObject;
+
+                if (SplitCaps)
+                {
+                    newCaps[0] = Instantiate(gameObject) as GameObject;
+                    newCaps[0].name = "Cap 1: " + gameObject.name;
+
+                    newCaps[1] = Instantiate(gameObject) as GameObject;
+                    newCaps[1].name = "Cap 2: " + gameObject.name;
+                }
             }
             else
             {
@@ -189,6 +202,19 @@ namespace MeshSplitting.Splitables
 
                 Transform newTransform = newGOs[i].GetComponent<Transform>();
                 newTransform.parent = parent;
+
+                if (SplitCaps)
+                {
+                    UpdateMeshesInChildrenCaps(i, newCaps[i]);
+                    Transform newCapTransform = newCaps[i].GetComponent<Transform>();
+                    newCapTransform.parent = newTransform;
+
+                    Rigidbody rbCap = newCaps[i].GetComponent<Rigidbody>();
+                    Destroy(rbCap);
+
+                    MeshCollider rbMeshCollider = newCaps[i].GetComponent<MeshCollider>();
+                    Destroy(rbMeshCollider);
+                }
 
                 Mesh newMesh = GetMeshOnGameObject(newGOs[i]);
                 if (newMesh != null)
@@ -221,6 +247,51 @@ namespace MeshSplitting.Splitables
                 }
 
                 PostProcessObject(newGOs[i]);
+
+                if (SplitCaps)
+                    PostProcessCap(newCaps[i]);
+            }
+        }
+
+
+        private void UpdateMeshesInChildrenCaps(int i, GameObject go)
+        {
+            if (_meshContainerStatic.Length > 0)
+            {
+                MeshFilter[] meshFilters = go.GetComponentsInChildren<MeshFilter>();
+                for (int j = 0; j < _meshContainerStatic.Length; j++)
+                {
+                    Renderer renderer = meshFilters[j].GetComponent<Renderer>();
+                    if (ForceNoBatching)
+                    {
+                        renderer.materials = renderer.materials;
+                    }
+                    if (i == 0)
+                    {
+                        if (_meshContainerStatic[j].HasMeshUpper() & _meshContainerStatic[j].HasMeshLower())
+                        {
+                            meshFilters[j].mesh = _meshContainerStatic[j].CreateMeshUpperCap();
+
+                        }
+                        else if (!_meshContainerStatic[j].HasMeshUpper())
+                        {
+                            if (renderer != null) Destroy(renderer);
+                            Destroy(meshFilters[j]);
+                        }
+                    }
+                    else
+                    {
+                        if (_meshContainerStatic[j].HasMeshUpper() & _meshContainerStatic[j].HasMeshLower())
+                        {
+                            meshFilters[j].mesh = _meshContainerStatic[j].CreateMeshLowerCap();
+                        }
+                        else if (!_meshContainerStatic[j].HasMeshLower())
+                        {
+                            if (renderer != null) Destroy(renderer);
+                            Destroy(meshFilters[j]);
+                        }
+                    }
+                }
             }
         }
 
@@ -368,6 +439,21 @@ namespace MeshSplitting.Splitables
 
         protected virtual void PostProcessObject(GameObject go) {
             go.layer = LayerMask.NameToLayer("SushiBoat");
+            /*Mesh mesh = go.GetComponent<MeshFilter>().mesh;
+            Vector3[] vertices = mesh.vertices;
+            Vector2[] olduvs = mesh.uv;
+            Vector2[] uvs = new Vector2[vertices.Length];
+
+            for (int i = 0; i < uvs.Length; i++)
+                uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
+
+            mesh.uv = uvs;*/
+        } 
+
+        private void PostProcessCap(GameObject go)
+        {
+            Renderer renderer = go.GetComponent<MeshRenderer>();
+            renderer.material = CapMaterial;
         }
     }
 }

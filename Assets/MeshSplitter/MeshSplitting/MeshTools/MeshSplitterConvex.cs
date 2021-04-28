@@ -305,7 +305,7 @@ namespace MeshSplitting.MeshTools
         protected int[] capsSorted;
         protected Vector2[] capsUV;
 
-        public void MeshCreateCaps()
+        public void MeshCreateCaps(bool split)
         {
             if (capInds.Count == 0)
                 return;
@@ -349,13 +349,27 @@ namespace MeshSplitting.MeshTools
             int capOderCount = capUpperOrder.Length;
             for (int i = 2; i < capOderCount; i++)
             {
-                _mesh.trisUp.Add(capUpperOrder[0]);
-                _mesh.trisUp.Add(capUpperOrder[i - 1]);
-                _mesh.trisUp.Add(capUpperOrder[i]);
+                if (split)
+                {
+                    _mesh.capUp.Add(capUpperOrder[0]);
+                    _mesh.capUp.Add(capUpperOrder[i - 1]);
+                    _mesh.capUp.Add(capUpperOrder[i]);
 
-                _mesh.trisDown.Add(capLowerOrder[0]);
-                _mesh.trisDown.Add(capLowerOrder[i]);
-                _mesh.trisDown.Add(capLowerOrder[i - 1]);
+                    _mesh.capDown.Add(capLowerOrder[0]);
+                    _mesh.capDown.Add(capLowerOrder[i]);
+                    _mesh.capDown.Add(capLowerOrder[i - 1]);
+                }
+                else
+                {
+                    _mesh.trisUp.Add(capUpperOrder[0]);
+                    _mesh.trisUp.Add(capUpperOrder[i - 1]);
+                    _mesh.trisUp.Add(capUpperOrder[i]); 
+
+                    _mesh.trisDown.Add(capLowerOrder[0]);
+                    _mesh.trisDown.Add(capLowerOrder[i]);
+                    _mesh.trisDown.Add(capLowerOrder[i - 1]);
+                }
+
             }
 
 #if UNITY_EDITOR
@@ -371,6 +385,8 @@ namespace MeshSplitting.MeshTools
             }
 #endif
         }
+
+ 
 
 #if UNITY_EDITOR
         public Vector3 GetVertPos(int index)

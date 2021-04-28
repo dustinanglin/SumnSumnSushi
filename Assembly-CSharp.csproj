@@ -163,6 +163,9 @@
     <Compile Include="Assets\Saucable.cs" />
     <Compile Include="Assets\SaucePour.cs" />
     <Compile Include="Assets\SauceType.cs" />
+    <Compile Include="Assets\Savable.cs" />
+    <Compile Include="Assets\SaveandLoad.cs" />
+    <Compile Include="Assets\SaveObject.cs" />
     <Compile Include="Assets\SceneDirector.cs" />
     <Compile Include="Assets\ScreenMover.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -198,6 +201,7 @@
     <Compile Include="Assets\shownormals.cs" />
     <Compile Include="Assets\SoundWarp.cs" />
     <Compile Include="Assets\SuperHotColorScheme.cs" />
+    <Compile Include="Assets\SushiStructs.cs" />
     <Compile Include="Assets\TakePicture.cs" />
     <Compile Include="Assets\TankAI.cs" />
     <Compile Include="Assets\TextFacePlayer.cs" />
@@ -240,6 +244,7 @@
     <None Include="Assets\MeshSplitter\Demo\Shaders\DebugNormal.shader" />
     <None Include="Assets\OutlineSprite.shader" />
     <None Include="Assets\TronGlowWave.shader" />
+    <None Include="Assets\Materials\BeatEmUpSaber\Dissolve.shader" />
     <None Include="Assets\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\MeshSplitter\Demo\Shaders\ColorOverlay.shader" />
     <None Include="Assets\ShaderForge\Example Assets\Shaders\TessellationDisplacement.shader" />

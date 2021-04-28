@@ -9,6 +9,8 @@ public class Grabbable : MonoBehaviour {
     private GameObject grabbing_parent;
     private ChopstickRotateOculus parent_info;
     private List<GameObject> children = new List<GameObject>();
+    private SaveandLoad saver;
+
     Vector3 grab_offset_pos;
     Vector3 linear_velocity;
     Vector3 angular_velocity;
@@ -28,6 +30,8 @@ public class Grabbable : MonoBehaviour {
             }
         }
         //Debug.Log("Got children");
+
+        saver = GameObject.Find("SceneDirector").GetComponent<SaveandLoad>();
 	}
 	
 	// Update is called once per frame
@@ -83,6 +87,15 @@ public class Grabbable : MonoBehaviour {
             }
         }
 
+        if (this.GetComponent<Savable>())
+        {
+            AddObjectToSave();
+        }
+    }
+
+    private void AddObjectToSave()
+    {
+        saver.AddSushi(this.gameObject, this.GetComponent<Savable>().type);
     }
 
     public void GrabEnd()

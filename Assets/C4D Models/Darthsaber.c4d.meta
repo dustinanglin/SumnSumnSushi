@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 13eab1c0edb69d04ea03f6c75248a50b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Body
+    100002: Boole
+    100004: Boole_1
+    100006: Bubbles
+    100008: Cap
+    100010: Core
+    100012: Cube_1
+    100014: Cylinder_4
+    100016: Cylinder_5
+    100018: //RootNode
+    100020: EmitterCap
+    100022: EndSideThings
+    100024: LoopScrew
+    100026: Nut
+    100028: Screw
+    100030: Sidethingy
+    100032: Sphere
+    100034: Sphere_1
+    100036: Sphere_2
+    100038: Sphere_3
+    100040: Sphere_4
+    100042: Sphere_5
+    100044: Torus
+    100046: Torus_1
+    100048: Torus_1_2
+    100050: Torus_2
+    100052: Trigger
+    100054: TriggerCover
+    100056: Wires
+    100058: Wires_2
+    400000: Body
+    400002: Boole
+    400004: Boole_1
+    400006: Bubbles
+    400008: Cap
+    400010: Core
+    400012: Cube_1
+    400014: Cylinder_4
+    400016: Cylinder_5
+    400018: //RootNode
+    400020: EmitterCap
+    400022: EndSideThings
+    400024: LoopScrew
+    400026: Nut
+    400028: Screw
+    400030: Sidethingy
+    400032: Sphere
+    400034: Sphere_1
+    400036: Sphere_2
+    400038: Sphere_3
+    400040: Sphere_4
+    400042: Sphere_5
+    400044: Torus
+    400046: Torus_1
+    400048: Torus_1_2
+    400050: Torus_2
+    400052: Trigger
+    400054: TriggerCover
+    400056: Wires
+    400058: Wires_2
+    2100000: Mat
+    2100002: Metal - Copper
+    2100004: Mat.3
+    2100006: Mat.4
+    2100008: No Name
+    2100010: Chrome
+    2300000: Body
+    2300002: Boole
+    2300004: Boole_1
+    2300006: Cap
+    2300008: Core
+    2300010: Cube_1
+    2300012: Cylinder_4
+    2300014: Cylinder_5
+    2300016: EndSideThings
+    2300018: LoopScrew
+    2300020: Nut
+    2300022: Screw
+    2300024: Sphere
+    2300026: Sphere_1
+    2300028: Sphere_2
+    2300030: Sphere_3
+    2300032: Sphere_4
+    2300034: Sphere_5
+    2300036: Torus
+    2300038: Torus_1
+    2300040: Torus_1_2
+    2300042: Torus_2
+    2300044: TriggerCover
+    3300000: Body
+    3300002: Boole
+    3300004: Boole_1
+    3300006: Cap
+    3300008: Core
+    3300010: Cube_1
+    3300012: Cylinder_4
+    3300014: Cylinder_5
+    3300016: EndSideThings
+    3300018: LoopScrew
+    3300020: Nut
+    3300022: Screw
+    3300024: Sphere
+    3300026: Sphere_1
+    3300028: Sphere_2
+    3300030: Sphere_3
+    3300032: Sphere_4
+    3300034: Sphere_5
+    3300036: Torus
+    3300038: Torus_1
+    3300040: Torus_1_2
+    3300042: Torus_2
+    3300044: TriggerCover
+    4300000: Boole
+    4300002: Boole_1
+    4300004: Torus_1
+    4300006: Torus
+    4300008: Torus_1_2
+    4300010: Torus_2
+    4300012: Cylinder_5
+    4300014: Cube_1
+    4300016: Cylinder_4
+    4300018: LoopScrew
+    4300020: Body
+    4300022: Sphere_5
+    4300024: Sphere_4
+    4300026: Sphere_3
+    4300028: Sphere_2
+    4300030: Sphere_1
+    4300032: Sphere
+    4300034: Nut
+    4300036: Screw
+    4300038: Core
+    4300040: Cap
+    4300042: EndSideThings
+    4300044: TriggerCover
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0002
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

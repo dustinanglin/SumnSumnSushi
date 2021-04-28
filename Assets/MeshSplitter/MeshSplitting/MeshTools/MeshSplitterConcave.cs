@@ -386,7 +386,7 @@ namespace MeshSplitting.MeshTools
         private List<int> triList;
         private List<Vector2> uvList;
 
-        public void MeshCreateCaps()
+        public void MeshCreateCaps(bool split)
         {
             if (_edges.Count == 0)
                 return;

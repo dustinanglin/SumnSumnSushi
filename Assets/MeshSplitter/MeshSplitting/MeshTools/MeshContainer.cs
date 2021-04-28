@@ -38,6 +38,8 @@ namespace MeshSplitting.MeshTools
         // new meshes
         public List<int> trisUp;
         public List<int> trisDown;
+        public List<int> capUp;
+        public List<int> capDown;
 
         public MeshContainer(MeshFilter meshFilter)
         {
@@ -80,9 +82,14 @@ namespace MeshSplitting.MeshTools
             if (colors.Length != 0) colorsNew = new List<Color>(countHalf);
             if (boneWeights.Length != 0) boneWeightsNew = new List<BoneWeight>(countHalf);
 
+            //create arrays for split caps (if using)
+
+
             int count1_5x = (int)(triangles.Length * 1.5f);
             trisUp = new List<int>(count1_5x);
             trisDown = new List<int>(count1_5x);
+            capUp = new List<int>();
+            capDown = new List<int>();
         }
 
         public void CalculateWorldSpace()
@@ -172,6 +179,16 @@ namespace MeshSplitting.MeshTools
         public Mesh CreateMeshLower()
         {
             return CreateMesh(trisDown);
+        }
+
+        public Mesh CreateMeshUpperCap()
+        {
+            return CreateMesh(capUp);
+        }
+
+        public Mesh CreateMeshLowerCap()
+        {
+            return CreateMesh(capDown);
         }
 
         private Mesh CreateMesh(List<int> tris)
