@@ -7,13 +7,18 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveandLoad : MonoBehaviour
 {
     private List<GameObject> sushis;
+    private List<GameObject> saucebottles;
     private SaveObject saveObject;
+    //sushis
     private GameObject tuna, yellowfish, salmon, roeboat, shrimp;
+    //sauces
+    private GameObject hot, xeno, tron, trek, monster, scifi, digital, target;
 
     // Start is called before the first frame update
     void Awake()
     {
         sushis = new List<GameObject>();
+        saucebottles = new List<GameObject>();
         saveObject = new SaveObject();
 
         tuna = GameObject.Find("Tuna");
@@ -21,6 +26,15 @@ public class SaveandLoad : MonoBehaviour
         salmon = GameObject.Find("Salmon");
         roeboat = GameObject.Find("RoeBoat");
         shrimp = GameObject.Find("Shrimp");
+
+        hot = GameObject.Find("HotSauce");
+        xeno = GameObject.Find("XenoSauce");
+        tron = GameObject.Find("TronSauce");
+        trek = GameObject.Find("TrekSauce");
+        monster = GameObject.Find("MonsterSauce");
+        scifi = GameObject.Find("SciFiSauce");
+        digital = GameObject.Find("DigitalSauce");
+        target = GameObject.Find("TargetSauce");
     }
 
     // Update is called once per frame
@@ -52,7 +66,7 @@ public class SaveandLoad : MonoBehaviour
         Debug.Log("Save Cleared");
     }
 
-    public void AddSushi(GameObject go, string type)
+    public void AddSushi(GameObject go, string type, string sauce)
     {
         int instanceID = go.GetInstanceID();
 
@@ -62,9 +76,26 @@ public class SaveandLoad : MonoBehaviour
             sushi.position = new SerializeVector3(go.transform.position.x, go.transform.position.y, go.transform.position.z);
             sushi.rotation = new SerializeQuaternion(go.transform.rotation.x, go.transform.rotation.y, go.transform.rotation.z, go.transform.rotation.w);
             sushi.sushiType = type;
+            sushi.sauceType = sauce;
             saveObject.sushiObjects.Add(instanceID, sushi);
             sushis.Add(go);
             Debug.Log("Sushi Added to SaveObject");
+        }
+    }
+
+    public void AddSauce(GameObject go, string sauce)
+    {
+        int instanceID = go.GetInstanceID();
+
+        if (!saveObject.sauceObjects.ContainsKey(instanceID))
+        {
+            Saucebottle saucebottle = new Saucebottle();
+            saucebottle.position = new SerializeVector3(go.transform.position.x, go.transform.position.y, go.transform.position.z);
+            saucebottle.rotation = new SerializeQuaternion(go.transform.rotation.x, go.transform.rotation.y, go.transform.rotation.z, go.transform.rotation.w);
+            saucebottle.sauceType = sauce;
+            saveObject.sauceObjects.Add(instanceID, saucebottle);
+            saucebottles.Add(go);
+            Debug.Log("Sauce Added to SaveObject");
         }
     }
 
@@ -79,6 +110,17 @@ public class SaveandLoad : MonoBehaviour
         }
     }
 
+    public void RemoveSauce(GameObject go)
+    {
+        int instanceID = go.GetInstanceID();
+        if (saveObject.sauceObjects.ContainsKey(instanceID))
+        {
+            saveObject.sauceObjects.Remove(instanceID);
+            saucebottles.Remove(go);
+            Debug.Log("Sauce Removed from SaveObject");
+        }
+    }
+
     private void RehydrateHashTable()
     {
         saveObject.sushiObjects.Clear();
@@ -89,13 +131,25 @@ public class SaveandLoad : MonoBehaviour
             sushi.position = new SerializeVector3(go.transform.position.x, go.transform.position.y, go.transform.position.z);
             sushi.rotation = new SerializeQuaternion(go.transform.rotation.x, go.transform.rotation.y, go.transform.rotation.z, go.transform.rotation.w);
             sushi.sushiType = go.name;
+            sushi.sauceType = go.GetComponent<Saucable>().sauce_type;
             saveObject.sushiObjects.Add(go.GetInstanceID(), sushi);
+        }
+
+        saveObject.sauceObjects.Clear();
+
+        foreach(GameObject go in saucebottles)
+        {
+            Saucebottle saucebottle = new Saucebottle();
+            saucebottle.position = go.transform.position;
+            saucebottle.rotation = go.transform.rotation;
+            saucebottle.sauceType = go.GetComponent<SauceType>().sauce_type;
+            saveObject.sauceObjects.Add(go.GetInstanceID(), saucebottle);
         }
     }
 
     public void SaveObjects()
     {
-        UpdateObjectLocations();
+        UpdateObjects();
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.dataPath + "/Savegame.save");
@@ -114,6 +168,7 @@ public class SaveandLoad : MonoBehaviour
             file.Close();
 
             sushis.Clear();
+            saucebottles.Clear();
 
             foreach (int index in saveObject.sushiObjects.Keys)
             {
@@ -124,12 +179,76 @@ public class SaveandLoad : MonoBehaviour
                 Quaternion newQ = new Quaternion(sushi.rotation.x, sushi.rotation.y, sushi.rotation.z, sushi.rotation.w);
 
                 GameObject go = CreateSushi(newP, newQ, sushi.sushiType);
+                SauceObject(go, sushi.sauceType);
                 sushis.Add(go);
             }
+
+            foreach (int index in saveObject.sauceObjects.Keys)
+            {
+                Saucebottle saucebottle = (Saucebottle)saveObject.sauceObjects[index];
+
+                Vector3 newP = saucebottle.position;
+                Quaternion newQ = saucebottle.rotation;
+
+                GameObject go = CreateSauce(newP, newQ, saucebottle.sauceType);
+                saucebottles.Add(go);
+            }
+
+            GameObject dishTemp = GameObject.Find("SauceDish");
+            dishTemp.transform.position = saveObject.dish.position;
+            dishTemp.transform.rotation = saveObject.dish.rotation;
+            SauceObject(dishTemp, saveObject.dish.sauceType);
 
             //clear hash list and rebuild because new game objects have new Instance IDs
             RehydrateHashTable();
         }
+    }
+
+
+    private GameObject CreateSauce(Vector3 pos, Quaternion rot, string sauceType)
+    {
+        GameObject newSauce;
+
+        switch (sauceType)
+        {
+            case "HotSauce":
+                newSauce = Instantiate(hot, pos, rot);
+                break;
+
+            case "XenoSauce":
+                newSauce = Instantiate(xeno, pos, rot);
+                break;
+
+            case "TronSauce":
+                newSauce = Instantiate(tron, pos, rot);
+                break;
+
+            case "TrekSauce":
+                newSauce = Instantiate(trek, pos, rot);
+                break;
+
+            case "MonsterSauce":
+                newSauce = Instantiate(monster, pos, rot);
+                break;
+
+            case "SciFiSauce":
+                newSauce = Instantiate(scifi, pos, rot);
+                break;
+
+            case "DigitalSauce":
+                newSauce = Instantiate(digital, pos, rot);
+                break;
+
+            case "TargetSauce":
+                newSauce = Instantiate(target, pos, rot);
+                break;
+
+            default:
+                newSauce = Instantiate(hot, pos, rot);
+                break;
+        }
+
+        return newSauce;
     }
 
     private GameObject CreateSushi(Vector3 pos, Quaternion rot, string type)
@@ -163,27 +282,84 @@ public class SaveandLoad : MonoBehaviour
                 newshi = Instantiate(tuna, pos, rot);
                 break;
         }
-
+        
         return newshi;
     }
 
-    private void UpdateObjectLocations()
+    private void SauceObject(GameObject go, string sauce)
     {
+        switch (sauce)
+        {
+            case "HotSauce":
+                hot.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            case "XenoSauce":
+                xeno.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            case "TronSauce":
+                tron.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            case "TrekSauce":
+                trek.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            case "MonsterSauce":
+                monster.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            case "SciFiSauce":
+                scifi.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            case "DigitalSauce":
+                digital.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            case "TargetSauce":
+                target.GetComponentInChildren<CoverInSauce>().SauceSushi(go);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void UpdateObjects()
+    {
+        //update sushi positions
         foreach (GameObject sushi in sushis)
         {
             int instanceID = sushi.GetInstanceID();
             Sushi temp = (Sushi)saveObject.sushiObjects[instanceID];
 
-            temp.position.x = sushi.transform.position.x;
-            temp.position.y = sushi.transform.position.y;
-            temp.position.z = sushi.transform.position.z;
-
-            temp.rotation.x = sushi.transform.rotation.x;
-            temp.rotation.y = sushi.transform.rotation.y;
-            temp.rotation.z = sushi.transform.rotation.z;
-            temp.rotation.w = sushi.transform.rotation.w;
+            temp.position = sushi.transform.position;
+            temp.rotation = sushi.transform.rotation;
+            temp.sauceType = sushi.GetComponent<Saucable>().sauce_type;
 
             saveObject.sushiObjects[instanceID] = temp;
         }
+
+        //update sauce positions
+        foreach (GameObject saucebottle in saucebottles)
+        {
+            int instanceID = saucebottle.GetInstanceID();
+            Saucebottle temp = (Saucebottle)saveObject.sauceObjects[instanceID];
+
+            temp.position = saucebottle.transform.position;
+            temp.rotation = saucebottle.transform.rotation;
+            temp.sauceType = saucebottle.GetComponent<SauceType>().sauce_type;
+
+            saveObject.sauceObjects[instanceID] = temp;
+        }
+
+        //update sauce dish
+        GameObject dishTemp = GameObject.Find("SauceDish");
+
+        saveObject.dish.position = dishTemp.transform.position;
+        saveObject.dish.rotation = dishTemp.transform.rotation;
+        saveObject.dish.sauceType = dishTemp.GetComponentInChildren<Saucable>().sauce_type;
     }
 }

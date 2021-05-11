@@ -7,6 +7,7 @@ public class RocketSushi : MonoBehaviour {
     private GameObject rocket_trail, rocket_glow, rocket_sparks, explosion;
     private List<GameObject> glows;
     private Rigidbody sushi_body;
+    private SaveandLoad saver;
     public float acceleration_rate;
     public float max_rocket_time;
     public float pause_time;
@@ -53,6 +54,8 @@ public class RocketSushi : MonoBehaviour {
         speed = 0;
         max_rocket_time += pause_time;
         //speed = transform.forward;
+
+        saver = GameObject.Find("SceneDirector").GetComponent<SaveandLoad>();
     }
 	
 	// Update is called once per frame
@@ -79,6 +82,7 @@ public class RocketSushi : MonoBehaviour {
         if (rocket_time > max_rocket_time)
         {
             Instantiate(explosion, transform.position, transform.rotation);
+            saver.RemoveSushi(this.gameObject);
             Destroy(this.gameObject);
         }
 

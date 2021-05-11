@@ -25,6 +25,11 @@ public class ChopstickShadowRotate : MonoBehaviour {
     private GameObject hand_anchor;
     private CapsuleCollider[] colliders;
 
+    private void Awake()
+    {
+        OpeningPause();
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -71,6 +76,12 @@ public class ChopstickShadowRotate : MonoBehaviour {
     {
         pause_collision = true;
         pause_timer = pause_time;
+    }
+
+    private void OpeningPause()
+    {
+        pause_timer = 3;
+        pause_collision = true;
     }
 
     private void DoPause()

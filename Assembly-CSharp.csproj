@@ -92,6 +92,7 @@
     <Compile Include="Assets\DuckHunt.cs" />
     <Compile Include="Assets\ExitHolodeck.cs" />
     <Compile Include="Assets\FaceUser.cs" />
+    <Compile Include="Assets\FloorSweeper.cs" />
     <Compile Include="Assets\Foamhands.cs" />
     <Compile Include="Assets\FollowCharacters.cs" />
     <Compile Include="Assets\FollowTheBall.cs" />

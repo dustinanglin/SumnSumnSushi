@@ -31,7 +31,10 @@ public class Grabbable : MonoBehaviour {
         }
         //Debug.Log("Got children");
 
-        saver = GameObject.Find("SceneDirector").GetComponent<SaveandLoad>();
+        if (GameObject.Find("SceneDirector"))
+            saver = GameObject.Find("SceneDirector").GetComponent<SaveandLoad>();
+        else
+            Debug.Log("Scene Director not present in this scene");
 	}
 	
 	// Update is called once per frame
@@ -95,7 +98,15 @@ public class Grabbable : MonoBehaviour {
 
     private void AddObjectToSave()
     {
-        saver.AddSushi(this.gameObject, this.GetComponent<Savable>().type);
+        if (saver)
+        {
+            if (this.name.Contains("Sauce"))
+                saver.AddSauce(this.gameObject, this.GetComponent<SauceType>().sauce_type);
+            else
+                saver.AddSushi(this.gameObject, this.GetComponent<Savable>().type, this.GetComponent<Saucable>().sauce_type);
+        }
+        else
+            Debug.Log("Cannot save object, no scene director object present");
     }
 
     public void GrabEnd()

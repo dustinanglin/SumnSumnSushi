@@ -11,7 +11,6 @@ public class Savable : MonoBehaviour
     void Start()
     {
         type = this.name;
-        saver = GameObject.Find("SceneDirector").GetComponent<SaveandLoad>();
     }
 
     // Update is called once per frame
@@ -20,9 +19,9 @@ public class Savable : MonoBehaviour
         
     }
 
-    private void OnDestroy()
-    {
-        if (saver)
-            saver.RemoveSushi(this.gameObject);
-    }
+    //private void OnDestroy()
+    //{
+    //    if (saver)
+    //        saver.RemoveSushi(this.gameObject);
+    //}
 }

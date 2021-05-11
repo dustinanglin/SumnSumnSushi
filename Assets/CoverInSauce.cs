@@ -13,7 +13,7 @@ public class CoverInSauce : MonoBehaviour {
     private AudioSource new_combo_yay, combo_poof;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         hot = GameObject.Find("HotSauce").GetComponent<SauceType>().sauced_sushi_material;
         xeno = GameObject.Find("XenoSauce").GetComponent<SauceType>().sauced_sushi_material;
@@ -89,6 +89,17 @@ public class CoverInSauce : MonoBehaviour {
             SetSushiSauce(other.gameObject.transform.parent.gameObject);
         }
     }
+
+    public void SauceSushi(GameObject sushi)
+    {
+        if (sushi.name.Contains("Dish"))
+        {
+            SetDishSauce(sushi.transform.Find("DishSauce").gameObject);
+        }
+        else
+            SetSushiSauce(sushi);
+    }
+
 
     private void SetSushiSauce(GameObject sushi)
     {

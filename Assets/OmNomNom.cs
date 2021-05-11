@@ -12,6 +12,7 @@ public class OmNomNom : MonoBehaviour {
     private GameObject nom2;
     private GameObject paku_spot;
     private GameObject DuckHuntDirector;
+    private SaveandLoad saver;
     public GameObject pakupaku;
     private bool showing_nom = false;
     public float countdown_time = 10;
@@ -40,6 +41,7 @@ public class OmNomNom : MonoBehaviour {
 
         eat_pop = GetComponent<AudioSource>();
         //Debug.Log(om.name + nom1.name + nom2.name);
+        saver = GameObject.Find("SceneDirector").GetComponent<SaveandLoad>();
     }
 	
 	// Update is called once per frame
@@ -93,6 +95,15 @@ public class OmNomNom : MonoBehaviour {
         {
             string ishot = colliding_object.tag;
             colliding_object.GetComponent<Grabbable>().GrabEnd(true);
+
+            if (colliding_object.AddComponent<Savable>())
+            {
+                if (colliding_object.name.Contains("Sauce"))
+                    saver.RemoveSauce(colliding_object);
+                else
+                    saver.RemoveSushi(colliding_object);
+            }
+
             Destroy(colliding_object);
             Debug.Log("Fish ate!");
 

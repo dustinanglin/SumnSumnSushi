@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneDirector : MonoBehaviour {
 
+    [SerializeField]
+    private bool clearOnLoad = false;
+
     private Scene Chopstick, Superhot;
     private SaveandLoad saver;
     private TrackAchievements tracker;
@@ -19,8 +22,16 @@ public class SceneDirector : MonoBehaviour {
 
     private AudioSource trek_sound, alienz_sound;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    private void Awake()
+    {
+        saver = GetComponent<SaveandLoad>();
+
+        if (clearOnLoad)
+            saver.ClearSave();
+    }
+
+    void Start () {
         tracker = GameObject.Find("AchievementTracker").GetComponent<TrackAchievements>();
         trek_sound = GetComponents<AudioSource>()[0];
         alienz_sound = GetComponents<AudioSource>()[1];
@@ -49,7 +60,7 @@ public class SceneDirector : MonoBehaviour {
                 break;
         }
 
-        saver = GetComponent<SaveandLoad>();
+
         saver.LoadObjects();
 
 	}
@@ -178,4 +189,11 @@ public class SceneDirector : MonoBehaviour {
             loadlevel = true;
         }
     }
+
+    private void OnApplicationQuit()
+    {
+         saver.SaveObjects();
+    }
+
+
 }
