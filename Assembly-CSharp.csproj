@@ -115,6 +115,7 @@
     <Compile Include="Assets\JellyTest\_Scripts\Player.cs" />
     <Compile Include="Assets\JellyTest\_Scripts\Slime.cs" />
     <Compile Include="Assets\JellyTest\_Scripts\TouchController.cs" />
+    <Compile Include="Assets\LEDNum.cs" />
     <Compile Include="Assets\LeftCollision.cs" />
     <Compile Include="Assets\Lightonoff.cs" />
     <Compile Include="Assets\Lightonoff_spot.cs" />
