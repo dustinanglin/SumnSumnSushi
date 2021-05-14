@@ -44,19 +44,26 @@ public class ZapperShoot : MonoBehaviour {
     public void InitiateDuck(DuckFly _duck)
     {
         duck = _duck;
+        reset = true;
     }
 
     private void PullTrigger()
     {
         trigger_down = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, current_controller);
 
+        if (trigger_down < .01f)
+        {
+            reset = false;
+            if (current_controller == OVRInput.Controller.RTouch) 
+                Debug.Log("Trigger reset at: " + trigger_down);
+        }
+
         if (trigger_down < .9f)
         {
             MoveTrigger(trigger_down);
             shoot = false;
-            reset = false;
         }
-        else
+        else if (!reset)
         {
             MoveTrigger(1);
             shoot = true;

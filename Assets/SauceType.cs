@@ -35,6 +35,15 @@ public class SauceType : MonoBehaviour {
         }
 	}
 	
+    public void ClearSauce()
+    {
+        sauce_type = "";
+        sauce_material = null;
+        bottle_material = null;
+        sauced_sushi_material = null;
+        cap_color = null;
+    }
+
 	// Update is called once per frame
 	void Update () {
 		

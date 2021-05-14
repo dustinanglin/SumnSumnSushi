@@ -28,7 +28,10 @@ public class SceneDirector : MonoBehaviour {
         saver = GetComponent<SaveandLoad>();
 
         if (clearOnLoad)
+        {
             saver.ClearSave();
+            clearOnLoad = false;
+        }
     }
 
     void Start () {

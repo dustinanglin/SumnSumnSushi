@@ -84,6 +84,7 @@
     <Compile Include="Assets\DiscColor.cs" />
     <Compile Include="Assets\Discfly.cs" />
     <Compile Include="Assets\DiscInstructions.cs" />
+    <Compile Include="Assets\DishReanimator.cs" />
     <Compile Include="Assets\DoorAnimator.cs" />
     <Compile Include="Assets\DoorDelay.cs" />
     <Compile Include="Assets\DrawNormal.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Assets\TronGameDirector.cs" />
     <Compile Include="Assets\UseMask.cs" />
     <Compile Include="Assets\VendingButton.cs" />
+    <Compile Include="Assets\VendingManager.cs" />
     <Compile Include="Assets\VignetteControl.cs" />
     <Compile Include="Assets\WallAnimate.cs" />
     <Compile Include="Assets\WelcomeSign.cs" />

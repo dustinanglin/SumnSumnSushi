@@ -8,6 +8,7 @@ public class CoverInSauce : MonoBehaviour {
     private string sauce_type;
     private GameObject combo_effect;
     private GameObject dish_sauce;
+    private SaveandLoad saver;
 
     private Material hot, xeno, tron, trek, monster, scifi, digital, target, pokemon, godzilla;
     private AudioSource new_combo_yay, combo_poof;
@@ -26,8 +27,10 @@ public class CoverInSauce : MonoBehaviour {
 
         combo_effect = GameObject.Find("SauceComboParticles");
         dish_sauce = GameObject.Find("DishSauce");
-        new_combo_yay = dish_sauce.GetComponents<AudioSource>()[0];
-        combo_poof = dish_sauce.GetComponents<AudioSource>()[1];
+        new_combo_yay = dish_sauce.GetComponents<AudioSource>()[1];
+        combo_poof = dish_sauce.GetComponents<AudioSource>()[0];
+
+        saver = GameObject.Find("SceneDirector").GetComponent<SaveandLoad>();
 
         if (this.name.Contains("Dish"))
         {
@@ -264,10 +267,15 @@ public class CoverInSauce : MonoBehaviour {
 
     private void doComboEffect()
     {
+        combo_effect = GameObject.Find("SauceDish").transform.Find("SauceComboParticles").gameObject;
         combo_effect.GetComponent<ParticleSystem>().Play();
+        combo_poof.Play();
+    }
+
+    private void ShowNewCombo()
+    {
         dish_sauce.GetComponent<ShowCombo>().ShowComboPopup();
         new_combo_yay.PlayDelayed(0.5f);
-        combo_poof.Play();
     }
 
     private Material GetComboMaterial(string existing_sauce, string new_sauce)
@@ -302,6 +310,8 @@ public class CoverInSauce : MonoBehaviour {
                 if (new_sauce.Contains("SciFiSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("xeno"))
+                        ShowNewCombo();
                     return xeno;
                 }
 
@@ -321,6 +331,8 @@ public class CoverInSauce : MonoBehaviour {
                 if (new_sauce.Contains("MonsterSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("xeno"))
+                        ShowNewCombo();
                     return xeno;
                 }
 
@@ -330,12 +342,16 @@ public class CoverInSauce : MonoBehaviour {
                 if (new_sauce.Contains("TargetSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("trek"))
+                        ShowNewCombo();
                     return trek;
                 }
 
                 if (new_sauce.Contains("DigitalSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("tron"))
+                        ShowNewCombo();
                     return tron;
                 }
 
@@ -348,12 +364,16 @@ public class CoverInSauce : MonoBehaviour {
                 if (new_sauce.Contains("SciFiSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("tron"))
+                        ShowNewCombo();
                     return tron;
                 }
 
                 if (new_sauce.Contains("TargetSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("hot"))
+                        ShowNewCombo();
                     return hot;
                 }
 
@@ -369,6 +389,8 @@ public class CoverInSauce : MonoBehaviour {
                 if (new_sauce.Contains("SciFiSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("trek"))
+                        ShowNewCombo();
                     return trek;
                 }
 
@@ -378,6 +400,8 @@ public class CoverInSauce : MonoBehaviour {
                 if (new_sauce.Contains("DigitalSauce"))
                 {
                     doComboEffect();
+                    if (saver.UnlockSauce("hot"))
+                        ShowNewCombo();
                     return hot;
                 }
 

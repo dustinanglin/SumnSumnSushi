@@ -8,6 +8,8 @@ public class SaveandLoad : MonoBehaviour
 {
     private List<GameObject> sushis;
     private List<GameObject> saucebottles;
+    private VendingManager vendingManager;
+
     private SaveObject saveObject;
     //sushis
     private GameObject tuna, yellowfish, salmon, roeboat, shrimp;
@@ -17,9 +19,10 @@ public class SaveandLoad : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        saveObject = new SaveObject();
+
         sushis = new List<GameObject>();
         saucebottles = new List<GameObject>();
-        saveObject = new SaveObject();
 
         tuna = GameObject.Find("Tuna");
         yellowfish = GameObject.Find("Yellowfish");
@@ -35,6 +38,8 @@ public class SaveandLoad : MonoBehaviour
         scifi = GameObject.Find("SciFiSauce");
         digital = GameObject.Find("DigitalSauce");
         target = GameObject.Find("TargetSauce");
+
+        vendingManager = GameObject.Find("Screen").GetComponent<VendingManager>();
     }
 
     // Update is called once per frame
@@ -97,6 +102,19 @@ public class SaveandLoad : MonoBehaviour
             saucebottles.Add(go);
             Debug.Log("Sauce Added to SaveObject");
         }
+    }
+
+    public bool UnlockSauce(string sauceName)
+    {
+        bool isUnlocked = saveObject.sauces.Contains(sauceName);
+
+        if (!isUnlocked)
+        {
+            saveObject.sauces.Add(sauceName);
+            vendingManager.UnlockSauce(sauceName);
+        }
+
+        return !isUnlocked;
     }
 
     public void RemoveSushi(GameObject go)
@@ -201,9 +219,19 @@ public class SaveandLoad : MonoBehaviour
 
             //clear hash list and rebuild because new game objects have new Instance IDs
             RehydrateHashTable();
+
+            //enable all unlocked sauces
+            UnlockSauces();
         }
     }
 
+    private void UnlockSauces()
+    {
+        foreach(string sauce in saveObject.sauces)
+        {
+            vendingManager.UnlockSauce(sauce);
+        }
+    }
 
     private GameObject CreateSauce(Vector3 pos, Quaternion rot, string sauceType)
     {
